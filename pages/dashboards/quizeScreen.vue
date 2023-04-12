@@ -59,7 +59,8 @@
 
                </div>
                <div class="modal-body">
-                  <OutlinedCounterCard prefix="%" :count="rusalut" title="Customers" class="d-inline " />
+                  <OutlinedCounterCard prefix="%" :count="rusalut" :title="rusalut >= 50 ? 'passed' : 'fail'"
+                     class="d-inline " />
                   <h6 class=" ">Title Quize</h6>
                   <h3 class="d-inline ">{{ titleq }}</h3>
                   <apexchart :width="width" :options="chartOptions" :series="series" class="cahrt1"></apexchart>
@@ -223,15 +224,9 @@
                            :badge="{ text: ` ${item.answer1} `, }" />
                      </div>
                   </div>
-
-
-
                </div>
-
-
             </div>
          </div>
-
       </div>
 
 
@@ -285,7 +280,7 @@ export default {
          omitedte: 0,
          array: Array,
          array2: [],
-         rusalut:0,
+         rusalut: 0,
          chartOptions: {
 
             chart: {
@@ -324,7 +319,7 @@ export default {
    methods: {
       savequize() {
          this.series.push(this.correctAnswer, this.omitedte, this.incorrectAnswer);
-         this.rusalut =this.correctAnswer /100
+         this.rusalut = (this.correctAnswer / this.array.length) * 100
 
       },
       endQuize() {
@@ -336,6 +331,8 @@ export default {
             omitedte: this.omitedte,
             incorrectAnswer: this.incorrectAnswer,
             title: this.titleq,
+            yourScore: (this.correctAnswer / this.array.length) * 100,
+            qusationNumber: this.array.length,
             data: today.toLocaleString('en-GB', { timeZone: 'UTC' }),
             time: this.startIntariver1
 

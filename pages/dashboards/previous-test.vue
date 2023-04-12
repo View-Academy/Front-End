@@ -50,7 +50,8 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr v-for="data of getPreviousQuizes" :key="data" :class="data.correctAnswer >data.incorrectAnswer">
+                        <tr v-for="data of getPreviousQuizes" :key="data"
+                           :class="data.yourScore <= 50 ? 'green' : 'red'">
                            <td>
                               <div class="d-flex align-items-center">
                                  <p class="text-xs font-weight-bold ms-2 mb-0">{{ data.title }}</p>
@@ -135,4 +136,13 @@ export default {
    },
 };
 </script>
+<style  scoped>
+.green {
+   background-color: rgba(0, 255, 0, 0.123);
+}
+
+.red {
+   background-color: rgba(255, 0, 0, 0.27);
+}
+</style>
   

@@ -329,6 +329,7 @@ export default {
             // console.log(res2);
             localStorage.setItem("authToken", JSON.stringify(res2));
             localStorage.setItem("title", this.QuestionsTitle);
+            localStorage.setItem("yourCours", this.Courses);
             let timerInterval;
             this.$swal({
                title: "<strong class='spinner1' role='status'>Loading</strong>",
