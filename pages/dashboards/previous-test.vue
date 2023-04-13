@@ -51,7 +51,7 @@
                      </thead>
                      <tbody>
                         <tr v-for="data of getPreviousQuizes" :key="data"
-                           :class="data.yourScore <= 50 ? 'green' : 'red'">
+                           :class="data.yourScore >= 50 ? 'green' : 'red'">
                            <td>
                               <div class="d-flex align-items-center">
                                  <p class="text-xs font-weight-bold ms-2 mb-0">{{ data.title }}</p>
@@ -88,7 +88,7 @@
                               <span class="my-2 text-xs">{{ data.data }}</span>
                            </td>
                            <td class="text-xs font-weight-bold">
-                              <span class="my-2 text-xs">$140,20</span>
+                              <i class="fa fa-eye" aria-hidden="true"></i>
                            </td>
                         </tr>
                      </tbody>

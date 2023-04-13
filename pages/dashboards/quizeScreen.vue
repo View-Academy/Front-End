@@ -16,6 +16,12 @@
                   </div>
                   <ul class="navbar-nav">
                      <li class=" nav-item d-flex align-items-center marked">
+                        <a class="p-0 nav-link " data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                           <i class="fa fa-thermometer-empty cursor-pointer fixed-plugin-button-nav marked"> <span
+                                 class="d-sm-inline d-none px-2 marked">Lab Values</span></i>
+                        </a>
+                     </li>
+                     <li class=" nav-item d-flex align-items-center marked">
                         <a class="p-0 nav-link " type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                            @click="savequize()">
                            <i class="fa fa-ban cursor-pointer fixed-plugin-button-nav marked"> <span
@@ -42,27 +48,65 @@
                            "> <span class="d-sm-inline d-none px-2">Zoom Out</span></i>
                         </a>
                      </li>
+
                   </ul>
                </div>
             </div>
          </nav>
       </div>
-      <div id="countup">
-
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <nav>
+                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                           type="button" role="tab" aria-controls="nav-home" aria-selected="true">Blode</button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                           type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Serum</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                           type="button" role="tab" aria-controls="nav-contact"
+                           aria-selected="false">Cerebrospinal</button>
+                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                           type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Urine and
+                           BMI</button>
+                     </div>
+                  </nav>
+                  <div class="tab-content" id="nav-tabContent">
+                     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        ...</div>
+                     <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...
+                     </div>
+                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...
+                     </div>
+                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+               </div>
+            </div>
+         </div>
       </div>
+
       <div class="modal fade" id="staticBackdrop" tabindex="-1" data-bs-backdrop="static"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
          <div class="modal-dialog modal-fullscreen d-flex justify-content-center">
             <div class="modal-content">
-               <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Evaluation</h5>
-
+               <div class="modal-header text-center">
+                  <h5 class="modal-title text-center" id="exampleModalLabel">   {{ titleq }}</h5>
                </div>
                <div class="modal-body">
-                  <OutlinedCounterCard prefix="%" :count="rusalut" :title="rusalut >= 50 ? 'passed' : 'fail'"
+                  <OutlinedCounterCard prefix="%" :count="rusalut" :title="rusalut >= 50 ? 'Successful' : 'Fail'"
                      class="d-inline " />
-                  <h6 class=" ">Title Quize</h6>
-                  <h3 class="d-inline ">{{ titleq }}</h3>
+               
+               
                   <apexchart :width="width" :options="chartOptions" :series="series" class="cahrt1"></apexchart>
                </div>
                <div class="modal-footer">
@@ -70,7 +114,224 @@
                   <button type="button" class="btn btn-primary" @click="endQuize()" data-bs-dismiss="modal">Save
                      changes</button>
                </div>
+            </div>
+         </div>
+      </div>
+      <div class="modal fade" id="staticBackdrop1" tabindex="-1" data-bs-backdrop="static"
+         aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog modal-xl d-flex justify-content-center">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">SI Reference Intervals</h5>
+               </div>
+               <div class="modal-body">
+                  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                           data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
+                           aria-selected="true">Blood</button>
+                     </li>
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                           data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
+                           aria-selected="false">Serum</button>
+                     </li>
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
+                           data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact"
+                           aria-selected="false">Cerebrospinal</button>
+                     </li>
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-v-tab" data-bs-toggle="pill" data-bs-target="#pills-v"
+                           type="button" role="tab" aria-controls="pills-v" aria-selected="false">Urine and BMI</button>
+                     </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                        aria-labelledby="pills-home-tab">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Blood, Plasma, Serum</th>
+                                 <th scope="col">Reference Range</th>
 
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td>Erythrocyte count
+                                    Male
+                                    Female</td>
+                                 <td>4.3-5.9 million/mm3
+                                    3.5-5.5 million/mm3</td>
+                              </tr>
+                              <tr>
+                                 <td>Erythrocyte sedimentation rate (Westergren)
+                                    Male
+                                    Female</td>
+                                 <td>0-15 mm/h
+                                    0-20 mm/h</td>
+                              </tr>
+                              <tr>
+                                 <td>Hematocrit
+                                    Male
+                                    Female</td>
+                                 <td>41%-53%
+                                    36%-46%</td>
+                              </tr>
+                              <tr>
+                                 <td>Amylase</td>
+                                 <td>
+                                    25-125 U/L</td>
+                              </tr>
+                              <tr>
+                                 <td>Hemoglobin, blood
+                                    Male
+                                    Female</td>
+                                 <td>
+                                    13.5-17.5 g/dL
+                                    12.0-16.0 g/dL </td>
+                              </tr>
+
+
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Serum</th>
+                                 <th scope="col">Reference Range</th>
+
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td>Alanine aminotransferase (ALT)</td>
+                                 <td>10-40 U/L</td>
+                              </tr>
+                              <tr>
+                                 <td>Aspartate aminotransferase (AST)</td>
+                                 <td>12-38 U/L</td>
+                              </tr>
+                              <tr>
+                                 <td>Alkaline phosphatase</td>
+                                 <td>25-100 U/L</td>
+                              </tr>
+                              <tr>
+                                 <td>Amylase</td>
+                                 <td>
+                                    25-125 U/L</td>
+                              </tr>
+                              <tr>
+                                 <td>Bilirubin
+                                    Total
+                                    Direct</td>
+                                 <td> 0.1-1.0 mg/dL
+                                    0.0-0.3 mg/dL </td>
+                              </tr>
+                              <tr>
+                                 <td>Calcium</td>
+                                 <td> 8.4-10.2 mg/dL</td>
+                              </tr>
+
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Cerebrospinal Fluid</th>
+                                 <th scope="col">Reference Range</th>
+
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td>Cell count</td>
+                                 <td>0-5/mm^3</td>
+                              </tr>
+                              <tr>
+                                 <td>Chloride</td>
+                                 <td>118-132 mEq/L</td>
+                              </tr>
+                              <tr>
+                                 <td>Gamma globulin</td>
+                                 <td>3%-12% of total proteins</td>
+                              </tr>
+                              <tr>
+                                 <td>Glucose</td>
+                                 <td>
+                                    40-70 mg/dL</td>
+                              </tr>
+                              <tr>
+                                 <td>Pressure</td>
+                                 <td> 70-180 mm H2O</td>
+                              </tr>
+                              <tr>
+                                 <td>Proteins, total</td>
+                                 <td> less than 40 mg/dL</td>
+                              </tr>
+
+                           </tbody>
+                        </table>
+                     </div>
+                     <div class="tab-pane fade" id="pills-v" role="tabpanel" aria-labelledby="pills-v-tab">
+                        <table class="table">
+                           <thead>
+                              <tr>
+                                 <th scope="col">Urine</th>
+                                 <th scope="col">Reference Range</th>
+
+                              </tr>
+                           </thead>
+                           <tbody>
+                              <tr>
+
+                                 <td>Calcium</td>
+                                 <td>100-300 mg/24 h</td>
+                              </tr>
+                              <tr>
+                                 <td>Creatine clearance
+                                    Male
+                                    Female</td>
+                                 <td>97-137 mL/min
+                                    88-128 mL/min</td>
+                              </tr>
+                              <tr>
+                                 <td>Osmolality</td>
+                                 <td>50-1200 mOsmol/kg H2O</td>
+                              </tr>
+                              <tr>
+                                 <td>Oxalate</td>
+                                 <td>8-40 μg/mL</td>
+                              </tr>
+                              <tr>
+                                 <td>Proteins, total</td>
+                                 <td> less than 150 mg/24 h </td>
+                              </tr>
+                              <tr>
+                                 <td>17-Hydroxycorticosteroids
+                                    Male
+                                    Female</td>
+                                 <td> 3.0-10.0 mg/24 h
+                                    2.0-8.0 mg/24 h </td>
+                              </tr>
+
+                           </tbody>
+                        </table>
+                     </div>
+                  </div>
+               </div>
+               <div class="modal-footer">
+                  <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+               </div>
             </div>
          </div>
       </div>
@@ -107,10 +368,8 @@
             <h2>{{ titleq }}</h2>
          </div>
       </div>
-      <div class="container-fluid  ">
-
+      <div class="container-fluid">
          <div class=" row">
-
             <ul class="nav nav-tabs" id="pills-tab" role="tablist">
                <li v-for="(item, index) of input" :key="index" class="nav-item " role="presentation">
                   <button class="nav-link mb-2" :class="index === 0 ? 'active' : null" :id="`${item.name}-tab`"
@@ -228,7 +487,19 @@
             </div>
          </div>
       </div>
+      <footer class="py-5 footerA">
 
+
+         <div class="row">
+            <div class="mx-auto  text-center col-8">
+               <p class=" " style="
+          color: white; font-size: large; font-weight: bold;">
+                  Copyright © {{ new Date().getFullYear() }} Viwe Acadmy
+               </p>
+            </div>
+
+         </div>
+      </footer>
 
 
    </main>
@@ -355,6 +626,7 @@ export default {
 
       },
       zoomI() {
+
          document.body.style.fontSize = 1.5 + "em";
       },
       zoomOut() {
@@ -580,11 +852,16 @@ definePageMeta({
 
 .footerA {
    background-color: #435ec7;
-
+   position: absolute;
+height: 50px;
    width: 100%;
    margin: auto;
-   color: white;
-   bottom: 10px;
+
+ 
+}
+
+.footerA>p {
+   color: white !important;
 }
 
 .stiker {
