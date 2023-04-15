@@ -125,7 +125,7 @@ export default {
                   price: this.price,
                   discrption: this.quillContent
                }
-               $fetch('http://localhost:8000/api/courses', {
+               $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/courses', {
                   method: 'POST',
                   body: data
                }).then(res => {

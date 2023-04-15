@@ -182,7 +182,7 @@ export default {
                         qustin.push(insatrQuastion)
                      }
                      );
-                     $fetch('http://localhost:8000/api/question/insertMany', {
+                     $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/question/insertMany', {
                         method: 'POST',
                         body: qustin
                      }).then(res => {
