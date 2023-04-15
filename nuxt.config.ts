@@ -5,6 +5,7 @@ export default defineNuxtConfig({
          https: true,
          hmr: {
             protocol: "wss",
+            port:3000
          },
       },
    },
