@@ -2,12 +2,11 @@
 export default defineNuxtConfig({
    vite: {
       server: {
-        hmr: {
-          protocol: 'ws',
-        
-        }
-      }
-    },
+         hmr: {
+            protocol: "wss",
+         },
+      },
+   },
    ssr: false,
 
    app: {
