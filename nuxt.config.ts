@@ -4,7 +4,7 @@ export default defineNuxtConfig({
       server: {
         hmr: {
           protocol: 'ws',
-          host: 'localhost'
+        
         }
       }
     },
