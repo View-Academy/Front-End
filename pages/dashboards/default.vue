@@ -225,7 +225,7 @@ export default {
       };
    },
    computed: {
-      // ...mapGetters(["getMyCourses"]),
+      ...mapGetters(["getMyCourses"]),
    },
 
    methods: {
