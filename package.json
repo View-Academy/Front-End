@@ -19,7 +19,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "post-update": "yarn upgrade --latest"
+    "post-update": "yarn upgrade --latest",
+    "start": "nuxt start"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "12.0.0",

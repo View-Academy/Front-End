@@ -13,10 +13,10 @@
 </template>
 
 <script setup>
-import BubbleChart from "~~/pagesComponents/pages/widgets/BubbleChart.vue";
+
 import Sidenav from "~~/examples/Sidenav";
 import Navbar from "~~/examples/Navbar";
-import Footer from "~~/examples/Footer";
+
 import Configurator from "~~/examples/Configurator";
 
 import { useNavStore } from "~~/stores/NavStore";

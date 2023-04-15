@@ -140,7 +140,7 @@ import TodoList from "~~/pagesComponents/dashboards/default/TodoList.vue";
 import ChannelsCard from "~~/pagesComponents/ecommerce/overview/ChannelsCard.vue";
 import { mapGetters } from "vuex";
 export default {
-   name: "quizeScreen",
+   name: "default",
    components: { ChannelsCard, BarChartHorizontal, GradientLineChart, MiniStatisticsCard, TodoList, },
    data() {
       return {
