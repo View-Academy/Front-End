@@ -130,13 +130,9 @@
    </div>
 </template>
 <script>
-import { useStore } from 'vuex'
 
 
-import US from "~/assets/img/icons/flags/US.png";
-import DE from "~/assets/img/icons/flags/DE.png";
-import GB from "~/assets/img/icons/flags/GB.png";
-import BR from "~/assets/img/icons/flags/BR.png";
+
 import MiniStatisticsCard from "~~/examples/cards/MiniStatisticsCard.vue";
 import GradientLineChart from "~~/examples/charts/GradientLineChart.vue";
 import BarChartHorizontal from "~~/examples/charts/BarChartHorizontal.vue";
@@ -229,10 +225,7 @@ export default {
       };
    },
    computed: {
-      ...mapGetters(["getMyCourses"]),
-
-
-
+      // ...mapGetters(["getMyCourses"]),
    },
 
    methods: {
