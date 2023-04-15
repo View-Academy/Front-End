@@ -65,12 +65,6 @@ const client_manifest = {
     "file": "ivancik.e8656254.jpg",
     "src": "assets/img/ivancik.jpg"
   },
-  "assets/img/kal-visuals-square.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "kal-visuals-square.505e0ef8.jpg",
-    "src": "assets/img/kal-visuals-square.jpg"
-  },
   "assets/img/small-logos/logo-jira.svg": {
     "resourceType": "image",
     "mimeType": "image/svg+xml",
@@ -101,6 +95,12 @@ const client_manifest = {
     "file": "logo-invision.932e5beb.svg",
     "src": "assets/img/small-logos/logo-invision.svg"
   },
+  "assets/img/kal-visuals-square.jpg": {
+    "resourceType": "image",
+    "mimeType": "image/jpeg",
+    "file": "kal-visuals-square.505e0ef8.jpg",
+    "src": "assets/img/kal-visuals-square.jpg"
+  },
   "assets/img/small-logos/logo-slack.svg": {
     "resourceType": "image",
     "mimeType": "image/svg+xml",
@@ -119,12 +119,6 @@ const client_manifest = {
     "file": "ivana-squares.18a26617.jpg",
     "src": "assets/img/ivana-squares.jpg"
   },
-  "assets/img/small-logos/icon-sun-cloud.png": {
-    "resourceType": "image",
-    "mimeType": "image/png",
-    "file": "icon-sun-cloud.eadb0268.png",
-    "src": "assets/img/small-logos/icon-sun-cloud.png"
-  },
   "assets/img/pricing-header-bg.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
@@ -136,6 +130,12 @@ const client_manifest = {
     "mimeType": "image/png",
     "file": "mastercard.aaf95d69.png",
     "src": "assets/img/logos/mastercard.png"
+  },
+  "assets/img/small-logos/icon-sun-cloud.png": {
+    "resourceType": "image",
+    "mimeType": "image/png",
+    "file": "icon-sun-cloud.eadb0268.png",
+    "src": "assets/img/small-logos/icon-sun-cloud.png"
   },
   "assets/img/img-3.jpg": {
     "resourceType": "image",
@@ -149,12 +149,6 @@ const client_manifest = {
     "file": "icon-documentation.afe845de.svg",
     "src": "assets/img/illustrations/icon-documentation.svg"
   },
-  "assets/img/logo-ct.png": {
-    "resourceType": "image",
-    "mimeType": "image/png",
-    "file": "logo-ct.f238fc34.png",
-    "src": "assets/img/logo-ct.png"
-  },
   "assets/img/img-1.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
@@ -166,6 +160,12 @@ const client_manifest = {
     "mimeType": "image/jpeg",
     "file": "img-2.3c2dffc1.jpg",
     "src": "assets/img/img-2.jpg"
+  },
+  "assets/img/logo-ct.png": {
+    "resourceType": "image",
+    "mimeType": "image/png",
+    "file": "logo-ct.f238fc34.png",
+    "src": "assets/img/logo-ct.png"
   },
   "assets/img/logos/gray-logos/logo-coinbase.svg": {
     "resourceType": "image",
@@ -203,17 +203,17 @@ const client_manifest = {
     "file": "logo-vodafone.dca6e8b8.svg",
     "src": "assets/img/logos/gray-logos/logo-vodafone.svg"
   },
+  "assets/img/small-logos/icon-bulb.svg": {
+    "resourceType": "image",
+    "mimeType": "image/svg+xml",
+    "file": "icon-bulb.eca7e868.svg",
+    "src": "assets/img/small-logos/icon-bulb.svg"
+  },
   "assets/img/home-decor-1.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
     "file": "home-decor-1.d2582b58.jpg",
     "src": "assets/img/home-decor-1.jpg"
-  },
-  "assets/img/home-decor-2.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "home-decor-2.71914f6c.jpg",
-    "src": "assets/img/home-decor-2.jpg"
   },
   "assets/img/illustrations/404.svg": {
     "resourceType": "image",
@@ -221,29 +221,29 @@ const client_manifest = {
     "file": "404.22455772.svg",
     "src": "assets/img/illustrations/404.svg"
   },
+  "assets/img/home-decor-2.jpg": {
+    "resourceType": "image",
+    "mimeType": "image/jpeg",
+    "file": "home-decor-2.71914f6c.jpg",
+    "src": "assets/img/home-decor-2.jpg"
+  },
   "assets/img/marie.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
     "file": "marie.864e6ea1.jpg",
     "src": "assets/img/marie.jpg"
   },
-  "assets/img/small-logos/icon-bulb.svg": {
+  "assets/img/home-decor-3.jpg": {
     "resourceType": "image",
-    "mimeType": "image/svg+xml",
-    "file": "icon-bulb.eca7e868.svg",
-    "src": "assets/img/small-logos/icon-bulb.svg"
+    "mimeType": "image/jpeg",
+    "file": "home-decor-3.098e36fb.jpg",
+    "src": "assets/img/home-decor-3.jpg"
   },
   "assets/img/bruce-mars.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
     "file": "bruce-mars.0070d242.jpg",
     "src": "assets/img/bruce-mars.jpg"
-  },
-  "assets/img/home-decor-3.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "home-decor-3.098e36fb.jpg",
-    "src": "assets/img/home-decor-3.jpg"
   },
   "assets/img/ivana-square.jpg": {
     "resourceType": "image",
@@ -257,18 +257,6 @@ const client_manifest = {
     "file": "logo-atlassian.e07e30c9.svg",
     "src": "assets/img/small-logos/logo-atlassian.svg"
   },
-  "assets/img/reports3.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "reports3.3687f3b3.jpg",
-    "src": "assets/img/reports3.jpg"
-  },
-  "assets/img/reports1.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "reports1.42529d18.jpg",
-    "src": "assets/img/reports1.jpg"
-  },
   "assets/img/down-arrow-white.svg": {
     "resourceType": "image",
     "mimeType": "image/svg+xml",
@@ -281,29 +269,17 @@ const client_manifest = {
     "file": "down-arrow-dark.13d4c70e.svg",
     "src": "assets/img/down-arrow-dark.svg"
   },
-  "assets/img/reports2.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "reports2.e18fc757.jpg",
-    "src": "assets/img/reports2.jpg"
-  },
   "assets/img/down-arrow.svg": {
     "resourceType": "image",
     "mimeType": "image/svg+xml",
     "file": "down-arrow.90145daf.svg",
     "src": "assets/img/down-arrow.svg"
   },
-  "assets/img/logos/visa.png": {
+  "assets/img/reports3.jpg": {
     "resourceType": "image",
-    "mimeType": "image/png",
-    "file": "visa.093b1be3.png",
-    "src": "assets/img/logos/visa.png"
-  },
-  "assets/img/tesla.png": {
-    "resourceType": "image",
-    "mimeType": "image/png",
-    "file": "tesla.890789ba.png",
-    "src": "assets/img/tesla.png"
+    "mimeType": "image/jpeg",
+    "file": "reports3.3687f3b3.jpg",
+    "src": "assets/img/reports3.jpg"
   },
   "assets/img/shapes/pattern-left.png": {
     "resourceType": "image",
@@ -317,23 +293,47 @@ const client_manifest = {
     "file": "pattern-right.6b782324.png",
     "src": "assets/img/shapes/pattern-right.png"
   },
+  "assets/img/tesla.png": {
+    "resourceType": "image",
+    "mimeType": "image/png",
+    "file": "tesla.890789ba.png",
+    "src": "assets/img/tesla.png"
+  },
+  "assets/img/reports1.jpg": {
+    "resourceType": "image",
+    "mimeType": "image/jpeg",
+    "file": "reports1.42529d18.jpg",
+    "src": "assets/img/reports1.jpg"
+  },
+  "assets/img/reports2.jpg": {
+    "resourceType": "image",
+    "mimeType": "image/jpeg",
+    "file": "reports2.e18fc757.jpg",
+    "src": "assets/img/reports2.jpg"
+  },
+  "assets/img/logos/visa.png": {
+    "resourceType": "image",
+    "mimeType": "image/png",
+    "file": "visa.093b1be3.png",
+    "src": "assets/img/logos/visa.png"
+  },
   "assets/img/curved-images/curved8.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
     "file": "curved8.d64060e7.jpg",
     "src": "assets/img/curved-images/curved8.jpg"
   },
-  "assets/img/img-1-1200x1000.jpg": {
-    "resourceType": "image",
-    "mimeType": "image/jpeg",
-    "file": "img-1-1200x1000.ecbd3773.jpg",
-    "src": "assets/img/img-1-1200x1000.jpg"
-  },
   "assets/img/card-visa.jpg": {
     "resourceType": "image",
     "mimeType": "image/jpeg",
     "file": "card-visa.6f652bc2.jpg",
     "src": "assets/img/card-visa.jpg"
+  },
+  "assets/img/img-1-1200x1000.jpg": {
+    "resourceType": "image",
+    "mimeType": "image/jpeg",
+    "file": "img-1-1200x1000.ecbd3773.jpg",
+    "src": "assets/img/img-1-1200x1000.jpg"
   },
   "assets/img/reports4.jpg": {
     "resourceType": "image",
@@ -2722,6 +2722,16 @@ const client_manifest = {
     "file": "edit-cuorses.2c0fffaf.css",
     "src": "pages/admin/edit-cuorses.css"
   },
+  "pages/dashboards/previous-test.css": {
+    "resourceType": "style",
+    "file": "previous-test.d1e6e605.css",
+    "src": "pages/dashboards/previous-test.css"
+  },
+  "pages/admin/quizesList.css": {
+    "resourceType": "style",
+    "file": "quizesList.447fa184.css",
+    "src": "pages/admin/quizesList.css"
+  },
   "pages/dashboards/notes.css": {
     "resourceType": "style",
     "file": "notes.5347799a.css",
@@ -2737,35 +2747,20 @@ const client_manifest = {
     "file": "index.fd33b88b.css",
     "src": "index.css"
   },
-  "pages/dashboards/previous-test.css": {
-    "resourceType": "style",
-    "file": "previous-test.d1e6e605.css",
-    "src": "pages/dashboards/previous-test.css"
-  },
-  "layouts/rtl.css": {
-    "resourceType": "style",
-    "file": "rtl.b9c5cd95.css",
-    "src": "layouts/rtl.css"
-  },
   "pages/admin/users.css": {
     "resourceType": "style",
     "file": "users.d60278c4.css",
     "src": "pages/admin/users.css"
-  },
-  "pages/admin/quizesList.css": {
-    "resourceType": "style",
-    "file": "quizesList.447fa184.css",
-    "src": "pages/admin/quizesList.css"
   },
   "layouts/default.css": {
     "resourceType": "style",
     "file": "default.110ac93d.css",
     "src": "layouts/default.css"
   },
-  "ComplexBackgroundCard.css": {
+  "layouts/rtl.css": {
     "resourceType": "style",
-    "file": "ComplexBackgroundCard.8124fe04.css",
-    "src": "ComplexBackgroundCard.css"
+    "file": "rtl.b9c5cd95.css",
+    "src": "layouts/rtl.css"
   },
   "pages/dashboards/generate-quiz.css": {
     "resourceType": "style",
@@ -2776,6 +2771,11 @@ const client_manifest = {
     "resourceType": "style",
     "file": "quizeScreen.c4d8c2df.css",
     "src": "pages/dashboards/quizeScreen.css"
+  },
+  "ComplexBackgroundCard.css": {
+    "resourceType": "style",
+    "file": "ComplexBackgroundCard.8124fe04.css",
+    "src": "ComplexBackgroundCard.css"
   },
   "node_modules/@nuxt/ui-templates/dist/templates/error-404.css": {
     "resourceType": "style",
@@ -2792,11 +2792,6 @@ const client_manifest = {
     "file": "product-page.6b5e5cbe.css",
     "src": "pages/ecommerce/products/product-page.css"
   },
-  "pages/dashboards/automotive.css": {
-    "resourceType": "style",
-    "file": "automotive.a1c72ebe.css",
-    "src": "pages/dashboards/automotive.css"
-  },
   "Calendar.css": {
     "resourceType": "style",
     "file": "Calendar.ff8b6f1a.css",
@@ -2806,6 +2801,11 @@ const client_manifest = {
     "resourceType": "style",
     "file": "vue-quill.1743c732.css",
     "src": "vue-quill.css"
+  },
+  "pages/dashboards/automotive.css": {
+    "resourceType": "style",
+    "file": "automotive.a1c72ebe.css",
+    "src": "pages/dashboards/automotive.css"
   },
   "node_modules/nuxt/dist/app/entry.css": {
     "resourceType": "style",
