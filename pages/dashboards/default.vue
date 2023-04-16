@@ -73,7 +73,7 @@
                      </div>
                      <div class="card-body">
                         <div class="chart">
-                           <apexchart :height="290" v-for="data of getPreviousQuizes" :key="data" :options="chartOptions" :series="data" :xaxis="categories">
+                           <apexchart :height="290" v-for="data of getPreviousQuizes" :key="data" :options="chartOptions" :series="series" :xaxis="categories">
                            </apexchart>
                         </div>
                      </div>
