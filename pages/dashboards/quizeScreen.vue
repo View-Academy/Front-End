@@ -100,13 +100,13 @@
          <div class="modal-dialog modal-fullscreen d-flex justify-content-center">
             <div class="modal-content">
                <div class="modal-header text-center">
-                  <h5 class="modal-title text-center" id="exampleModalLabel">   {{ titleq }}</h5>
+                  <h5 class="modal-title text-center" id="exampleModalLabel"> {{ titleq }}</h5>
                </div>
                <div class="modal-body">
                   <OutlinedCounterCard prefix="%" :count="rusalut" :title="rusalut >= 50 ? 'Successful' : 'Fail'"
                      class="d-inline " />
-               
-               
+
+
                   <apexchart :width="width" :options="chartOptions" :series="series" class="cahrt1"></apexchart>
                </div>
                <div class="modal-footer">
@@ -487,13 +487,12 @@
             </div>
          </div>
       </div>
-      <footer class="py-5 footerA">
+      <footer class=" footerA">
 
 
          <div class="row">
             <div class="mx-auto  text-center col-8">
-               <p class=" " style="
-          color: white; font-size: large; font-weight: bold;">
+               <p class="color4">
                   Copyright © {{ new Date().getFullYear() }} Viwe Acadmy
                </p>
             </div>
@@ -613,7 +612,7 @@ export default {
          }
          clearInterval(this.startIntariver1)
          data.push(insatrQuastion)
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/endquize/" + this.getId, {
+         $fetch("http://localhost:8000/api/user/endquize/" + this.getId, {
             method: 'POST',
             body: data
          }).then(res => {
@@ -645,7 +644,7 @@ export default {
             correctAnswer: res.answer1,
             Date: today.toLocaleString('en-GB', { timeZone: 'UTC' })
          }
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/note/" + this.id.id, {
+         $fetch("http://localhost:8000/api/user/note/" + this.id.id, {
             method: 'POST',
             body: data
          }).then(res => {
@@ -835,6 +834,9 @@ definePageMeta({
    -moz-transform: scale(2);
    -moz-transform-origin: 0 0;
 }
+.color4{
+   color: white;
+}
 
 .cahrt1 {
    margin-left: 30%;
@@ -852,17 +854,15 @@ definePageMeta({
 
 .footerA {
    background-color: #435ec7;
-   position: absolute;
-height: 50px;
+   height: 30px;
    width: 100%;
    margin: auto;
+   position: absolute;
 
- 
+
 }
 
-.footerA>p {
-   color: white !important;
-}
+
 
 .stiker {
 

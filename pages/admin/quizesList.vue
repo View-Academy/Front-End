@@ -193,7 +193,7 @@ export default {
 
                      }
                      );
-                     $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/question/insertMany', {
+                     $fetch('http://localhost:8000/question/insertMany', {
                         method: 'POST',
                         body: qustin
                      }).then(res => {
@@ -221,7 +221,7 @@ export default {
  
 
       editItem(data) {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/question/" + data, {
+         $fetch("http://localhost:8000/api/question/" + data, {
             method: "DELETE",
         
          }).then(res => {
@@ -250,7 +250,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/question/" + id, {
+               $fetch("http://localhost:8000/question/" + id, {
                   method: "DELETE",
                }).then(res => {
                   this.$store.dispatch("SetQuize");

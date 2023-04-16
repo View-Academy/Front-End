@@ -120,7 +120,7 @@ export default {
       async login(userInfo) {
          if (this.Validation()) {
          } else {
-            await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/authorization', {
+            await $fetch('http://localhost:8000/api/authorization', {
                method: 'POST',
                body: userInfo
             }).then(res => {

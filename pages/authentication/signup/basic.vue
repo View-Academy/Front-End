@@ -192,7 +192,7 @@ export default {
       }
     },
     async reqstration() {
-      await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/user', {
+      await $fetch('http://localhost:8000/api/user', {
         method: 'POST',
         body:this.userInfo
 

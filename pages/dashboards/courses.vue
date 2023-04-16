@@ -90,7 +90,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/order/', {
+               $fetch('http://localhost:8000/api/order/', {
                   method: 'POST',
                   body: data
 

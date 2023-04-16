@@ -102,7 +102,7 @@ export default {
    },
    methods: {
       editItem(body) {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/courses/" + body.id, {
+         $fetch("http://localhost:8000/api/courses/" + body.id, {
             method: "PUT",
             body: body
          }).then(res => {
@@ -131,7 +131,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/courses/" + id, {
+               $fetch("http://localhost:8000/api/courses/" + id, {
                   method: "DELETE",
                }).then(res => {
                   this.$store.dispatch("SetCourses");

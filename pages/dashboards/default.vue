@@ -69,10 +69,11 @@
                         <div class="d-flex justify-content-between">
                            <h6 class="mb-0">Tags by title</h6>
                         </div>
+
                      </div>
                      <div class="card-body">
                         <div class="chart">
-                           <apexchart :height="290" :options="chartOptions" :series="series" :xaxis="categories">
+                           <apexchart :height="290" v-for="data of getPreviousQuizes" :key="data" :options="chartOptions" :series="data" :xaxis="categories">
                            </apexchart>
                         </div>
                      </div>
@@ -108,8 +109,8 @@
                         dateTime: '10:30 AM',
                         isChecked: true,
                      },
-                  
-                    
+
+
                   ]" title="Your Notes" />
                </div>
 
@@ -218,14 +219,17 @@ export default {
                },
             },
          ],
-         categories: []
+         categories: [],
+         dash: 0
 
 
 
       };
    },
    computed: {
-      ...mapGetters(["getMyCourses"]),
+      ...mapGetters(["getMyCourses", "getPreviousQuizes"]),
+      
+
    },
 
    methods: {
@@ -239,6 +243,8 @@ export default {
    },
 
    mounted() {
+      this.$store.dispatch("SetPreviousQuize");
+      console.log(this.getPreviousQuizes);
       this.$nextTick(() => {
          window.dispatchEvent(new Event("resize"));
       });
@@ -247,8 +253,9 @@ export default {
       this.getMyCourses.forEach((element, index) => {
          this.chartOptions.xaxis.categories.push(element)
       });
-
+ 
    }
+
 
 
 }

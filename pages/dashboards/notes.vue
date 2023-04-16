@@ -175,7 +175,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/note/" + this.getId + "/" + id, {
+               $fetch("http://localhost:8000/api/user/note/" + this.getId + "/" + id, {
                   method: 'PUT',
 
                }).then(res => {

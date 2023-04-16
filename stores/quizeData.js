@@ -27,7 +27,7 @@ export const getters = {
 };
 export const actions = {
    async fetchMenu({ commit }) {
-      const response = await this.$axios.get("https://goldfish-app-o7qzt.ondigitalocean.app/api/items");
+      const response = await this.$axios.get("http://localhost:8000/api/items");
       commit("SET_MENU", response.data);
       return response;
    },
