@@ -366,7 +366,7 @@ export default {
             courses: { $in: [`${data}`] },
          };
 
-         await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/findone', {
+         await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/question/findone', {
             method: 'POST',
             body: val
          }).then(res => {
