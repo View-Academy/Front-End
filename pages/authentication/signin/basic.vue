@@ -51,12 +51,12 @@
                                  or
                               </p>
                            </div>
-                           <div>
+                           <!-- <div>
                               <button class="btn bg-info w-100 mb-0 toast-btn text-white" type="button"
                                  data-target="dangerToast" @click="navigateTo('/authentication/signup/basic')">
                                  Sign up
                               </button>
-                           </div>
+                           </div> -->
                         </form>
                      </div>
                   </div>
