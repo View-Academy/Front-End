@@ -42,7 +42,7 @@
                            <div>
                               <button class="btn bg-success w-100 mb-0 toast-btn text-white" type="button"
                                  data-target="dangerToast" @click="login(userInfo)">
-                                 Singin
+                                 Sign in
                               </button>
                            </div>
                            <div class="mb-2 position-relative text-center">
@@ -54,7 +54,7 @@
                            <div>
                               <button class="btn bg-info w-100 mb-0 toast-btn text-white" type="button"
                                  data-target="dangerToast" @click="navigateTo('/authentication/signup/basic')">
-                                 Sign in
+                                 Sign up
                               </button>
                            </div>
                         </form>

@@ -154,7 +154,7 @@ export default {
       };
    },
    async asyncData({ $fetch }) {
-      $fetch("http://localhost:8000/api/order", {
+      $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order", {
          method: "GET",
       })
          .then((res) => {
@@ -167,7 +167,7 @@ export default {
    },
    methods: {
       accepet(data) {
-         $fetch("http://localhost:8000/api/order/add/" + data.userID + "/" + data.courseName, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order/add/" + data.userID + "/" + data.courseName, {
             method: "PUT",
 
          }).then(res => {
@@ -179,7 +179,7 @@ export default {
          }).catch(e => {
             console.log(e);
          });
-         $fetch("http://localhost:8000/api/order/" + data.id, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order/" + data.id, {
             method: "DELETE",
 
          }).then(res => {

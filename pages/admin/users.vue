@@ -147,7 +147,7 @@ export default {
 
    methods: {
       delete1(data) {
-         $fetch("http://localhost:8000/api/user/" + data, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/" + data, {
             method: "DELETE",
 
          }).then(res => {

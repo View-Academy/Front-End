@@ -19,7 +19,7 @@
               /> -->
                <SidenavItem to="/dashboards/default" mini-icon="W" text="Welcome" />
                <SidenavItem to="/dashboards/courses" mini-icon="C" text="Courses" />
-               <SidenavItem to="/dashboards/quizeScreen" mini-icon="Q" text="Quize Screen" />
+               <!-- <SidenavItem to="/dashboards/quizeScreen" mini-icon="Q" text="Quize Screen" /> -->
                <SidenavItem to="/dashboards/previous-test" mini-icon="P" text="Previous Test" />
                <SidenavItem to="/dashboards/generate-quiz" mini-icon="G" text="Generate Quiz" />
                <SidenavItem to="/dashboards/overall-performance" mini-icon="O" text="Overall Performance" />

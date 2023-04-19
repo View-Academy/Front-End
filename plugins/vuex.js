@@ -96,7 +96,7 @@ const store = createStore({
          commit("SET_MENU", payload);
       },
       SetCourses: ({ commit }) => {
-         $fetch("http://localhost:8000/api/courses", {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/courses", {
             method: "GET",
          })
             .then((res) => {
@@ -108,7 +108,7 @@ const store = createStore({
             });
       },
       SetOrder: ({ commit }) => {
-         $fetch("http://localhost:8000/api/order", {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order", {
             method: "GET",
          })
             .then((res) => {
@@ -120,7 +120,7 @@ const store = createStore({
             });
       },
       SetNotes: ({ commit, state }) => {
-         $fetch("http://localhost:8000/api/user/note/" + state.id, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/user/note/" + state.id, {
             method: "GET",
          })
             .then((res) => {
@@ -132,7 +132,7 @@ const store = createStore({
             });
       },
       SetUser: ({ commit }) => {
-         $fetch("http://localhost:8000/api/user", {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user", {
             method: "GET",
          })
             .then((res) => {
@@ -144,7 +144,7 @@ const store = createStore({
             });
       },
       SetQuize: ({ commit }) => {
-         $fetch("http://localhost:8000/api/question", {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/question", {
             method: "GET",
          })
             .then((res) => {
@@ -157,7 +157,7 @@ const store = createStore({
             });
       },
       SetPreviousQuize: ({ commit,state }) => {
-         $fetch("http://localhost:8000/api/user/myquizes/" + state.id, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/myquizes/" + state.id, {
             method: "GET",
          })
             .then((res) => {
