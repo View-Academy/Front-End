@@ -120,7 +120,7 @@ const store = createStore({
             });
       },
       SetNotes: ({ commit, state }) => {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/user/note/" + state.id, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/note/" + state.id, {
             method: "GET",
          })
             .then((res) => {
@@ -157,7 +157,7 @@ const store = createStore({
             });
       },
       SetPreviousQuize: ({ commit,state }) => {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/myquizes/" + state.id, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/myquizes/" + state.id, {
             method: "GET",
          })
             .then((res) => {
