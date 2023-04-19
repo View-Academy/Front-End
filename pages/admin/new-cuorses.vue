@@ -36,19 +36,7 @@
                      </div>
 
                   </div>
-                  <div class="row">
-                     <div class="col-sm-12 mb-3">
-                        <label class="mt-4">Description</label>
-                        <p class="text-xs form-text text-muted ms-1 d-inline">
-                           (optional)
-                        </p>
-
-                        <div id="edit-description-edit" class="h-50">
-                           <quill-editor theme="snow" v-model:content="quillContent" contentType="text" />
-                        </div>
-                     </div>
-
-                  </div>
+          
                </div>
             </div>
          </div>
@@ -66,8 +54,7 @@ export default {
    components: { QuillEditor },
    data() {
       return {
-         quillContent:
-            "",
+         
          name: "",
          price: 0,
          discrption: "",
@@ -123,7 +110,7 @@ export default {
                var data = {
                   name: this.name,
                   price: this.price,
-                  discrption: this.quillContent
+                
                }
                $fetch('http://localhost:8000/api/courses', {
                   method: 'POST',
@@ -140,8 +127,8 @@ export default {
                   });
 
                   this.name = "",
-                     this.price = 0,
-                     this.quillContent= null
+                     this.price = 0
+                  
                })
 
 

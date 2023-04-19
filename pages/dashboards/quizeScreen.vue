@@ -557,7 +557,7 @@ export default {
                type: "donut",
             },
             colors: ["#2ecc71", "#3498db", "#f53939"],
-            labels: ["Correct Answer", "Omitedte", "Incorrect Answer"],
+            labels: ["Correct Answer", "Omitted", "Incorrect Answer"],
             dataLabels: {
                enabled: true,
             },
@@ -598,8 +598,9 @@ export default {
          var today = new Date();
          let insatrQuastion = {
             correctAnswer: this.correctAnswer,
-            omitedte: this.omitedte,
+        
             incorrectAnswer: this.incorrectAnswer,
+            omitedte:this.omitedte ,
             title: this.titleq,
             yourScore: (this.correctAnswer / this.array.length) * 100,
             qusationNumber: this.array.length,

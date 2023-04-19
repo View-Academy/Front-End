@@ -1,38 +1,6 @@
 <template>
    <div class="container-fluid py-4">
       <div class="d-sm-flex justify-content-between">
-         <div>
-            <ArgonButton color="white" variant="outline">New order</ArgonButton>
-         </div>
-         <div class="d-flex">
-            <div class="dropdown d-inline">
-               <ArgonButton id="navbarDropdownMenuLink2" color="white" variant="outline" class="dropdown-toggle"
-                  data-bs-toggle="dropdown" aria-expanded="false">Filters</ArgonButton>
-               <ul class="dropdown-menu dropdown-menu-lg-start px-2 py-3" aria-labelledby="navbarDropdownMenuLink2" style>
-                  <li>
-                     <a class="dropdown-item border-radius-md" href="javascript:;">Status: Paid</a>
-                  </li>
-                  <li>
-                     <a class="dropdown-item border-radius-md" href="javascript:;">Status: Refunded</a>
-                  </li>
-                  <li>
-                     <a class="dropdown-item border-radius-md" href="javascript:;">Status: Canceled</a>
-                  </li>
-                  <li>
-                     <hr class="horizontal dark my-2" />
-                  </li>
-                  <li>
-                     <a class="dropdown-item border-radius-md text-danger" href="javascript:;">Remove Filter</a>
-                  </li>
-               </ul>
-            </div>
-            <ArgonButton class="btn-icon ms-2 export" size color="white" variant="outline" data-type="csv">
-               <span class="btn-inner--icon">
-                  <i class="ni ni-archive-2"></i>
-               </span>
-               <span class="btn-inner--text">Export CSV</span>
-            </ArgonButton>
-         </div>
       </div>
       <div class="row">
          <div class="col-12">
@@ -44,14 +12,13 @@
                            <th>title</th>
                            <th>correct Answer</th>
                            <th>incorrect Answer</th>
-                           <th>omitedte</th>
+                           <th>Omitted</th>
                            <th>date</th>
                            <th>action</th>
                         </tr>
                      </thead>
                      <tbody>
-                        <tr v-for="data of getPreviousQuizes" :key="data"
-                           :class="data.yourScore >= 50 ? 'green' : 'red'">
+                        <tr v-for="data of getPreviousQuizes" :key="data" :class="data.yourScore >= 50 ? 'green' : 'red'">
                            <td>
                               <div class="d-flex align-items-center">
                                  <p class="text-xs font-weight-bold ms-2 mb-0">{{ data.title }}</p>

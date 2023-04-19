@@ -18,7 +18,13 @@ const store = createStore({
          orderList: Array,
          users: Array,
          quizes: Array,
-         previous:Array
+         previous:Array,
+         omitted:0,
+         TotalQuestions:0,
+         correctAnswer:0,
+         incorrectAnswer:0,
+         yourScore : []
+         
       };
    },
    getters: {
@@ -33,6 +39,9 @@ const store = createStore({
       },
       getPhone: (state) => {
          return state.phone;
+      },
+      getOmitted: (state) => {
+         return state.omitted;
       },
       getCourses: (state) => {
          return state.courses;
@@ -68,6 +77,18 @@ const store = createStore({
       },
       toggleOne(state) {
          return state.toggleOne;
+      },
+      TotalQuestions(state) {
+         return state.TotalQuestions;
+      },
+      TotalIncorrectAnswer(state) {
+         return state.incorrectAnswer;
+      },
+      TotalCorrectAnswer(state) {
+         return state.correctAnswer;
+      },
+      GetyourScore(state) {
+         return state.yourScore;
       },
    },
    actions: {
@@ -129,6 +150,7 @@ const store = createStore({
             .then((res) => {
                console.log(res);
                commit("SET_QUIZE", res);
+
             })
             .catch((eroor) => {
                console.log(eroor);
@@ -156,6 +178,7 @@ const store = createStore({
          state.name = user.name;
          state.isSuperAdmain = user.isSuperAdmain;
          state.mycours = user.myCourses;
+     
       },
 
       SET_USERS(state, users) {
@@ -172,12 +195,21 @@ const store = createStore({
       },
       SET_QUIZE(state, quizes) {
          state.quizes = quizes;
+       
       },
-      SET_QUIZE(state, quizes) {
-         state.quizes = quizes;
-      },
+   
       SET_PREVIOUS_QUIZE(state, previous) {
          state.previous = previous;
+         state.omitted = 0
+         state.correctAnswer = 0
+         state.incorrectAnswer = 0
+         previous.forEach(element => {
+            state.yourScore.push(element.yourScore)
+            state.omitted += (element.yourScore / 50)
+            state.correctAnswer += element.correctAnswer
+            state.incorrectAnswer += element.incorrectAnswer
+            
+         });
       },
    },
 });

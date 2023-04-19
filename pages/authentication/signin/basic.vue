@@ -10,37 +10,21 @@
 
       </template>
 
-      <div class="page-header min-vh-100" style="
-                                                  background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signin-basic.jpg');
-                                                ">
+      <div class="page-header min-vh-100" style="background-image: url('https://media.publit.io/file/Untitled-design-7-S.jpg');
+                                                         ">
 
-         <span class="mask bg-gradient-dark opacity-6"></span>
+         <span class="mask bg-gradient-dark opacity-1"></span>
          <div class="container">
             <div class="row justify-content-center">
                <div class="col-lg-4 col-md-7 mt-2">
                   <div class="card border-0 mb-0">
                      <div class="card-header bg-transparent">
-                        <h5 class="text-dark text-center mt-2 mb-3">Sign in</h5>
-                        <!-- <div class="btn-wrapper text-center">
-                  <a
-                    href="javascript:;"
-                    class="btn btn-neutral btn-icon btn-sm mb-0 me-1"
-                  >
-                    <img class="w-30" src="@/assets/img/logos/github.svg" />
-                    Github
-                  </a>
-                  <a
-                    href="javascript:;"
-                    class="btn btn-neutral btn-icon btn-sm mb-0"
-                  >
-                    <img class="w-30" src="@/assets/img/logos/google.svg" />
-                    Google
-                  </a>
-                </div> -->
+                        <h5 class="text-dark text-center mt-2 mb-3">Singin</h5>
+
                      </div>
                      <div class="card-body px-lg-5 pt-0">
                         <div class="text-center text-muted mb-4">
-                           <small>Or sign in with credentials</small>
+                           <small>Singin Using Your Viwe Academy Account</small>
                         </div>
                         <form role="form" class="text-start">
                            <div class="mb-3">
@@ -58,7 +42,7 @@
                            <div>
                               <button class="btn bg-success w-100 mb-0 toast-btn text-white" type="button"
                                  data-target="dangerToast" @click="login(userInfo)">
-                                 sing in
+                                 Singin
                               </button>
                            </div>
                            <div class="mb-2 position-relative text-center">
@@ -80,8 +64,8 @@
             </div>
          </div>
          <div class="position-fixed bottom-1 end-1 z-index-2">
-            <ArgonSnackbar v-if="snackbar === 'danger'" title="Argon Dashboard" date="11 mins ago"
-               description="الرجاء التاكد من الباسورد او الاميل"
+            <ArgonSnackbar v-if="snackbar === 'danger'" title="Danger Notice"
+               description="Please Check Your Password or Email"
                :icon="{ component: 'ni ni-notification-70', color: 'danger' }" color="danger"
                :close-handler="closeSnackbar" />
          </div>
@@ -124,10 +108,11 @@ export default {
                method: 'POST',
                body: userInfo
             }).then(res => {
-               sessionStorage.setItem("info" ,JSON.stringify(res))
+               sessionStorage.setItem("info", JSON.stringify(res))
                this.$store.dispatch("yourAction", res);
-              
-             
+         
+
+
                navigateTo('/dashboards/default')
             })
                .catch((error) => {

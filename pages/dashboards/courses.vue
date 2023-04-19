@@ -1,11 +1,16 @@
 <template>
-   <main class="main-content position-relative max-height-vh-100 h-100">
+   <main class="main-content  position-relative max-height-vh-100 h-100">
 
       <div class="page-header position-relative" :style="{
          backgroundImage: 'url(' + headerImg + ')',
          backgroundSize: 'cover',
       }">
-         <span class="mask bg-color opacity-8"></span>
+
+                  
+              
+      
+         <span class="mask bg-color opacity-8" @click="back()">
+            <i class="fa fa-long-arrow-left back-arow"></i> </span>
          <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
             <div class="row">
                <div class="mx-auto text-center col-md-6 mt-4">
@@ -18,13 +23,13 @@
          </div>
       </div>
       <div class="mt-n4">
-         <div class="container">
+         <div class="container bg-black">
             <div class="tab-content tab-space">
                <div class="tab-pane active">
                   <div class="row">
                      <div class="row mt-4">
                         <ComplexBackgroundCard v-for="corse of getCourses" :key="corse"
-                           image="https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/window-desk.jpg"
+                           image="https://media.publit.io/file/MutahUniversity/1stYear/2ndSemester/-32.png"
                            :description="corse.discrption" :price=corse.price :name="corse.name" class="mt-5"
                            @click="cl(corse)" />
                      </div>
@@ -64,6 +69,9 @@ export default {
       }
    },
    methods: {
+      back(){
+         navigateTo('/dashboards/default')
+      },
       async cl(corse) {
          var today = new Date();
          var data = {
@@ -78,9 +86,9 @@ export default {
          }
          this.$swal({
             title: "Are you sure?",
-            text: "You won Send this Request!",
+            text: "Are you sure to send a request to purchase this course?",
             showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, Send it!",
             cancelButtonText: "No, cancel!",
             reverseButtons: true,
             customClass: {
@@ -98,7 +106,7 @@ export default {
                   this.$store.dispatch("SetNotes");
                   this.$swal({
                      title: "Send successfully!",
-                     text: "The Notes is Deleted",
+                     text: "Sended successfully",
                      icon: "success",
                      customClass: {
                         confirmButton: "btn bg-gradient-success",
@@ -112,7 +120,7 @@ export default {
             ) {
                this.$swal({
                   title: "Cancelled!",
-                  text: "Your imaginary file is safe :)",
+                  text: "This Request Has Been Cancelled",
                   icon: "error",
                   customClass: {
                      confirmButton: "btn bg-gradient-success",
@@ -150,7 +158,16 @@ definePageMeta({
 </script>
 <style scoped>
 .bg-color {
-   background: linear-gradient(rgba(57, 2, 2, 0.4), rgb(83, 72, 72)) !important;
+   background: linear-gradient(rgba(57, 2, 2, 0.4), rgb(8, 7, 73)) !important;
 }
+.back-arow{
+   font-size: 60px;
+   background-color: linear-gradient(rgba(57, 2, 2, 0.4), rgb(83, 72, 72)) !important;
+   margin-left: 10px;
+   cursor: pointer;
+   animation-duration: 20s;
+   color: black;
+}
+
 </style>
   

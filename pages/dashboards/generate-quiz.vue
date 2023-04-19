@@ -4,7 +4,7 @@
          <div class="text-center col-12">
             <h3 class="mt-5 text-white">Generate Your Quiz</h3>
             <h5 class="text-white font-weight-normal">
-               This information will let us know more about you.
+               Create Your Own Customize Quiz
             </h5>
             <div class="mb-5 multisteps-form">
                <div class="row mt-5">
@@ -154,8 +154,7 @@
                               <div class="mx-auto col-10">
                                  <h5 class="font-weight-normal">Systems</h5>
                                  <p>
-                                    One thing I love about the later sunsets is the chance to go for a
-                                    walk through the neighborhood woods before dinner
+                                   Choose the System
                                  </p>
                               </div>
                            </div>
@@ -187,8 +186,7 @@
                               <div class="mx-auto col-10">
                                  <h5 class="font-weight-normal">Topics</h5>
                                  <p>
-                                    One thing I love about the later sunsets is the chance to go for a
-                                    walk through the neighborhood woods before dinner
+                                    Choose the Topics
                                  </p>
                               </div>
                            </div>

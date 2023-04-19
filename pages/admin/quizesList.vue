@@ -152,9 +152,7 @@ export default {
             url: "/file/post",
             addRemoveLinks: true,
             timeout: 90000, /*milliseconds*/
-
             accept: function (file, done) {
-
                var reader = new FileReader();
                reader.addEventListener("loadend", function (event) {
                   var data = event.target.result;
@@ -193,7 +191,7 @@ export default {
 
                      }
                      );
-                     $fetch('http://localhost:8000/question/insertMany', {
+                     $fetch('http://localhost:8000/api/question/insertMany', {
                         method: 'POST',
                         body: qustin
                      }).then(res => {

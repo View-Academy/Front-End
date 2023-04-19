@@ -20,7 +20,7 @@
                <div class="col-lg-7 mb-lg">
                   <div class="card z-index-2">
                      <div class="mb-0 pb-0 card-header">
-                        <h6>assad</h6>
+                        <h6>Progress Graph </h6>
                         <p class="text-sm">
                            <i class="fa fa-arrow-up text-success"></i>
                            <!-- <span class="font-weight-bold ms-1">4% more</span> in 2021 -->
@@ -53,67 +53,94 @@
                               legend: {
                                  show: false,
                               },
-                           }" :series="[
-   {
-      name: 'Mobile Apps',
-      data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-   },
-]" />
+                           }" :series=Progress />
                         </div>
                      </div>
                   </div>
                </div>
                <div class="col-lg-5">
-                  <div class="card">
-                     <div class=" pb-0 card-header">
-                        <div class="d-flex justify-content-between">
-                           <h6 class="mb-0">Tags by title</h6>
+                  <div class="card h-100">
+                     <div class="p-3 pb-0 card-header">
+                        <div class="d-flex justify-content-between justify-content-center">
+                           <h6 class="mb-0">QBank Usage</h6>
+                           <button type="button"
+                              class="mb-0 btn btn-icon-only btn-rounded btn-outline-secondary ms-2 btn-sm d-flex align-items-center justify-content-center"
+                              data-bs-toggle="tooltip" data-bs-placement="bottom" title
+                              data-bs-original-title="See traffic channels">
+                              <i class="fas fa-info" aria-hidden="true"></i>
+                           </button>
                         </div>
+                     </div>
+                     <div class="p-3 pb-0 mt-4 card-body">
+                        <div class="row">
+                           <div class="col-7 text-start">
+                              <div class="chart d-flex justify-content-center">
+                                 <PieChart :chart-options="{
+                                    colors: ['#17c1e8', '#4BB543', '#3A416F',],
+                                    labels: ['Total Questions', 'Used Questions', 'Unused Questions',],
+                                    legend: {
+                                       show: false,
+                                    },
+                                    dataLabels: {
+                                       enabled: false,
+                                    },
+                                    responsive: [
+                                       {
+                                          breakpoint: 480,
+                                          options: {
+                                             chart: {
+                                                width: 200,
+                                             },
+                                             legend: {
+                                                position: 'bottom',
+                                             },
+                                          },
+                                       },
+                                    ],
+                                 }" :series="series2" width="250" />
+                              </div>
+                           </div>
+                           <div class="my-auto mx-auto col-5">
+                              <span class="badge badge-md badge-dot me-4 d-block text-start">
+                                 <i class="bg-info"></i>
+                                 <span class="text-xs text-dark">Total Questions</span>
+                              </span>
+                              <span class="badge badge-md badge-dot me-4 d-block text-start">
+                                 <i class="bg-success"></i>
+                                 <span class="text-xs text-dark">Used Questions</span>
+                              </span>
+                              <span class="badge badge-md badge-dot me-4 d-block text-start">
+                                 <i class="bg-dark"></i>
+                                 <span class="text-xs text-dark">Unused Questions</span>
+                              </span>
+                           </div>
+                        </div>
+                     </div>
 
-                     </div>
-                     <div class="card-body">
-                        <div class="chart">
-                           <apexchart :height="290" v-for="data of getPreviousQuizes" :key="data" :options="chartOptions" :series="series" :xaxis="categories">
-                           </apexchart>
-                        </div>
-                     </div>
                   </div>
+
                </div>
             </div>
             <div class="row mt-4">
                <div class="col-lg-4 col-sm-6">
-                  <ChannelsCard />
-               </div>
-               <div class="col-lg-8 col-md-6 mb-4 mb-lg-0">
-                  <TodoList :todos="[
-                     {
-                        label: 'Call with Dave',
-                        dateTime: '09:30 AM',
-                        isChecked: true,
-                     },
-                     {
-                        label: 'Brunch Meeting',
-                        dateTime: '11:00 AM',
-                     },
-                     {
-                        label: 'Argon Dashboard Launch',
-                        dateTime: '02:00 PM',
-                     },
-                     {
-                        label: 'Winter Hackaton',
-                        dateTime: '10:30 AM',
-                        isChecked: true,
-                     },
-                     {
-                        label: 'Winter Hackaton',
-                        dateTime: '10:30 AM',
-                        isChecked: true,
-                     },
 
-
-                  ]" title="Your Notes" />
                </div>
 
+
+            </div>
+            <div class="card">
+               <div class=" pb-0 card-header">
+                  <div class="d-flex justify-content-between">
+                     <h6 class="mb-0">Your Performance</h6>
+                  </div>
+
+               </div>
+               <div class="card-body">
+                  <div class="chart">
+                     <apexchart :height="90" :key="data" :options="chartOptions" :series="series" :xaxis="categories">
+                     </apexchart>
+                  </div>
+               </div>
             </div>
             <div class="row mt-4">
 
@@ -138,13 +165,21 @@ import MiniStatisticsCard from "~~/examples/cards/MiniStatisticsCard.vue";
 import GradientLineChart from "~~/examples/charts/GradientLineChart.vue";
 import BarChartHorizontal from "~~/examples/charts/BarChartHorizontal.vue";
 import TodoList from "~~/pagesComponents/dashboards/default/TodoList.vue";
-import ChannelsCard from "~~/pagesComponents/ecommerce/overview/ChannelsCard.vue";
+import PieChart from "~~/examples/charts/PieChart.vue";
 import { mapGetters } from "vuex";
+import { map } from 'leaflet';
 export default {
    name: "default",
-   components: { ChannelsCard, BarChartHorizontal, GradientLineChart, MiniStatisticsCard, TodoList, },
+   components: { BarChartHorizontal, GradientLineChart, MiniStatisticsCard, TodoList, PieChart },
    data() {
       return {
+         series2: [],
+         Progress: [
+            {
+               name: 'Progress Graph ',
+               data: [0],
+            },
+         ],
 
          chartOptions: {
 
@@ -166,28 +201,25 @@ export default {
                enabled: true,
             },
             xaxis: {
-
-               categories: [],
+               categories: [""],
             },
 
          },
          series: [
-
             {
-               name: "Sales by age",
-               data: [15, 20, 12, 60],
+               name: "Your Perfomance",
+               data: [],
             },
          ],
+
 
 
 
          cardData: [
             {
                title: "Enrolled Courses",
-               value: "56",
-               description: `<span
-                class='text-sm font-weight-bolder text-success'
-                >+3%</span> since last week`,
+               value: "0",
+               description: '',
                icon: {
                   component: "ni ni-world",
                   background: "bg-gradient-danger",
@@ -197,9 +229,7 @@ export default {
             {
                title: "Completed Courses",
                value: "0",
-               description: `<span
-                class='text-sm font-weight-bolder text-danger'
-                >-2%</span> since last quarter`,
+               description: '',
                icon: {
                   component: "ni ni-paper-diploma",
                   background: "bg-gradient-success",
@@ -207,11 +237,9 @@ export default {
                },
             },
             {
-               title: "Your Score",
-               value: "3",
-               description: `<span
-                class='text-sm font-weight-bolder text-info'
-                >Your Score For All Quastions</span>`,
+               title: "InCompleted Courses",
+               value: "0",
+               description: ``,
                icon: {
                   component: "ni ni-cart",
                   background: "bg-gradient-warning",
@@ -227,9 +255,7 @@ export default {
       };
    },
    computed: {
-      ...mapGetters(["getMyCourses", "getPreviousQuizes"]),
-      
-
+      ...mapGetters(["GetyourScore", "getMyCourses", "getPreviousQuizes", "getOmitted", "getQuizes", "TotalIncorrectAnswer", "TotalCorrectAnswer"]),
    },
 
    methods: {
@@ -243,17 +269,37 @@ export default {
    },
 
    mounted() {
+
+      var x1 = sessionStorage.getItem("info");
+      this.$store.dispatch("yourAction", JSON.parse(x1));
       this.$store.dispatch("SetPreviousQuize");
-      console.log(this.getPreviousQuizes);
-      this.$nextTick(() => {
-         window.dispatchEvent(new Event("resize"));
-      });
-      var x = sessionStorage.getItem("info");
-      this.$store.dispatch("yourAction", JSON.parse(x));
-      this.getMyCourses.forEach((element, index) => {
-         this.chartOptions.xaxis.categories.push(element)
-      });
- 
+      this.$store.dispatch("SetQuize");
+
+      console.log(typeof this.GetyourScore);
+      const UsedQuastions = this.TotalIncorrectAnswer + this.TotalCorrectAnswer;
+      const UnusedQuastions = this.getQuizes.length - (this.TotalIncorrectAnswer + this.TotalCorrectAnswer);
+
+
+
+      this.series2.push(this.getQuizes.length)
+      this.series2.push(UsedQuastions)
+      this.series2.push(UnusedQuastions)
+
+      this.series[0].data.push(this.getOmitted)
+      this.cardData[0].value = `${this.getMyCourses.length}`
+      this.Progress[0].data.push(this.GetyourScore[0])
+      this.Progress[0].data.push(this.GetyourScore[1])
+      this.Progress[0].data.push(this.GetyourScore[3])
+      const obj = this.GetyourScore;
+  
+
+
+
+
+
+
+
+
    }
 
 

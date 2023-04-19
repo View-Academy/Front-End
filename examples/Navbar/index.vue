@@ -31,10 +31,8 @@
          <div id="navbar" class="mt-2 collapse navbar-collapse mt-sm-0 me-md-0 me-sm-4">
             <div class="pe-md-3 d-flex align-items-center ms-md-auto">
                <div class="input-group">
-                  <span class="input-group-text text-body">
-                     <i class="fas fa-search"></i>
-                  </span>
-                  <input type="text" class="form-control" placeholder="Type here..." />
+              
+             
                </div>
             </div>
             <ul class="navbar-nav justify-content-end">
@@ -79,14 +77,13 @@
                   </a>
                </li>
                <li class="nav-item dropdown d-flex align-items-center pe-2">
-                  <a id="dropdownMenuButton" href="#" :class="`p-0 nav-link text-white ${showMenu ? 'show' : ''}`"
-                     data-bs-toggle="dropdown" aria-expanded="false" @click="showMenu = !showMenu">
-                     <i class="fas fa-bell cursor-pointer" :class="
-                        navStore.darkMode || !navStore.navFixed
-                           ? 'text-white'
-                           : 'text-dark opacity-8'
-                     "></i>
-                  </a>
+
+                  <span  class=" cursor-pointer" :class="
+                     navStore.darkMode || !navStore.navFixed
+                        ? 'text-white'
+                        : 'text-dark opacity-8'
+                  " @click="logOut()"> log out </span>
+
                   <ul class="px-2 py-3 dropdown-menu dropdown-menu-end me-sm-n4" :class="showMenu ? 'show' : ''"
                      aria-labelledby="dropdownMenuButton">
                      <li class="mb-2">
@@ -182,7 +179,11 @@ var name = store.getters.getEmail
 onMounted(() => {
 });
 
+function logOut(){
+   sessionStorage.clear()
+   navigateTo('/authentication/signin/basic')
 
+}
 
 function toggleSidenav() {
    navStore.toggleSidenavCollapsing();

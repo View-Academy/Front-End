@@ -14,7 +14,6 @@
                         <tr>
                            <th>Name</th>
                            <th>price</th>
-                           <th>descraption</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -22,14 +21,11 @@
                         <tr class="" v-for="data of getCourses " :key="data">
                            <td class="text-sm font-weight-normal p-4 ">{{ data.name }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.price }}</td>
-                           <td class="text-sm font-weight-normal p-4">{{ data.discrption }}</td>
                            <td>
-
                               <i class="fas fa-user-edit text-secondary pt-4 button-actions" data-bs-toggle="modal"
                                  :data-bs-target="`#` + data.name" :data-bs-whatever="data.id"></i>
                               <i class="fas fa-trash text-secondary pt-4     button-actions"
                                  @click="deleteItem(data.id)"></i>
-
                            </td>
                            <div class="modal fade" :id="data.name" tabindex="-1" aria-labelledby="exampleModalLabel"
                               aria-hidden="true">
@@ -52,10 +48,7 @@
                                              <input type="text" class="form-control" id="recipient-name"
                                                 v-model="data.price">
                                           </div>
-                                          <div class="mb-3">
-                                             <label for="message-text" class="col-form-label">Discrption:</label>
-                                             <input class="form-control" id="message-text" v-model="data.discrption" />
-                                          </div>
+
                                        </form>
                                     </div>
                                     <div class="modal-footer">

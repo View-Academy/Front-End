@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
    app: {
       head: {
-         title: "Nuxt Argon Dashboard 2 PRO",
+         title: "Viwe Academy Qbank",
          meta: [
             { charset: "utf-8" },
             {

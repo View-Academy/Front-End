@@ -23,7 +23,7 @@
                <SidenavItem to="/dashboards/previous-test" mini-icon="P" text="Previous Test" />
                <SidenavItem to="/dashboards/generate-quiz" mini-icon="G" text="Generate Quiz" />
                <SidenavItem to="/dashboards/overall-performance" mini-icon="O" text="Overall Performance" />
-               <SidenavItem to="/dashboards/flash-card" mini-icon="F" text="Flash Card" />
+               <SidenavItem to="/dashboards/default" mini-icon="F" text="Flash Card (Soon)" />
                <SidenavItem to="/dashboards/notes" mini-icon="N" text="Note" />
                <!-- <SidenavItem
                 to="/dashboards/automotive"
@@ -58,11 +58,11 @@
             <!-- </template> -->
             <!-- </SidenavCollapse> -->
          </li>
-         <li class="mt-3 nav-item" v-if="haloo">
+         <!-- <li class="mt-3 nav-item" v-if="haloo">
             <h6 class="text-xs ps-4 text-uppercase font-weight-bolder opacity-6" :class="isRTL ? 'me-4' : 'ms-2'">
                PAGES
             </h6>
-         </li>
+         </li> -->
          <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="applicationsExamples" nav-text="Admin"
                :class="getRoute === 'applications' ? 'active' : ''">
@@ -86,7 +86,7 @@
             </sidenav-collapse>
 
          </li>
-         <li class="nav-item" v-if="haloo">
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="pagesExamples" nav-text="Pages" :class="getRoute === 'pages' ? 'active' : ''">
                <template #icon>
                   <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
@@ -134,9 +134,9 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li>
+         </li> -->
 
-         <li class="nav-item" v-if="haloo">
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="applicationsExamples" nav-text="Applications"
                :class="getRoute === 'applications' ? 'active' : ''">
                <template #icon>
@@ -151,11 +151,11 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li>
+         </li> -->
          <!-- hear man -->
 
 
-         <li class="nav-item" v-if="haloo">
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="ecommerceExamples" nav-text="Ecommerce"
                :class="getRoute === 'ecommerce' ? 'active' : ''">
                <template #icon>
@@ -184,9 +184,9 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li>
+         </li> -->
 
-         <li class="nav-item" v-if="haloo">
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="authExamples" nav-text="Authentication"
                :class="getRoute === 'authentication' ? 'active' : ''">
                <template #icon>
@@ -243,14 +243,14 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li>
-         <li class="mt-3 nav-item" v-if="haloo">
+         </li> -->
+         <!-- <li class="mt-3 nav-item" v-if="haloo">
             <hr class="mt-0 horizontal dark" />
             <h6 class="text-xs ps-4 ms-2 text-uppercase font-weight-bolder opacity-6" :class="isRTL ? 'me-4' : 'ms-2'">
                DOCS
             </h6>
-         </li>
-         <li class="nav-item" v-if="haloo">
+         </li> -->
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="basicExamples" nav-text="Basic" :class="getRoute === 'basic' ? 'active' : ''">
                <template #icon>
                   <i class="ni ni-spaceship text-sm" :class="sidenavType"></i>
@@ -333,8 +333,8 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li>
-         <li class="nav-item" v-if="haloo">
+         </li> -->
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="componentsExamples" nav-text="Components"
                :class="getRoute === 'components' ? 'active' : ''">
                <template #icon>
@@ -423,15 +423,15 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li>
-         <li class="nav-item" v-if="haloo">
+         </li> -->
+         <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse nav-text="Changelog" :collapse="false" url="#" :aria-controls="''"
                collapse-ref="https://github.com/creativetimofficial/ct-vue-argon-dashboard-pro/blob/main/CHANGELOG.md">
                <template #icon>
                   <i class="ni ni-align-left-2 text-sm" :class="sidenavType"></i>
                </template>
             </sidenav-collapse>
-         </li>
+         </li> -->
       </ul>
    </div>
    <div class="mt-3 sidenav-footer">

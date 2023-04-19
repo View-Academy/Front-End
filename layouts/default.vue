@@ -49,6 +49,6 @@ useHead({
 </script>
 <style scoped>
 .bg {
-   background-color: #f0b52b !important;
+   background-color: #16244E !important;
 }
 </style>
