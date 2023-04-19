@@ -19,12 +19,12 @@
                <div class="col-lg-4 col-md-7 mt-2">
                   <div class="card border-0 mb-0">
                      <div class="card-header bg-transparent">
-                        <h5 class="text-dark text-center mt-2 mb-3">Singin</h5>
+                        <h5 class="text-dark text-center mt-2 mb-3">Sign in</h5>
 
                      </div>
                      <div class="card-body px-lg-5 pt-0">
                         <div class="text-center text-muted mb-4">
-                           <small>Singin Using Your Viwe Academy Account</small>
+                           <small>Sign in Using Your Viwe Academy Account</small>
                         </div>
                         <form role="form" class="text-start">
                            <div class="mb-3">
@@ -54,7 +54,7 @@
                            <div>
                               <button class="btn bg-info w-100 mb-0 toast-btn text-white" type="button"
                                  data-target="dangerToast" @click="navigateTo('/authentication/signup/basic')">
-                                 Signup
+                                 Sign in
                               </button>
                            </div>
                         </form>
