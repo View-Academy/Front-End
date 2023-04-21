@@ -108,7 +108,7 @@
                                  <div class="px-3 py-1 d-flex">
                                     <button type="button" class="btn mx-2 btn-secondary"
                                        @click="accepet(mountain)">Acept</button>
-                                    <button type="button" class="btn btn-primary">Denay</button>
+                                    <button type="button" class="btn btn-primary" @click="removeuser(mountain)">Denay</button>
                                  </div>
                               </td>
                            </tr>
@@ -189,6 +189,17 @@ export default {
             console.log(e);
          });
 
+      },
+      removeuser(data){
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order/" + data.id, {
+            method: "DELETE",
+
+         }).then(res => {
+            this.$store.dispatch('SetOrder')
+
+         }).catch(e => {
+            console.log(e);
+         });
       }
 
 
