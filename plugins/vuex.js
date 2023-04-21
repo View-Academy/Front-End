@@ -157,7 +157,7 @@ const store = createStore({
             });
       },
       SetPreviousQuize: ({ commit,state }) => {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/myquizes/" + state.id, {
+         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/myquizes/" + state.id, {
             method: "GET",
          })
             .then((res) => {

@@ -154,7 +154,7 @@
                               <div class="mx-auto col-10">
                                  <h5 class="font-weight-normal">Systems</h5>
                                  <p>
-                                   Choose the System
+                                    Choose the System
                                  </p>
                               </div>
                            </div>
@@ -317,7 +317,7 @@ export default {
             this.filtring.topic = { $in: this.Topics }
          }
          this.filtring.courses = { $in: this.Courses }
-         await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/question/findone/', {
+         await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/question/findone', {
             method: 'POST',
             body: this.filtring
          }).then(res => {
@@ -370,7 +370,7 @@ export default {
             method: 'POST',
             body: val
          }).then(res => {
-          
+
             this.questionsArray = res
          })
             .catch((error) => {
