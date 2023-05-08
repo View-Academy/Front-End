@@ -34,13 +34,13 @@
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.topic }}</td>
-                           <td class="text-sm font-weight-normal p-4">{{ data.img }}</td>
+                           <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of  data.question"
+                              :key="data2">{{ data2.img }}</td>
                            <td>
                               <i class="fas fa-trash text-secondary button-actions " @click="deleteItem(data.id)"></i>
+                              <i class="fa fa-pencil text-secondary button-actions" ></i>
                            </td>
-                           <td>
-                              <i class="fa fa-pencil text-secondary button-actions " @click="deleteItem(data.id)"></i>
-                           </td>
+                        
                            <div class="modal fade" :id="data.name" tabindex="-1" aria-labelledby="exampleModalLabel"
                               aria-hidden="true">
                               <div class="modal-dialog">
