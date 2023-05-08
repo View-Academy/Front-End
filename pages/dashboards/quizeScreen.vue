@@ -304,7 +304,7 @@
                   <nav id="navbarBlur" class="bg-Navbar justify-content-between  navbar navbar-main">
                      <div class="text-center" @click="mark(item, id)">
                         <span>Item {{ index + 1 }} of {{ item.length1 }} </span>
-                        <span class="d-block">Question Id:156140</span>
+                        <span class="d-block"><strong>Question Id</strong>:{{item.id  }}</span>
 
                      </div>
                      <ul class=" d-flex hedar4">
@@ -384,9 +384,14 @@
                      </ul>
                   </nav>
                   <div class="row rowSecations">
+                    
 
                      <div class="col-md-11 mx-5 my-4 ">
                         <strong id="qustion" class="">{{ item.questiontext }}</strong>
+                     </div>
+                     <div class=" d-inline mx-5  my-4 col-md-4" v-if="!item.img === ''">
+                        <img src="@/assets/img/viw2.jpeg" width="130" alt="profile_image"
+                           class="shadow-sm  border-radius-lg" />
                      </div>
 
                      <div class=" col-md-8 ">
@@ -445,7 +450,7 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q6 == ''">
+                              <li v-if="!item.q6 === ''">
                                  <i class=""></i>
                                  <div class="form-check ">
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q6"
@@ -455,12 +460,12 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q7 == ''">
+                              <li v-if="!item.q7 === ''">
                                  <i class=""></i>
                                  <div class="form-check ">
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q7"
                                        :value="item.q7">
-                                    <label class="form-check-label" :id="item.q6" :for="item.questiontext">
+                                    <label class="form-check-label" :id="item.q7" :for="item.questiontext">
                                        <strong>{{ item.q7 }}</strong>
                                     </label>
                                  </div>
@@ -501,7 +506,7 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class=" col-md-12 mb-5 p-5 font-weight-bold" v-if="item.togeleexplanation">
+                     <div class=" col-md-12 mb-11 p-5 font-weight-bold" v-if="item.togeleexplanation">
                         {{ item.explanation }}
                      </div>
                      <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanationCorect">
@@ -520,7 +525,7 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12 mb-5 p-5 font-weight-bold" v-if="item.togeleexplanationCorect">
+                     <div class="col-md-12 mb-10 p-5 font-weight-bold" v-if="item.togeleexplanationCorect">
                         {{ item.explanation }}
                      </div>
                      <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.omitted">
@@ -539,7 +544,7 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12 mb-5 p-5 font-weight-bold" v-if="item.omitted">
+                     <div class="col-md-12 mb-10  p-5 font-weight-bold" v-if="item.omitted">
                         {{ item.explanation }}
                      </div>
                   </div>
@@ -783,7 +788,7 @@ export default {
                   this.correctAnswer++;
                   res.togeleexplanationCorect = true
 
-               } else {
+               } else if (!(ele1[i].value === res.answer1)) {
                   ele1[i].setAttribute("disabled", "")
                   var element3 = document.getElementById(`${res.name}-tab`);
                   var name = ele1[i].previousElementSibling;
@@ -799,8 +804,13 @@ export default {
                   this.incorrectAnswer++;
                   this.omitedte -= 1
                   res.togeleexplanation = true;
+
+               } else {
+
+
                }
             } else {
+
                if (ele1[i].value === res.answer1) {
                   res.omitted = true;
                   this.omitedte += 1
@@ -816,7 +826,6 @@ export default {
 
 
                }
-
             }
 
          }
@@ -845,7 +854,7 @@ export default {
             togeleexplanation: false,
             togeleexplanationCorect: false,
             omitted: false,
-            id: "Q" + index,
+            id: this.array[index].id,
             name: "Q" + (index + 1),
             questiontext: this.array[index].question[0].questiontext,
             q1: this.array[index].question[0].Answer1,
@@ -1007,7 +1016,7 @@ html {
 }
 
 .rowSecations {
-
+   max-height: 1700px;
    overflow: hidden;
 }
 

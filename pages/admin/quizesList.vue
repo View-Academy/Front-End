@@ -22,6 +22,7 @@
                            <th>Subject</th>
                            <th>systems</th>
                            <th>topic</th>
+                           <th>URL</th>
                            <th>Action</th>
                         </tr>
                      </thead>
@@ -33,6 +34,7 @@
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.topic }}</td>
+                           <td class="text-sm font-weight-normal p-4">{{ data.img }}</td>
                            <td>
                               <i class="fas fa-trash text-secondary button-actions " @click="deleteItem(data.id)"></i>
                            </td>
@@ -163,12 +165,14 @@ export default {
                      var insatrQuastion = JSON.parse(json_object);
                      insatrQuastion.forEach(element => {
                         let insatrQuastion = {
+                           id:Math.floor((Math.random() * 1000) + 1),
                            courses: element.courses,
                            subject: element.subject,
                            systems: element.systems,
                            topic: element.topic,
                            totalPoint: element.totalPoint,
                            question: [{
+                          
                               Answer1: element.Answer1,
                               Answer2: element.Answer2,
                               Answer3: element.Answer3,
@@ -180,6 +184,7 @@ export default {
                               Answer: element.Answer,
                               questiontext: element.questiontext,
                               explanation: element.explanation,
+                              img: element.img,
                            }]
                         }
                         qustin.push(insatrQuastion)

@@ -96,7 +96,7 @@ export default {
             title: "Are you sure?",
             text: "You won'to save this course!",
             showCancelButton: true,
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: "Yes, Save it!",
             cancelButtonText: "No, cancel!",
             reverseButtons: true,
             customClass: {
