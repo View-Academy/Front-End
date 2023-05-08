@@ -18,6 +18,7 @@
                      <thead class="thead-light">
                         <tr>
                            <th>Name</th>
+                           <th>id</th>
                            <th>Course</th>
                            <th>Subject</th>
                            <th>systems</th>
@@ -30,7 +31,9 @@
                         <tr class="" v-for="data of getQuizes" :key="data">
                            <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of  data.question"
                               :key="data2">{{ data2.questiontext }}</td>
+                              <td class="text-sm font-weight-normal p-4 ">{{ data.id }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.courses }}</td>
+                          
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.topic }}</td>
