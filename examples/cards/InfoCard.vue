@@ -30,7 +30,7 @@ defineProps({
     color: String,
     default: () => ({
       color: "success",
-      text: "Moderate",
+      text: "",
     }),
   },
 });

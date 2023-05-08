@@ -99,11 +99,57 @@
                               </td>
                               <td class="align-middle text-center">
                                  <div class="px-3 py-1 d-flex">
-                                    <i class="fas fa-user-edit text-secondary p-1 button-actions"></i>
+                                    <i class="fas fa-user-edit text-secondary p-1 button-actions" data-bs-toggle="modal"
+                                       data-bs-target="#exampleModal"></i>
                                     <i class="fas fa-trash text-secondary p-1     button-actions"
                                        @click="delete1(mountain.id)"></i>
                                  </div>
                               </td>
+                              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                 <div class="modal-dialog">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">{{ mountain.name }}</h5>
+                                          <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                             aria-label="Close"></button>
+                                       </div>
+                                       <div class="modal-body">
+                                          <form>
+                                             <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Name:</label>
+                                                <input type="text" class="form-control" id="recipient-name"
+                                                   v-model="mountain.name">
+                                             </div>
+                                             <div class="mb-3">
+                                                <label for="recipient-name" class="col-form-label">Price:</label>
+                                                <input type="text" class="form-control" id="recipient-name"
+                                                   v-model="mountain.phone">
+                                             </div>
+                                             <div class="mb-3">
+                                                <div class="form-check form-switch">
+                                                   <input class="form-check-input" type="checkbox"
+                                                      id="flexSwitchCheckDefault">
+                                                   <label class="form-check-label" for="flexSwitchCheckDefault">Admin</label>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                   <input class="form-check-input" type="checkbox"
+                                                      id="flexSwitchCheckChecked">
+                                                   <label class="form-check-label" for="flexSwitchCheckChecked">Super Admain</label>
+                                                </div>
+
+                                             </div>
+                                          </form>
+                                       </div>
+                                       <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary"
+                                             data-bs-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                             @click="editItem(data)">Update</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
                            </tr>
                         </tbody>
                      </table>
@@ -160,16 +206,16 @@ export default {
             console.log(e);
          });
       }
-      },
+   },
 
-      mounted() {
-         this.$store.dispatch('SetUser')
-
-
+   mounted() {
+      this.$store.dispatch('SetUser')
 
 
-      },
-   };
+
+
+   },
+};
 </script>
 <style scoped>
 .courses {
@@ -182,6 +228,5 @@ export default {
 .button-actions {
    cursor: pointer;
 
-}
-</style>
+}</style>
  

@@ -5,10 +5,6 @@
          backgroundImage: 'url(' + headerImg + ')',
          backgroundSize: 'cover',
       }">
-
-                  
-              
-      
          <span class="mask bg-color opacity-8" @click="back()">
             <i class="fa fa-long-arrow-left back-arow"></i> </span>
          <div class="container pb-10 pb-lg-9 pt-7 postion-relative z-index-2">
@@ -138,6 +134,7 @@ export default {
       ...mapGetters(["getUserInfo", "getCourses", "getId", "getEmail", "getId", "getPhone", "getUserName"]),
    },
    mounted() {
+      console.log(process.env)
       this.$store.dispatch("SetCourses");
       var x = sessionStorage.getItem("info");
       this.$store.dispatch("yourAction", JSON.parse(x));

@@ -1,5 +1,10 @@
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
+   runtimeConfig: {
+      API_BASE_URL: process.env.S3_BUCKET
+  
+    },
+   
 
    ssr: false,
 

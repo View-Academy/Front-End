@@ -14,7 +14,7 @@
                   <h5 class="mb-0">Quize List</h5>
                </div>
                <div class="table-responsive">
-                  <table  class="table table-flush">
+                  <table class="table table-flush">
                      <thead class="thead-light">
                         <tr>
                            <th>Name</th>
@@ -27,18 +27,17 @@
                      </thead>
                      <tbody>
                         <tr class="" v-for="data of getQuizes" :key="data">
-                           <td class="text-sm font-weight-normal p-4 qustion-1" v-for="data2 of  data.question"
+                           <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of  data.question"
                               :key="data2">{{ data2.questiontext }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.courses }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.topic }}</td>
                            <td>
-
-                              <i class="fas fa-trash text-secondary"
-                                 @click="deleteItem(data.id)"></i>
-                           
-
+                              <i class="fas fa-trash text-secondary button-actions " @click="deleteItem(data.id)"></i>
+                           </td>
+                           <td>
+                              <i class="fa fa-pencil text-secondary button-actions " @click="deleteItem(data.id)"></i>
                            </td>
                            <div class="modal fade" :id="data.name" tabindex="-1" aria-labelledby="exampleModalLabel"
                               aria-hidden="true">
@@ -106,14 +105,8 @@ export default {
    computed: {
       ...mapGetters(["getQuizes"]),
    },
- 
-
-
-
    mounted() {
       this.$store.dispatch("SetQuize")
-
-
       const qustin = [];
       const element = document.getElementById("choices-multiple-remove-button");
       if (element) {
@@ -197,8 +190,6 @@ export default {
                         method: 'POST',
                         body: qustin
                      }).then(res => {
-
-
                         console.log(res);
                      })
                         .catch((error) => {
@@ -218,12 +209,12 @@ export default {
    },
 
    methods: {
- 
+
 
       editItem(data) {
          $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/question/" + data, {
             method: "DELETE",
-        
+
          }).then(res => {
             this.$swal({
                icon: "success",
@@ -250,7 +241,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/question/" + id, {
+               $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/question/" + id, {
                   method: "DELETE",
                }).then(res => {
                   this.$store.dispatch("SetQuize");
@@ -301,10 +292,8 @@ export default {
 
 .qustion-1 {
    max-width: 200px;
-
    white-space: pre-line;
    line-height: 1;
-
    overflow: hidden;
 }
 </style>

@@ -289,9 +289,7 @@ export default {
 
       manegeState() {
          this.getUserInfo.forEach(element => {
-
             console.log(element);
-
          });
 
 

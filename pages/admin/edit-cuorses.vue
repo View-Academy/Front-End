@@ -22,13 +22,12 @@
                            <td class="text-sm font-weight-normal p-4 ">{{ data.name }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.price }}</td>
                            <td>
-                              <i class="fas fa-user-edit text-secondary pt-4 button-actions" data-bs-toggle="modal"
-                                 :data-bs-target="`#` + data.name" :data-bs-whatever="data.id"></i>
+                              <i class="fas fa-user-edit text-secondary pt-4 button-actions" 
+                              data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                               <i class="fas fa-trash text-secondary pt-4     button-actions"
                                  @click="deleteItem(data.id)"></i>
                            </td>
-                           <div class="modal fade" :id="data.name" tabindex="-1" aria-labelledby="exampleModalLabel"
-                              aria-hidden="true">
+                           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                  <div class="modal-content">
                                     <div class="modal-header">
@@ -48,14 +47,13 @@
                                              <input type="text" class="form-control" id="recipient-name"
                                                 v-model="data.price">
                                           </div>
-
                                        </form>
                                     </div>
                                     <div class="modal-footer">
                                        <button type="button" class="btn btn-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                       <button type="button" class="btn btn-primary" @click="editItem(data)"
-                                          data-bs-dismiss="modal">Update</button>
+                                       <button type="button" class="btn btn-primary" 
+                                          data-bs-dismiss="modal" @click="editItem(data)">Update</button>
                                     </div>
                                  </div>
                               </div>

@@ -23,6 +23,7 @@ import { useNavStore } from "~~/stores/NavStore";
 import setTooltip from "~~/assets/js/tooltip";
 import { useStore } from 'vuex'
 const store = useStore();
+const config = useRuntimeConfig()
 
 const navStore = useNavStore();
 const isCollapsed = computed(() => {
@@ -30,6 +31,7 @@ const isCollapsed = computed(() => {
 });
 
 onMounted(() => {
+   console.log(config.API_BASE_URL)
 
    setTooltip(navStore.bootstrap);
    if (process.client) {
