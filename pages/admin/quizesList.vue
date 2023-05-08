@@ -18,7 +18,7 @@
                      <thead class="thead-light">
                         <tr>
                            <th>Name</th>
-                           <th>id</th>
+                           <th>Id</th>
                            <th>Course</th>
                            <th>Subject</th>
                            <th>systems</th>
@@ -33,7 +33,6 @@
                               :key="data2">{{ data2.questiontext }}</td>
                               <td class="text-sm font-weight-normal p-4 ">{{ data.id }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.courses }}</td>
-                          
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.topic }}</td>
