@@ -36,7 +36,7 @@
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.topic }}</td>
-                           <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of  data.question"
+                           <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of data.question"
                               :key="data2">{{ data2.img }}</td>
                            <td>
                               <i class="fas fa-trash text-secondary button-actions " @click="deleteItem(data.id)"></i>
