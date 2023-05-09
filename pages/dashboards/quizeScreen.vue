@@ -79,7 +79,7 @@
 
       <div class="modal fade" id="staticBackdrop1" tabindex="-1" data-bs-backdrop="static"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog modal-xl d-flex justify-content-center">
+         <div class="modal-dialog modal-xl text-bg-info d-flex justify-content-center">
             <div class="modal-content">
                <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">SI Reference Intervals</h5>
@@ -304,7 +304,7 @@
                   <nav id="navbarBlur" class="bg-Navbar justify-content-between  navbar navbar-main">
                      <div class="text-center" @click="mark(item, id)">
                         <span>Item {{ index + 1 }} of {{ item.length1 }} </span>
-                        <span class="d-block"><strong>Question Id</strong>:{{item.id  }}</span>
+                        <span class="d-block"><strong>Question Id</strong>:{{ item.id }}</span>
 
                      </div>
                      <ul class=" d-flex hedar4">
@@ -355,8 +355,8 @@
                         </li>
                         <li class="flex-row marked mx-6">
                            <div data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-                              <a class=" text-body d-flex ml-2  ">
-                                 <i class="fa fa-thermometer-quarter margin9  "></i>
+                              <a class=" text-body d-flex ml-2">
+                                 <i class="fa fa-thermometer-quarter margin9"></i>
                               </a>
                               <span class="text-sm">Lab Value</span>
                            </div>
@@ -374,7 +374,7 @@
                         </li>
                         <li class="flex-row marked mx-6">
                            <div @click="zoomI()">
-                              <a class=" text-body d-flex ml-2  ">
+                              <a class=" text-body d-flex ml-2">
                                  <i class="fa fa-search-plus  margin9  "></i>
                               </a>
                               <span class="text-sm">Zoom in</span>
@@ -384,22 +384,17 @@
                      </ul>
                   </nav>
                   <div class="row rowSecations">
-                    
-
-                     <div class="col-md-11 mx-5 my-4 ">
+                     <div class="col-md-8 mx-5 my-4 ">
                         <strong id="qustion" class="">{{ item.questiontext }}</strong>
                      </div>
-                     <div class=" d-inline mx-5  my-4 col-md-4" v-if="!item.img === ''">
-                        <img src="@/assets/img/viw2.jpeg" width="130" alt="profile_image"
-                           class="shadow-sm  border-radius-lg" />
-                     </div>
 
-                     <div class=" col-md-8 ">
+                     <div class=" col-md-4 ">  
+                     
                         <div id="accordionRental" class="accordion">
 
                            <ol type="A" id="a" class="qustion3 m-5 ">
                               <li>
-                                 <div class="form-check  ">
+                                 <div class="form-check">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q1"
                                        :value="item.q1">
@@ -491,6 +486,10 @@
                            </button>
                         </div>
                      </div>
+                     <div class=" d-inline mx-5  my-4 col-md-4 image12  " v-if="!item.img == ''">
+                        <img :src="item.img" width="800" alt="profile_image"
+                           class="shadow-sm  border-radius-lg" />
+                     </div>
                      <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanation">
                         <div class="card borderIncorect">
                            <div class="card-header contintIncorct">
@@ -525,7 +524,7 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12 mb-10 p-5 font-weight-bold" v-if="item.togeleexplanationCorect">
+                     <div class="col-md-12  p-5 font-weight-bold incorcerctSecations" v-if="item.togeleexplanationCorect">
                         {{ item.explanation }}
                      </div>
                      <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.omitted">
@@ -854,7 +853,7 @@ export default {
             togeleexplanation: false,
             togeleexplanationCorect: false,
             omitted: false,
-            id: this.array[index].id,
+            id: this.array[index].id2,
             name: "Q" + (index + 1),
             questiontext: this.array[index].question[0].questiontext,
             q1: this.array[index].question[0].Answer1,
@@ -865,6 +864,7 @@ export default {
             q6: this.array[index].question[0].Answer6,
             q7: this.array[index].question[0].Answer7,
             q8: this.array[index].question[0].Answer8,
+            img: this.array[index].question[0].img,
             answer1: this.array[index].question[0].Answer,
             explanation: this.array[index].question[0].explanation,
          })
@@ -898,6 +898,13 @@ html {
    position: absolute;
    left: 56px;
 }
+.image12{
+   transition: all .2s ease-in-out;
+}
+.image12:hover{
+   transform: scale(1.1);
+}
+
 
 .corectAnswer2 {
    color: green !important;
@@ -919,6 +926,9 @@ html {
    top: 6px;
    position: absolute;
    left: 56px;
+}
+.mb-11 {
+    margin-bottom: 27rem !important;
 }
 
 .notcorectAnswer2 {

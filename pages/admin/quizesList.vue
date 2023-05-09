@@ -28,10 +28,10 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr class="" v-for="data of getQuizes" :key="data">
+                        <tr class="" v-for="(data, index) in getQuizes" :key="index">
                            <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of  data.question"
                               :key="data2">{{ data2.questiontext }}</td>
-                              <td class="text-sm font-weight-normal p-4 ">{{ data.id }}</td>
+                           <td class="text-sm font-weight-normal p-4 ">{{ data.id2 }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.courses }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.subject }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.systems }}</td>
@@ -40,46 +40,116 @@
                               :key="data2">{{ data2.img }}</td>
                            <td>
                               <i class="fas fa-trash text-secondary button-actions " @click="deleteItem(data.id)"></i>
-                              <i class="fa fa-pencil text-secondary button-actions" ></i>
+                              <i class="fa fa-pencil text-secondary button-actions" @click="changeData(data, index)"
+                                 data-bs-toggle="modal" data-bs-target="#khaled"></i>
+
+
                            </td>
-                        
-                           <div class="modal fade" :id="data.name" tabindex="-1" aria-labelledby="exampleModalLabel"
+                           <div class="modal fade" id="khaled" tabindex="-1" aria-labelledby="exampleModalLabel"
                               aria-hidden="true">
                               <div class="modal-dialog">
                                  <div class="modal-content">
                                     <div class="modal-header">
-                                       <h5 class="modal-title" id="exampleModalLabel">Update ({{ data.name }})</h5>
+                                       <h5 class="modal-title" id="exampleModalLabel">{{ id2 }}</h5>
                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
                                           aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
                                        <form>
                                           <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Name:</label>
-                                             <input type="text" class="form-control" id="recipient-name"
-                                                v-model="data.name">
+                                             <label for="recipient-name" class="col-form-label">Courses:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="courses">
                                           </div>
                                           <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Price:</label>
-                                             <input type="text" class="form-control" id="recipient-name"
-                                                v-model="data.price">
+                                             <label for="recipient-name" class="col-form-label">Subject:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="subject">
                                           </div>
                                           <div class="mb-3">
-                                             <label for="message-text" class="col-form-label">Discrption:</label>
-                                             <input class="form-control" id="message-text" v-model="data.discrption" />
+                                             <label for="recipient-name" class="col-form-label">Systems:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="systems">
                                           </div>
+
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label">Topic:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="topic">
+                                          </div>
+
+
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label">Corect Answer:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 1:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer1">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 2:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer2">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 3:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer3">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 4:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer4">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 5:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer5">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 6:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer6">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 7:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer7">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Answer 8:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="Answer8">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Question Text:</label>
+                                             <input type="text" class="form-control" id="recipient-name"
+                                                :value="questiontext">
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Question Text:</label>
+
+                                             <textarea class="form-control" :value="questiontext"
+                                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label"> Explanation Text:</label>
+
+                                             <textarea class="form-control" :value="explanation"
+                                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                          </div>
+                                          <div class="mb-3">
+                                             <label for="recipient-name" class="col-form-label">image:</label>
+                                             <input type="text" class="form-control" id="recipient-name" :value="img">
+
+                                          </div>
+
+
                                        </form>
                                     </div>
                                     <div class="modal-footer">
                                        <button type="button" class="btn btn-secondary"
                                           data-bs-dismiss="modal">Close</button>
-                                       <button type="button" class="btn btn-primary" @click="editItem(data)"
-                                          data-bs-dismiss="modal">Update</button>
+                                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                          @click="editItem(data)">Update</button>
                                     </div>
                                  </div>
                               </div>
                            </div>
+
                         </tr>
+
+
                      </tbody>
                   </table>
                </div>
@@ -103,6 +173,23 @@ export default {
    data() {
       return {
          allcourses: Array,
+         id2: Number,
+         courses: '',
+         subject: '',
+         systems: '',
+         topic: '',
+         img: '',
+         Answer: '',
+         Answer1: '',
+         Answer2: '',
+         Answer3: '',
+         Answer4: '',
+         Answer5: '',
+         Answer6: '',
+         Answer7: '',
+         Answer8: '',
+         questiontext: '',
+         explanation: '',
       }
    },
 
@@ -167,14 +254,13 @@ export default {
                      var insatrQuastion = JSON.parse(json_object);
                      insatrQuastion.forEach(element => {
                         let insatrQuastion = {
-                           id:Math.floor((Math.random() * 1000) + 1),
+                           id2: Math.floor((Math.random() * 100000) + 1),
                            courses: element.courses,
                            subject: element.subject,
                            systems: element.systems,
                            topic: element.topic,
                            totalPoint: element.totalPoint,
                            question: [{
-                          
                               Answer1: element.Answer1,
                               Answer2: element.Answer2,
                               Answer3: element.Answer3,
@@ -216,6 +302,26 @@ export default {
    },
 
    methods: {
+      changeData(data, id) {
+         this.id2 = data.id2
+         this.courses = data.courses,
+            this.subject = data.subject,
+            this.systems = data.systems,
+            this.courses = data.courses,
+            this.topic = data.topic,
+            this.img = data.question[0].img
+         this.Answer = data.question[0].Answer
+         this.Answer1 = data.question[0].Answer1
+         this.Answer2 = data.question[0].Answer2
+         this.Answer3 = data.question[0].Answer3
+         this.Answer4 = data.question[0].Answer4
+         this.Answer5 = data.question[0].Answer5
+         this.Answer6 = data.question[0].Answer6
+         this.Answer7 = data.question[0].Answer7
+         this.Answer8 = data.question[0].Answer8
+         this.questiontext = data.question[0].questiontext
+         this.explanation = data.question[0].explanation
+      },
 
 
       editItem(data) {
