@@ -65,7 +65,7 @@ export default {
       }
    },
    methods: {
-      back(){
+      back() {
          navigateTo('/dashboards/default')
       },
       async cl(corse) {
@@ -134,7 +134,7 @@ export default {
       ...mapGetters(["getUserInfo", "getCourses", "getId", "getEmail", "getId", "getPhone", "getUserName"]),
    },
    mounted() {
-      console.log(process.env)
+     
       this.$store.dispatch("SetCourses");
       var x = sessionStorage.getItem("info");
       this.$store.dispatch("yourAction", JSON.parse(x));
@@ -157,7 +157,8 @@ definePageMeta({
 .bg-color {
    background: linear-gradient(rgba(57, 2, 2, 0.4), rgb(8, 7, 73)) !important;
 }
-.back-arow{
+
+.back-arow {
    font-size: 60px;
    background-color: linear-gradient(rgba(57, 2, 2, 0.4), rgb(83, 72, 72)) !important;
    margin-left: 10px;
@@ -165,6 +166,5 @@ definePageMeta({
    animation-duration: 20s;
    color: black;
 }
-
 </style>
   
