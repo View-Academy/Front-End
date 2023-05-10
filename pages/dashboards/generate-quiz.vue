@@ -315,7 +315,7 @@ export default {
             this.filtring.topic = { $in: this.Topics }
          }
          this.filtring.courses = { $in: this.Courses }
-         await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/question/findone', {
+         await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone', {
             method: 'POST',
             body: this.filtring
          }).then(res => {
@@ -364,7 +364,7 @@ export default {
             courses: { $in: [`${data}`] },
          };
 
-         await $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/question/findone/', {
+         await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
             method: 'POST',
             body: val
          }).then(res => {

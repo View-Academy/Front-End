@@ -154,7 +154,7 @@ export default {
       };
    },
    async asyncData({ $fetch }) {
-      $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order", {
+      $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order", {
          method: "GET",
       })
          .then((res) => {
@@ -167,7 +167,7 @@ export default {
    },
    methods: {
       accepet(data) {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order/add/" + data.userID + "/" + data.courseName, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order/add/" + data.userID + "/" + data.courseName, {
             method: "PUT",
 
          }).then(res => {
@@ -179,7 +179,7 @@ export default {
          }).catch(e => {
             console.log(e);
          });
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order/" + data.id, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order/" + data.id, {
             method: "DELETE",
 
          }).then(res => {
@@ -191,7 +191,7 @@ export default {
 
       },
       removeuser(data){
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/order/" + data.id, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order/" + data.id, {
             method: "DELETE",
 
          }).then(res => {

@@ -687,7 +687,7 @@ export default {
          }
          clearInterval(this.startIntariver1)
          data.push(insatrQuastion)
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/endquize/" + this.getId, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/endquize/" + this.getId, {
             method: 'POST',
             body: data
          }).then(res => {
@@ -714,7 +714,7 @@ export default {
             correctAnswer: res.answer1,
             Date: today.toLocaleString('en-GB', { timeZone: 'UTC' })
          }
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/note/" + this.id.id, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + this.id.id, {
             method: 'POST',
             body: data
          }).then(res => {

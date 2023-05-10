@@ -94,7 +94,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/order/', {
+               $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/order/', {
                   method: 'POST',
                   body: data
 

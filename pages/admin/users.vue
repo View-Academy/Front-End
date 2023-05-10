@@ -193,7 +193,7 @@ export default {
 
    methods: {
       delete1(data) {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/user/" + data, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/" + data, {
             method: "DELETE",
 
          }).then(res => {

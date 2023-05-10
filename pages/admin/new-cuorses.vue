@@ -112,7 +112,7 @@ export default {
                   price: this.price,
                 
                }
-               $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/courses', {
+               $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/courses', {
                   method: 'POST',
                   body: data
                }).then(res => {
