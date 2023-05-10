@@ -279,7 +279,7 @@ export default {
 
                      }
                      );
-                     $fetch('https://goldfish-app-o7qzt.ondigitalocean.app/api/question/insertMany', {
+                     $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/insertMany', {
                         method: 'POST',
                         body: qustin
                      }).then(res => {
@@ -325,7 +325,7 @@ export default {
 
 
       editItem(data) {
-         $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/question/" + data, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + data, {
             method: "DELETE",
 
          }).then(res => {
@@ -354,7 +354,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://goldfish-app-o7qzt.ondigitalocean.app/api/question/" + id, {
+               $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + id, {
                   method: "DELETE",
                }).then(res => {
                   this.$store.dispatch("SetQuize");
