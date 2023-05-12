@@ -28,8 +28,8 @@
                         </tr>
                      </thead>
                      <tbody>
-                        <tr class="" v-for="(data, index) in getQuizes" :key="index">
-                           <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of  data.question"
+                        <tr class="" v-for="(data, index) of getQuizes" :key="index">
+                           <td class="text-sm font-weight-normal p-3 qustion-1" v-for="data2 of data.question"
                               :key="data2">{{ data2.questiontext }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.id2 }}</td>
                            <td class="text-sm font-weight-normal p-4 ">{{ data.courses }}</td>
@@ -40,118 +40,104 @@
                               :key="data2">{{ data2.img }}</td>
                            <td>
                               <i class="fas fa-trash text-secondary button-actions " @click="deleteItem(data.id)"></i>
-                              <i class="fa fa-pencil text-secondary button-actions" @click="changeData(data, index)"
-                                 data-bs-toggle="modal" data-bs-target="#khaled"></i>
-
-
+                              <i class="fa fa-pencil text-secondary button-actions" @click="changeData(data)"
+                                 data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                            </td>
-                           <div class="modal fade" id="khaled" tabindex="-1" aria-labelledby="exampleModalLabel"
-                              aria-hidden="true">
-                              <div class="modal-dialog">
-                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                       <h5 class="modal-title" id="exampleModalLabel">{{ id2 }}</h5>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                          aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                       <form>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Courses:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="courses">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Subject:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="subject">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Systems:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="systems">
-                                          </div>
 
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Topic:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="topic">
-                                          </div>
-
-
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Corect Answer:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 1:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer1">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 2:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer2">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 3:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer3">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 4:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer4">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 5:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer5">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 6:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer6">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 7:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer7">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Answer 8:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="Answer8">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Question Text:</label>
-                                             <input type="text" class="form-control" id="recipient-name"
-                                                :value="questiontext">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Question Text:</label>
-
-                                             <textarea class="form-control" :value="questiontext"
-                                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label"> Explanation Text:</label>
-
-                                             <textarea class="form-control" :value="explanation"
-                                                placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">image:</label>
-                                             <input type="text" class="form-control" id="recipient-name" :value="img">
-
-                                          </div>
-
-
-                                       </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary"
-                                          data-bs-dismiss="modal">Close</button>
-                                       <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                                          @click="editItem(data)">Update</button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
 
                         </tr>
 
 
                      </tbody>
                   </table>
+                  <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">{{id2}}</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                              <form>
+                                 <div class="mb-3">
+                                    <label :for="courses" class="col-form-label">Courses:</label>
+                                    <input type="text" class="form-control" :value="courses"  id="courses">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="subject" class="col-form-label">subject:</label>
+                                    <input type="text" class="form-control" :value="subject" id="subject">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="systems" class="col-form-label">systems:</label>
+                                    <input type="text" class="form-control" :value="systems" id="systems">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="topic" class="col-form-label">topic:</label>
+                                    <input type="text" class="form-control" :value="topic" id="topic">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer" class="col-form-label">Answer:</label>
+                                    <input type="text" class="form-control" :value="Answer" id="Answer">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer1" class="col-form-label">Answer1:</label>
+                                    <input type="text" class="form-control" :value="Answer1" id="Answer1">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer2" class="col-form-label">Answer 2:</label>
+                                    <input type="text" class="form-control" :value="Answer2" id="Answer2">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer3" class="col-form-label">Answer3:</label>
+                                    <input type="text" class="form-control" :value="Answer3" id="Answer3">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer4" class="col-form-label">Answer4:</label>
+                                    <input type="text" class="form-control" :value="Answer4" id="Answer4">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer5" class="col-form-label">Answer5:</label>
+                                    <input type="text" class="form-control" :value="Answer5" id="Answer5">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer6" class="col-form-label">Answer6:</label>
+                                    <input type="text" class="form-control" :value="Answer6" id="Answer6">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer7" class="col-form-label">Answer7:</label>
+                                    <input type="text" class="form-control" :value="Answer7" id="Answer7">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="Answer8" class="col-form-label">Answer8:</label>
+                                    <input type="text" class="form-control" :value="Answer8" id="Answer8">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="questiontext" class="col-form-label">questiontext:</label>
+                                    <input type="text" class="form-control" :value="questiontext" id="questiontext">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="explanation" class="col-form-label">explanation:</label>
+                                    <input type="text" class="form-control" :value="explanation" id="explanation">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label :for="img" class="col-form-label">image:</label>
+                                    <input type="text" class="form-control" :value="img" id="img">
+                                 </div>
+
+
+
+
+                              </form>
+                              <div class="modal-footer">
+                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                 <button type="button" class="btn btn-primary" @click="editItem(iduser)"
+                                    data-bs-dismiss="modal">Update</button>
+                              </div>
+                           </div>
+
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -190,6 +176,7 @@ export default {
          Answer8: '',
          questiontext: '',
          explanation: '',
+         iduser: ''
       }
    },
 
@@ -303,11 +290,12 @@ export default {
 
    methods: {
       changeData(data, id) {
-         this.id2 = data.id2
-         this.courses = data.courses,
-            this.subject = data.subject,
-            this.systems = data.systems,
+         this.courses = "",
             this.courses = data.courses,
+            this.iduser = data.id
+         this.id2 = data.id2
+         this.subject = data.subject,
+            this.systems = data.systems,
             this.topic = data.topic,
             this.img = data.question[0].img
          this.Answer = data.question[0].Answer
@@ -322,11 +310,47 @@ export default {
          this.questiontext = data.question[0].questiontext
          this.explanation = data.question[0].explanation
       },
+      
+      editItem(id) {
+         var courses = document.getElementById('courses').value
+         var subject = document.getElementById('subject').value
+         var systems = document.getElementById('systems').value
+         var topic = document.getElementById('topic').value
+         var Answer = document.getElementById('Answer').value
+         var Answer1 = document.getElementById('Answer1').value
+         var Answer2 = document.getElementById('Answer2').value
+         var Answer3 = document.getElementById('Answer3').value
+         var Answer4 = document.getElementById('Answer4').value
+         var Answer5 = document.getElementById('Answer5').value
+         var Answer6 = document.getElementById('Answer6').value
+         var Answer7 = document.getElementById('Answer7').value
+         var Answer8 = document.getElementById('Answer8').value
+         var questiontext = document.getElementById('questiontext').value
+         var explanation = document.getElementById('explanation').value
+         var img = document.getElementById('img').value
 
-
-      editItem(data) {
-         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + data, {
-            method: "DELETE",
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + id, {
+            method: "PUT",
+            body: {
+               courses: courses,
+               subject: subject,
+               systems: systems,
+               topic: topic,
+               question: [{
+                  Answer1: Answer1,
+                  Answer2: Answer2,
+                  Answer3: Answer3,
+                  Answer4: Answer4,
+                  Answer5: Answer5,
+                  Answer6: Answer6,
+                  Answer7: Answer7,
+                  Answer8: Answer8,
+                  questiontext: questiontext,
+                  explanation: explanation,
+                  Answer: Answer,
+                  img: img,
+               }]
+            }
 
          }).then(res => {
             this.$swal({
@@ -334,6 +358,7 @@ export default {
                title: "Delete is successfully!",
                text: "You clicked the button!",
             });
+            console.log(data.id);
          }).catch(e => {
             console.log(e);
          });

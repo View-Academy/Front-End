@@ -322,9 +322,7 @@
                                  <i class="fa fa-chevron-left margin9  "></i>
                               </a>
                               <span class="text-sm">Previous</span>
-
                            </div>
-
                         </li>
                         <li class=" marked mx-3">
                            <div class="">
@@ -332,7 +330,6 @@
                                  <i class="fa fa-chevron-right margin9  "></i>
                               </a>
                               <span class="text-sm">Next</span>
-
                            </div>
                         </li>
                         <li class=" marked mx-6">
@@ -342,7 +339,6 @@
                               </a>
                               <span class="text-sm">Full Screen</span>
                            </div>
-
                         </li>
                         <li class="flex-row marked mx-4">
                            <div>
@@ -351,7 +347,6 @@
                               </a>
                               <span class="text-sm mx-3 ">Note</span>
                            </div>
-
                         </li>
                         <li class="flex-row marked mx-6">
                            <div data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
@@ -360,7 +355,6 @@
                               </a>
                               <span class="text-sm">Lab Value</span>
                            </div>
-
                         </li>
                         <li class="flex-row marked mx-6">
                            <div @click="zoomOut()">
@@ -368,9 +362,7 @@
                                  <i class="fa fa-search-minus  margin9  "></i>
                               </a>
                               <span class="text-sm">Zoom out</span>
-
                            </div>
-
                         </li>
                         <li class="flex-row marked mx-6">
                            <div @click="zoomI()">
@@ -379,7 +371,6 @@
                               </a>
                               <span class="text-sm">Zoom in</span>
                            </div>
-
                         </li>
                      </ul>
                   </nav>
@@ -387,11 +378,9 @@
                      <div class="col-md-8 mx-5 my-4 ">
                         <strong id="qustion" class="">{{ item.questiontext }}</strong>
                      </div>
+                     <div class=" col-md-4 ">
 
-                     <div class=" col-md-4 ">  
-                     
                         <div id="accordionRental" class="accordion">
-
                            <ol type="A" id="a" class="qustion3 m-5 ">
                               <li>
                                  <div class="form-check">
@@ -414,7 +403,6 @@
                                  </div>
                               </li>
                               <li>
-
                                  <div class="form-check">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q3"
@@ -422,7 +410,6 @@
                                     <label class="form-check-label" :id="item.q3" :for="item.questiontext">
                                        <strong>{{ item.q3 }} </strong>
                                     </label>
-
                                  </div>
                               </li>
                               <li>
@@ -430,7 +417,7 @@
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q4"
                                        :value="item.q4">
-                                    <label class="form-check-label" :id="item.q4" :for="item.questiontext">
+                                    <label class="form-check-label" :id="item.q4" :for="item.q4">
                                        <strong> {{ item.q4 }}</strong>
                                     </label>
                                  </div>
@@ -440,24 +427,26 @@
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q5"
                                        :value="item.q5">
-                                    <label class="form-check-label" :id="item.q5" :for="item.questiontext">
+                                    <label class="form-check-label" :id="item.q5" :for="item.q5">
                                        <strong> {{ item.q5 }}</strong>
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q6 === ''">
-                                 <i class=""></i>
+                              <li v-if="!item.q6 ==''">
+                               
                                  <div class="form-check ">
+                                    <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q6"
                                        :value="item.q6">
-                                    <label class="form-check-label" :id="item.q6" :for="item.questiontext">
+                                    <label class="form-check-label" :id="item.q6" :for="item.q6">
                                        <strong>{{ item.q6 }}</strong>
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q7 === ''">
-                                 <i class=""></i>
+                              <li v-if="!item.q7 ==''">
+                               
                                  <div class="form-check ">
+                                    <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q7"
                                        :value="item.q7">
                                     <label class="form-check-label" :id="item.q7" :for="item.questiontext">
@@ -465,20 +454,16 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q8 == ''">
-
+                              <li v-if="!item.q8 ==''">
                                  <div class="form-check">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q8"
                                        :value="item.q8">
-
                                     <label class="form-check-label" :id="item.q8" :for="item.questiontext">
-                                       <strong>{{ item.q8 }}</strong><i class="fa fa-check" aria-hidden="true"></i>
+                                       <strong>{{ item.q8 }}</strong>
                                     </label>
                                  </div>
                               </li>
-
-
                            </ol>
                            <button class="mb-0  submit m-5 mb-5 " :id="item.questiontext" type="button"
                               @click="showSwal(item)" title="Send">
@@ -487,8 +472,7 @@
                         </div>
                      </div>
                      <div class=" d-inline mx-5  my-4 col-md-4 image12  " v-if="!item.img == ''">
-                        <img :src="item.img" width="800" alt="profile_image"
-                           class="shadow-sm  border-radius-lg" />
+                        <img :src="item.img" width="800" alt="profile_image" class="shadow-sm  border-radius-lg" />
                      </div>
                      <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanation">
                         <div class="card borderIncorect">
@@ -524,10 +508,10 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12  p-5 font-weight-bold incorcerctSecations" v-if="item.togeleexplanationCorect">
+                     <div class="col-md-12 mb-11  p-5 font-weight-bold incorcerctSecations" v-if="item.togeleexplanationCorect">
                         {{ item.explanation }}
                      </div>
-                     <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.omitted">
+                     <div class=" col-md-8 mb-5   text-bg-danger mx-5   " v-if="item.omitted">
                         <div class="card omitted2">
                            <div class="card-header contintIncorct">
                               <h4 class="card-title text-info">Omitted Answer </h4>
@@ -543,7 +527,7 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12 mb-10  p-5 font-weight-bold" v-if="item.omitted">
+                     <div class="col-md-12  mb-11  p-5 font-weight-bold" v-if="item.omitted">
                         {{ item.explanation }}
                      </div>
                   </div>
@@ -770,9 +754,6 @@ export default {
             // document.getElementById(res.questiontext).disabled = true;
             ele1[i].setAttribute("disabled", "")
             if (ele1[i].checked) {
-
-
-
                if (ele1[i].value === res.answer1) {
                   var ele12 = ele1[i].previousElementSibling;
                   var element2 = document.getElementById(`${res.name}-tab`);
@@ -803,13 +784,9 @@ export default {
                   this.incorrectAnswer++;
                   this.omitedte -= 1
                   res.togeleexplanation = true;
-
                } else {
-
-
                }
             } else {
-
                if (ele1[i].value === res.answer1) {
                   res.omitted = true;
                   this.omitedte += 1
@@ -822,11 +799,8 @@ export default {
                   ele12.classList.add("corectAnswer2");
                   ele12.classList.add("fa");
                   ele12.classList.add("fa-check");
-
-
                }
             }
-
          }
          // if (!ele1.checked) {
          // }
@@ -898,10 +872,12 @@ html {
    position: absolute;
    left: 56px;
 }
-.image12{
+
+.image12 {
    transition: all .2s ease-in-out;
 }
-.image12:hover{
+
+.image12:hover {
    transform: scale(1.1);
 }
 
@@ -927,8 +903,9 @@ html {
    position: absolute;
    left: 56px;
 }
+
 .mb-11 {
-    margin-bottom: 27rem !important;
+   margin-bottom: 27rem !important;
 }
 
 .notcorectAnswer2 {

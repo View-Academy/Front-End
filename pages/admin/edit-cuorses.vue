@@ -22,45 +22,43 @@
                            <td class="text-sm font-weight-normal p-4 ">{{ data.name }}</td>
                            <td class="text-sm font-weight-normal p-4">{{ data.price }}</td>
                            <td>
-                              <i class="fas fa-user-edit text-secondary pt-4 button-actions" 
-                              data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                              <i class="fas fa-user-edit text-secondary pt-4 button-actions" @click="changeData(data)"
+                                 data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                               <i class="fas fa-trash text-secondary pt-4     button-actions"
                                  @click="deleteItem(data.id)"></i>
                            </td>
-                           <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                              <div class="modal-dialog">
-                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                       <h5 class="modal-title" id="exampleModalLabel">Update ({{ data.name }})</h5>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                          aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                       <form>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Name:</label>
-                                             <input type="text" class="form-control" id="recipient-name"
-                                                v-model="data.name">
-                                          </div>
-                                          <div class="mb-3">
-                                             <label for="recipient-name" class="col-form-label">Price:</label>
-                                             <input type="text" class="form-control" id="recipient-name"
-                                                v-model="data.price">
-                                          </div>
-                                       </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary"
-                                          data-bs-dismiss="modal">Close</button>
-                                       <button type="button" class="btn btn-primary" 
-                                          data-bs-dismiss="modal" @click="editItem(data)">Update</button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+
                         </tr>
                      </tbody>
                   </table>
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                     <div class="modal-dialog">
+                        <div class="modal-content">
+                           <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Update ({{ name }})</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                           </div>
+                           <div class="modal-body">
+                              <form>
+                                 <div class="mb-3">
+                                    <label for="name" class="col-form-label">Name:</label>
+                                    <input type="text" class="form-control" id="name" :value="name">
+                                 </div>
+                                 <div class="mb-3">
+                                    <label for="price" class="col-form-label">Price:</label>
+                                    <input type="number" class="form-control" id="price" :value="price">
+                                 </div>
+                              </form>
+                           </div>
+                           <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                                 @click="editItem(id)">Update</button>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -79,6 +77,9 @@ export default {
    data() {
       return {
          allcourses: [],
+         name: String,
+         price: Number,
+         id: String
       }
    },
    asyncData() {
@@ -92,10 +93,21 @@ export default {
       ...mapGetters(["getCourses"]),
    },
    methods: {
-      editItem(body) {
-         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/courses/" + body.id, {
+      changeData(data) {
+         this.name = data.name
+         this.price = data.price
+         this.id = data.id
+
+      },
+      editItem(id) {
+         var name = document.getElementById('name').value
+         var price = document.getElementById('price').value
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/courses/" + id, {
             method: "PUT",
-            body: body
+            body: {
+               name:name,
+               price:price
+            }
          }).then(res => {
             this.$swal({
                icon: "success",
