@@ -152,15 +152,17 @@
                         <div class="p-3 bg-white card  border-radius-xl" data-animation="FadeIn" v-if="activeStep === 2">
                            <div class="text-center row">
                               <div class="mx-auto col-10">
-                                 <h5 class="font-weight-normal">Systems</h5>
+                                   <h5 class="font-weight-normal">System </h5>
                                  <p>
-                                    Choose the System
+                                    <span class="text-info text-bold">System</span> : All will be selected automatically if
+                                    nothing is
+                                    selected
                                  </p>
                               </div>
                            </div>
                            <div class="multisteps-form__content">
                               <div class="row text-start">
-                                 <div class="mt-3 col-lg-3 col-md-5 ms-auto text-start my-auto form-check"
+                                 <div class="mt-3 col-lg-3 col-md-5  text-start my-auto form-check"
                                     v-for="system in systems" :key="system.id">
                                     <input :id="system.id" class="form-check-input" type="checkbox" :name="system"
                                        :value="system" v-model="Systems" />{{ system }}
@@ -186,7 +188,9 @@
                               <div class="mx-auto col-10">
                                  <h5 class="font-weight-normal">Topics</h5>
                                  <p>
-                                    Choose the Topics
+                                    <span class="text-info text-bold">Topics</span> : All will be selected automatically if
+                                    nothing is
+                                    selected
                                  </p>
                               </div>
                            </div>
@@ -286,13 +290,16 @@ export default {
       console.log(this.getId);
    },
    methods: {
+      filtring(data){
+         if (!this.Systems.length == 0) {
+            this.filtring.systems = { $in: this.Systems }
+         }
+      },
 
       manegeState() {
          this.getUserInfo.forEach(element => {
             console.log(element);
          });
-
-
       },
       getMultipleRandom(arr, num) {
          const shuffled = [...arr].sort(() => 0.5 - Math.random());
@@ -311,7 +318,6 @@ export default {
             this.filtring.systems = { $in: this.Systems }
          }
          if (!this.Topics.length == 0) {
-
             this.filtring.topic = { $in: this.Topics }
          }
          this.filtring.courses = { $in: this.Courses }

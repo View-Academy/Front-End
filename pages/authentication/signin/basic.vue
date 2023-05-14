@@ -24,7 +24,7 @@
                      </div>
                      <div class="card-body px-lg-5 pt-0">
                         <div class="text-center text-muted mb-4">
-                           <small>Sign in Using Your Viwe Academy Account</small>
+                           <small>Sign in Using Your View Academy Account</small>
                         </div>
                         <form role="form" class="text-start">
                            <div class="mb-3">

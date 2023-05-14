@@ -107,8 +107,8 @@
                               <td class="align-middle text-center">
                                  <div class="px-3 py-1 d-flex">
                                     <button type="button" class="btn mx-2 btn-secondary"
-                                       @click="accepet(mountain)">Acept</button>
-                                    <button type="button" class="btn btn-primary" @click="removeuser(mountain)">Denay</button>
+                                       @click="accepet(mountain)">Accept</button>
+                                    <button type="button" class="btn btn-primary" @click="removeuser(mountain)">Deny</button>
                                  </div>
                               </td>
                            </tr>

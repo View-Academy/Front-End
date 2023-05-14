@@ -113,17 +113,16 @@
                                  </div>
                                  <div class="mb-3">
                                     <label :for="questiontext" class="col-form-label">questiontext:</label>
-                                    <input type="text" class="form-control" :value="questiontext" id="questiontext">
+                                    <textarea type="text" rows="30"  cols="50" class="form-control" :value="questiontext" id="questiontext"></textarea>
                                  </div>
                                  <div class="mb-3">
                                     <label :for="explanation" class="col-form-label">explanation:</label>
-                                    <input type="text" class="form-control" :value="explanation" id="explanation">
+                                    <textarea type="text" rows="15"  cols="50" class="form-control" :value="explanation" id="explanation"></textarea>
                                  </div>
                                  <div class="mb-3">
                                     <label :for="img" class="col-form-label">image:</label>
                                     <input type="text" class="form-control" :value="img" id="img">
                                  </div>
-
 
 
 
@@ -310,7 +309,7 @@ export default {
          this.questiontext = data.question[0].questiontext
          this.explanation = data.question[0].explanation
       },
-      
+
       editItem(id) {
          var courses = document.getElementById('courses').value
          var subject = document.getElementById('subject').value

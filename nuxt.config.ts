@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 
    app: {
       head: {
-         title: "Viwe Academy Qbank",
+         title: "View Academy QBank",
          meta: [
             { charset: "utf-8" },
             {

@@ -38,13 +38,7 @@
             </div>
          </div>
       </div>
-      <div class="container my-6">
-         <div class="row">
-            <div class="mx-auto text-center col-8">
-               <h6 class="opacity-5">More than 50+ brands trust Soft</h6>
-            </div>
-         </div>
-      </div>
+   
    </main>
 </template>
 <script>

@@ -74,8 +74,7 @@
                      <SidenavCollapseItem refer="profileExample" mini-icon="C" text="Courses">
                         <template #nav-child-item>
                            <SidenavItem to="/admin/new-cuorses" mini-icon="N" text="New Courses" />
-                           <SidenavItem to="/admin/edit-cuorses" mini-icon="E" text="Eidt Courses" />
-
+                           <SidenavItem to="/admin/edit-cuorses" mini-icon="E" text="Edit Courses" />
                         </template>
                      </SidenavCollapseItem>
                      <SidenavItem to="/admin/orderList" mini-icon="O" text="Order List" />

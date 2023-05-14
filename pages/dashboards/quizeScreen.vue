@@ -341,7 +341,8 @@
                            </div>
                         </li>
                         <li class="flex-row marked mx-4">
-                           <div>
+                           <div data-bs-toggle="modal" @click="changeData(item)" data-bs-target="#exampleModal12"
+                              data-bs-whatever="@mdo">
                               <a class=" text-body d-flex mx-2  ">
                                  <i class="fa fa-sticky-note-o  margin9  "></i>
                               </a>
@@ -374,8 +375,9 @@
                         </li>
                      </ul>
                   </nav>
+
                   <div class="row rowSecations">
-                     <div class="col-md-8 mx-5 my-4 ">
+                     <div class="col-md-11 mx-7 my-4 ">
                         <strong id="qustion" class="">{{ item.questiontext }}</strong>
                      </div>
                      <div class=" col-md-4 ">
@@ -432,8 +434,8 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q6 ==''">
-                               
+                              <li v-if="!item.q6 == ''">
+
                                  <div class="form-check ">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q6"
@@ -443,8 +445,8 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q7 ==''">
-                               
+                              <li v-if="!item.q7 == ''">
+
                                  <div class="form-check ">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q7"
@@ -454,7 +456,7 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q8 ==''">
+                              <li v-if="!item.q8 == ''">
                                  <div class="form-check">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q8"
@@ -508,7 +510,8 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12 mb-11  p-5 font-weight-bold incorcerctSecations" v-if="item.togeleexplanationCorect">
+                     <div class="col-md-12 mb-11  p-5 font-weight-bold incorcerctSecations"
+                        v-if="item.togeleexplanationCorect">
                         {{ item.explanation }}
                      </div>
                      <div class=" col-md-8 mb-5   text-bg-danger mx-5   " v-if="item.omitted">
@@ -529,6 +532,7 @@
                      </div>
                      <div class="col-md-12  mb-11  p-5 font-weight-bold" v-if="item.omitted">
                         {{ item.explanation }}
+
                      </div>
                   </div>
                </div>
@@ -536,6 +540,30 @@
          </div>
 
       </div>
+      <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+         <div class="modal-dialog">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Your Note</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+               </div>
+               <div class="modal-body">
+                  <form>
+                     <div class="mb-3">
+                        <label for="message-text" class="col-form-label">Message:</label>
+                        <textarea class="form-control" id="Note" :value="Note"></textarea>
+                     </div>
+                  </form>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="note(item)">Send
+                     message</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
       <footer class="footerA">
          <div class="timer   d-inline ">Block Time:</div>
          <div class="timer  d-inline " id="minutes">00</div>
@@ -603,7 +631,12 @@ export default {
          titleq: "",
          coc: "",
          Note: "",
+         explanation: "",
+         correctAnswer3: "",
+         labelId: "",
+         questiontext: "",
          omitedte: 0,
+         id2: Number,
          array: Array,
          array2: [],
          rusalut: 0,
@@ -679,6 +712,13 @@ export default {
          })
 
       },
+      changeData(data, id) {
+         this.Note == ""
+         this.questiontext = data.questiontext
+         this.explanation = data.explanation
+         this.correctAnswer3 = data.answer1
+         this.labelId = data.labelId
+      },
       zoomI() {
          document.body.style.fontSize = 1.5 + "em";
       },
@@ -686,19 +726,17 @@ export default {
          document.body.style.fontSize = 1 + "em";
       },
       note(res, note) {
-         console.log(note);
-         var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-
+         var Note = document.getElementById('Note').value
          var today = new Date();
          var data = {
-            Note: note,
-            labelId: res.labelId,
-            questiontext: res.questiontext,
-            explanation: res.explanation,
-            correctAnswer: res.answer1,
+            Note: Note,
+            correctAnswer: this.correctAnswer3,
+            explanation: this.explanation,
+            questiontext: this.questiontext,
+            labelId: this.labelId,
             Date: today.toLocaleString('en-GB', { timeZone: 'UTC' })
          }
-         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + this.id.id, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + this.getId, {
             method: 'POST',
             body: data
          }).then(res => {
@@ -715,6 +753,7 @@ export default {
 
 
          })
+         document.getElementById('Note').value = ""
       },
       myTimer() {
          var minutesLabel = document.getElementById("minutes");
@@ -822,7 +861,7 @@ export default {
       JSON.stringify(this.array)
       for (let index = 0; index < this.array.length; index++) {
          this.input.push({
-            labelId: "Q" + Date.now(),
+            labelId: "Q" + Math.floor((Math.random() * 100000) + 1),
             length1: this.array.length,
             togeleexplanation: false,
             togeleexplanationCorect: false,

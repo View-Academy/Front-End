@@ -44,56 +44,53 @@
                               </div>
                            </td>
                            <td class="text-xs font-weight-bold">
-                              <i class="fas fa-user-edit text-secondary  button-actions" data-bs-toggle="modal"
-                                 :data-bs-target="`#` + note.labelId" data-bs-whatever="@mdo"></i>
-                              <i class="fas fa-trash text-secondary    button-actions"
-                                 @click="deleteItem(note.labelId)"></i>
+                              <i class="fas fa-user-edit text-secondary  button-actions" @click="changeData(note)"
+                                 data-bs-toggle="modal" data-bs-target="#EditNote" data-bs-whatever="@mdo"></i>
+                              <!-- <i class="fas fa-trash text-secondary    button-actions"
+                                 @click="deleteItem(note.labelId)"></i> -->
                            </td>
-                           <div class="modal fade" :id="note.labelId" tabindex="-1" aria-labelledby="exampleModalLabel"
-                              aria-hidden="true">
-                              <div class="modal-dialog  modal-xl">
-                                 <div class="modal-content">
-                                    <div class="modal-header">
-
-                                       <h5 class="modal-title " id="exampleModalLabel">{{ note.Date }}</h5>
-                                    </div>
-
-                                    <div class="modal-header">
-
-                                       <h5 class="modal-title " id="exampleModalLabel" >{{ note.questiontext }}</h5>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal" 
-                                          aria-label="Close"></button>
-                                    </div>
-                                    <div class="card">
-
-                                       <div class="card-header text-warning">
-                                          <h5 class="card-title text-bg-info">YOUR NOTE</h5>
-                                          {{ note.Note }}
-                                       </div>
-                                       <hr class="my-3 horizontal py-1 dark" />
-                                       <div class="card-body">
-
-                                          <h5 class="card-title text-bg-info"> Correct Answer</h5>
-                                          <p class="card-text text-success ">{{ note.correctAnswer }}</p>
-
-                                       </div>
-                                       <div class="card-body">
-
-                                          <h5 class="card-title"> Explanation</h5>
-                                          <h5 class="card-text text-primary">{{ note.explanation }}</h5>
-
-                                       </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                       <button type="button" class="btn btn-secondary "
-                                          data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
                         </tr>
                      </tbody>
                   </table>
+               </div>
+               <div class="modal fade" id="EditNote" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog  modal-xl">
+                     <div class="modal-content">
+                        <div class="modal-header">
+
+                           <h5 class="modal-title " id="exampleModalLabel">{{ date }}</h5>
+                        </div>
+
+                        <div class="modal-header">
+
+                           <h5 class="modal-title " id="exampleModalLabel">{{ questiontext }}</h5>
+                           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="card">
+
+                           <div class="card-header text-warning">
+                              <h5 class="card-title text-bg-info">YOUR NOTE</h5>
+                              {{ Note }}
+                           </div>
+                           <hr class="my-3 horizontal py-1 dark" />
+                           <div class="card-body">
+
+                              <h5 class="card-title text-bg-info"> Correct Answer</h5>
+                              <p class="card-text text-success ">{{ Answer }}</p>
+
+                           </div>
+                           <div class="card-body">
+
+                              <h5 class="card-title"> Explanation</h5>
+                              <h5 class="card-text text-primary">{{ explanation }}</h5>
+
+                           </div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+                        </div>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
@@ -120,13 +117,25 @@ export default {
          img4,
          img5,
          img6,
+         explanation: "",
+         Answer: "",
+         Note: "",
+         date: "",
+         questiontext: "",
+
       };
    },
    computed: {
       ...mapGetters(["getNoteQuiz", "getId"]),
    },
    methods: {
-
+      changeData(data) {
+         this.date = data.Date
+         this.Note = data.Note
+         this.explanation = data.explanation
+         this.questiontext = data.questiontext
+         this.Answer = data.correctAnswer
+      },
       deleteItem(id) {
          this.$swal({
             title: "Are you sure?",
@@ -142,7 +151,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + this.getId + "/" + id, {
+               $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + id, {
                   method: 'PUT',
 
                }).then(res => {
