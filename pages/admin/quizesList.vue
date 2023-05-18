@@ -9,7 +9,6 @@
                      <input name="file" type="file" multiple />
                   </div>
                </form>
-
                <div class="card-header">
                   <h5 class="mb-0">Quize List</h5>
                </div>
@@ -43,25 +42,21 @@
                               <i class="fa fa-pencil text-secondary button-actions" @click="changeData(data)"
                                  data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
                            </td>
-
-
                         </tr>
-
-
                      </tbody>
                   </table>
                   <div class="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel">
                      <div class="modal-dialog">
                         <div class="modal-content">
                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">{{id2}}</h5>
+                              <h5 class="modal-title" id="exampleModalLabel">{{ id2 }}</h5>
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                            </div>
                            <div class="modal-body">
                               <form>
                                  <div class="mb-3">
                                     <label :for="courses" class="col-form-label">Courses:</label>
-                                    <input type="text" class="form-control" :value="courses"  id="courses">
+                                    <input type="text" class="form-control" :value="courses" id="courses">
                                  </div>
                                  <div class="mb-3">
                                     <label :for="subject" class="col-form-label">subject:</label>
@@ -113,11 +108,13 @@
                                  </div>
                                  <div class="mb-3">
                                     <label :for="questiontext" class="col-form-label">questiontext:</label>
-                                    <textarea type="text" rows="30"  cols="50" class="form-control" :value="questiontext" id="questiontext"></textarea>
+                                    <textarea type="text" rows="30" cols="50" class="form-control" :value="questiontext"
+                                       id="questiontext"></textarea>
                                  </div>
                                  <div class="mb-3">
                                     <label :for="explanation" class="col-form-label">explanation:</label>
-                                    <textarea type="text" rows="15"  cols="50" class="form-control" :value="explanation" id="explanation"></textarea>
+                                    <textarea type="text" rows="15" cols="50" class="form-control" :value="explanation"
+                                       id="explanation"></textarea>
                                  </div>
                                  <div class="mb-3">
                                     <label :for="img" class="col-form-label">image:</label>
@@ -240,7 +237,10 @@ export default {
                      var insatrQuastion = JSON.parse(json_object);
                      insatrQuastion.forEach(element => {
                         let insatrQuastion = {
+                        
                            id2: Math.floor((Math.random() * 100000) + 1),
+                           id3: Math.floor((Math.random() * 100000) + 1),
+                           id4: Math.floor((Math.random() * 100000) + 1),
                            courses: element.courses,
                            subject: element.subject,
                            systems: element.systems,
@@ -265,7 +265,7 @@ export default {
 
                      }
                      );
-                     $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/insertMany', {
+                     $fetch('http://localhost:8000/api/question/insertMany', {
                         method: 'POST',
                         body: qustin
                      }).then(res => {
@@ -328,7 +328,7 @@ export default {
          var explanation = document.getElementById('explanation').value
          var img = document.getElementById('img').value
 
-         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + id, {
+         $fetch("http://localhost:8000/api/question/" + id, {
             method: "PUT",
             body: {
                courses: courses,
@@ -378,7 +378,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + id, {
+               $fetch("http://localhost:8000/api/question/" + id, {
                   method: "DELETE",
                }).then(res => {
                   this.$store.dispatch("SetQuize");

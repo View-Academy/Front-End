@@ -56,41 +56,23 @@
                                        </div>
                                     </div>
                                     <hr class="my-3 horizontal py-1 dark" />
-
-                                    <div class="row">
-                                       <div class="col-12 col-sm-6">
-                                          <label>Questions Title</label>
-                                          <input class="multisteps-form__input form-control" type="text"
-                                             v-model="QuestionsTitle" placeholder="Questions Title" />
-                                       </div>
-                                       <div class="col-12 col-sm-6">
-                                          <label>Questions Number</label>
-                                          <input class="multisteps-form__input form-control" type="text"
-                                             v-model="numberOfQuastions" placeholder="Questions Title" />
-                                       </div>
-                                    </div>
-
-                                    <div class="mt-4 button-row d-flex col-12">
-                                       <div class=" button-row d-flex ">
-                                          <!-- <input v-model="numberOfQuastions" /> -->
-                                          <label class="form-check-label">
-                                             <h6>Questions :</h6>
-                                          </label>
-                                          <label class="form-check-label">
-                                             <h6>{{ questionsArray.length }}</h6>
-                                          </label>
-                                       </div>
-                                       <button class="mb-0 btn bg-gradient-dark ms-auto js-btn-next" type="button"
-                                          title="Next" @click="nextStep()">
-                                          Next
-                                       </button>
-
-                                    </div>
                                  </div>
                               </div>
                            </div>
+                           <div class="mx-auto col-10">
+                              <h5 class="font-weight-normal">
+                                 Question Types
+                              </h5>
+                              <p>
+                              </p>
+                           </div>
+                           <div class="mt-4 button-row d-flex col-12">
+                              <button class="mb-0 btn bg-gradient-dark ms-auto js-btn-next" type="button" title="Next"
+                                 @click="nextStep()">
+                                 Next
+                              </button>
+                           </div>
                         </div>
-
                         <!--single form panel-->
                         <!-- <About v-if="activeStep === 0" /> -->
                         <!--single form panel-->
@@ -152,7 +134,7 @@
                         <div class="p-3 bg-white card  border-radius-xl" data-animation="FadeIn" v-if="activeStep === 2">
                            <div class="text-center row">
                               <div class="mx-auto col-10">
-                                   <h5 class="font-weight-normal">System </h5>
+                                 <h5 class="font-weight-normal">System </h5>
                                  <p>
                                     <span class="text-info text-bold">System</span> : All will be selected automatically if
                                     nothing is
@@ -212,6 +194,29 @@
                                        title="Send">
                                        Generate Quiz
                                     </button>
+                                 </div>
+                              </div>
+                              <hr class="my-3 horizontal py-1 dark" />
+                              <div class="row">
+                                 <div class="col-12 col-sm-6">
+                                    <label>Questions Title</label>
+                                    <input class="multisteps-form__input form-control" type="text" v-model="QuestionsTitle"
+                                       placeholder="Questions Title" />
+                                 </div>
+                                 <div class="col-12 col-sm-6">
+                                    <label>Questions Number</label>
+                                    <input class="multisteps-form__input form-control" type="text"
+                                       v-model="numberOfQuastions" placeholder="Questions Title" />
+                                 </div>
+
+                                 <div class=" button-row d-flex ">
+                                    <!-- <input v-model="numberOfQuastions" /> -->
+                                    <label class="form-check-label">
+                                       <h6>Questions :</h6>
+                                    </label>
+                                    <label class="form-check-label">
+                                       <h6>{{ questionsArray.length }}</h6>
+                                    </label>
                                  </div>
                               </div>
                            </div>
@@ -290,7 +295,7 @@ export default {
       console.log(this.getId);
    },
    methods: {
-      filtring(data){
+      filtring(data) {
          if (!this.Systems.length == 0) {
             this.filtring.systems = { $in: this.Systems }
          }
@@ -321,7 +326,7 @@ export default {
             this.filtring.topic = { $in: this.Topics }
          }
          this.filtring.courses = { $in: this.Courses }
-         await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone', {
+         await $fetch('http://localhost:8000/api/question/findone', {
             method: 'POST',
             body: this.filtring
          }).then(res => {
@@ -370,11 +375,10 @@ export default {
             courses: { $in: [`${data}`] },
          };
 
-         await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
+         await $fetch('http://localhost:8000/api/question/findone/', {
             method: 'POST',
             body: val
          }).then(res => {
-
             this.questionsArray = res
          })
             .catch((error) => {

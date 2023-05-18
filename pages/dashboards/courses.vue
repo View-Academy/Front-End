@@ -88,7 +88,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/order/', {
+               $fetch('http://localhost:8000/api/order/', {
                   method: 'POST',
                   body: data
 

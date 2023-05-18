@@ -1,9 +1,9 @@
 <template class="templet1">
    <aside id="sidenav-main" class="sidenav navbar navbar-vertical z-index-3 navbar-expand-xs border-3 navbarTop ">
-      <ul class="nav flex-column nav-pills " id="v-pills-tab " role="tablist" aria-orientation="vertical">
-         <li v-for="(item, index) of input" :key="index" class="nav-item " role="presentation">
+      <ul class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+         <li v-for="(item, index) of input" :key="index" class="nav-item " role="presentation" :id="index + `haloo`">
             <i class="" aria-hidden="true"></i>
-            <button class="nav-link w-100" :class="index === 0 ? 'active tab1' : null" :id="`${item.name}-tab`"
+            <button class="nav-link w-100 " :class="index === 0 ? 'active tabme' : null" :id="`${item.name}-tab`"
                data-bs-toggle="pill" :data-bs-target="`#${item.name}`" type="button" role="tab"
                :aria-controls="`v-` + item.name" :aria-selected="index === 0">
                {{ index + 1 }}
@@ -29,11 +29,12 @@
                            type="button" role="tab" aria-controls="nav-home" aria-selected="true">Blode</button>
                         <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
                            type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Serum</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                           type="button" role="tab" aria-controls="nav-contact"
+                        <button class="nav-link labValue" id="nav-contact-tab" data-bs-toggle="tab"
+                           data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
                            aria-selected="false">Cerebrospinal</button>
-                        <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
-                           type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Urine and
+                        <button class="nav-link labValue " id="nav-contact-tab" data-bs-toggle="tab"
+                           data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact"
+                           aria-selected="false">Urine and
                            BMI</button>
                      </div>
                   </nav>
@@ -79,20 +80,20 @@
 
       <div class="modal fade" id="staticBackdrop1" tabindex="-1" data-bs-backdrop="static"
          aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog modal-xl text-bg-info d-flex justify-content-center">
+         <div class="modal-dialog modal-xl  d-flex justify-content-center">
             <div class="modal-content">
                <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">SI Reference Intervals</h5>
                </div>
                <div class="modal-body">
                   <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                     <li class="nav-item ml-5" role="presentation">
-                        <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill"
+                     <li class="nav-item   ml-5" role="presentation">
+                        <button class="nav-link active " id="pills-home-tab" data-bs-toggle="pill"
                            data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home"
                            aria-selected="true">Blood</button>
                      </li>
                      <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill"
+                        <button class="nav-link labValue" id="pills-profile-tab" data-bs-toggle="pill"
                            data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile"
                            aria-selected="false">Serum</button>
                      </li>
@@ -107,7 +108,7 @@
                      </li>
                   </ul>
                   <div class="tab-content" id="pills-tabContent">
-                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
+                     <div class="tab-pane fade show active labValue" id="pills-home" role="tabpanel"
                         aria-labelledby="pills-home-tab">
                         <table class="table">
                            <thead>
@@ -156,7 +157,8 @@
                            </tbody>
                         </table>
                      </div>
-                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                     <div class="tab-pane fade labValue" id="pills-profile" role="tabpanel"
+                        aria-labelledby="pills-profile-tab">
                         <table class="table">
                            <thead>
                               <tr>
@@ -198,7 +200,8 @@
                            </tbody>
                         </table>
                      </div>
-                     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+                     <div class="tab-pane fade labValue" id="pills-contact" role="tabpanel"
+                        aria-labelledby="pills-contact-tab">
                         <table class="table">
                            <thead>
                               <tr>
@@ -238,7 +241,7 @@
                            </tbody>
                         </table>
                      </div>
-                     <div class="tab-pane fade" id="pills-v" role="tabpanel" aria-labelledby="pills-v-tab">
+                     <div class="tab-pane fade labValue" id="pills-v" role="tabpanel" aria-labelledby="pills-v-tab">
                         <table class="table">
                            <thead>
                               <tr>
@@ -297,7 +300,7 @@
 
       <div class="">
          <div class="row">
-            <div class="tab-content " id="pills-tabContent">
+            <div class="tab-content " id="pills-tabContent2">
                <div v-for="(item, index) of input" :key="index" class="tab-pane fade containt5"
                   :class="index === 0 ? 'show active ' : null" :id="item.name" role="tabpanel"
                   aria-labelledby="pills-home-tab">
@@ -317,7 +320,7 @@
                            </div>
                         </li>
                         <li class=" marked mx-3">
-                           <div>
+                           <div @click="previous(index)">
                               <a class=" text-body d-flex ml-2  ">
                                  <i class="fa fa-chevron-left margin9  "></i>
                               </a>
@@ -325,7 +328,7 @@
                            </div>
                         </li>
                         <li class=" marked mx-3">
-                           <div class="">
+                           <div class="" @click="next(index)">
                               <a class=" text-body d-flex ml-2  ">
                                  <i class="fa fa-chevron-right margin9  "></i>
                               </a>
@@ -382,7 +385,7 @@
                      </div>
                      <div class=" col-md-4 ">
 
-                        <div id="accordionRental" class="accordion">
+                        <div :id="item.questiontext" class="accordion" @click="(e) => checkIfCorecet(item, e.target)">
                            <ol type="A" id="a" class="qustion3 m-5 ">
                               <li>
                                  <div class="form-check">
@@ -434,7 +437,7 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q6 == ''">
+                              <li v-if="!item.q6 === ''">
 
                                  <div class="form-check ">
                                     <i class=""></i>
@@ -445,30 +448,29 @@
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q7 == ''">
-
+                              <li v-if="!item.q7 === ''">
                                  <div class="form-check ">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q7"
                                        :value="item.q7">
-                                    <label class="form-check-label" :id="item.q7" :for="item.questiontext">
+                                    <label class="form-check-label" :id="item.q7" :for="item.q7">
                                        <strong>{{ item.q7 }}</strong>
                                     </label>
                                  </div>
                               </li>
-                              <li v-if="!item.q8 == ''">
+                              <li v-if="!item.q8 === ''">
                                  <div class="form-check">
                                     <i class=""></i>
                                     <input class="form-check-input" type="radio" :name="item.questiontext" :id="item.q8"
                                        :value="item.q8">
-                                    <label class="form-check-label" :id="item.q8" :for="item.questiontext">
+                                    <label class="form-check-label" :id="item.q8" :for="item.q8">
                                        <strong>{{ item.q8 }}</strong>
                                     </label>
                                  </div>
                               </li>
                            </ol>
                            <button class="mb-0  submit m-5 mb-5 " :id="item.questiontext" type="button"
-                              @click="showSwal(item)" title="Send">
+                              @click=" showSwal(item)" title="Send">
                               Submit
                            </button>
                         </div>
@@ -514,7 +516,7 @@
                         v-if="item.togeleexplanationCorect">
                         {{ item.explanation }}
                      </div>
-                     <div class=" col-md-8 mb-5   text-bg-danger mx-5   " v-if="item.omitted">
+                     <div class=" col-md-8 mb-5   text-bg-danger mx-5" v-if="item.omitted">
                         <div class="card omitted2">
                            <div class="card-header contintIncorct">
                               <h4 class="card-title text-info">Omitted Answer </h4>
@@ -569,7 +571,7 @@
          <div class="timer  d-inline " id="minutes">00</div>
          <div class="timer  d-inline ">:</div>
          <div class="timer  d-inline " id="seconds">00</div>
-         <div class=" d-inline imageLogo   ">
+         <div class=" d-inline imageLogo ">
             <img src="@/assets/img/viw2.jpeg" width="130" alt="profile_image" class="shadow-sm  border-radius-lg" />
          </div>
          <div class="timer d-inline  mx-6 endQuiz " data-bs-toggle="modal" data-bs-target="#staticBackdrop"
@@ -619,7 +621,9 @@ export default {
       return {
          activeClass: "js-active position-relative",
          data: [],
+         valueChecded: '',
          id: [],
+         corectAnswer12: '',
          inputhalooo: [],
          array: [],
          input: [],
@@ -686,6 +690,8 @@ export default {
       },
 
       savequize() {
+
+
          this.series.push(this.correctAnswer, this.omitedte, this.incorrectAnswer);
          this.rusalut = (this.correctAnswer / this.array.length) * 100
       },
@@ -704,7 +710,7 @@ export default {
          }
          clearInterval(this.startIntariver1)
          data.push(insatrQuastion)
-         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/endquize/" + this.getId, {
+         $fetch("http://localhost:8000/api/user/endquize/" + this.getId, {
             method: 'POST',
             body: data
          }).then(res => {
@@ -736,7 +742,7 @@ export default {
             labelId: this.labelId,
             Date: today.toLocaleString('en-GB', { timeZone: 'UTC' })
          }
-         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + this.getId, {
+         $fetch("http://localhost:8000/api/user/note/" + this.getId, {
             method: 'POST',
             body: data
          }).then(res => {
@@ -770,6 +776,14 @@ export default {
             return valString;
          }
       },
+      next(index) {
+         var el = document.getElementById(index + "haloo").nextSibling.lastElementChild;
+         el.click();
+      },
+      previous(index) {
+         var el = document.getElementById(index + "haloo").previousSibling.lastElementChild;
+         el.click();
+      },
       correctAnswer2(el, res) {
          const v = "";
          switch (el.value === res.answer1) {
@@ -780,70 +794,142 @@ export default {
          console.log(v);
       },
       mark(res) {
-         var element2 = document.getElementById(`${res.name}-tab`);
+
+         ;
+
          element2.previousElementSibling.style.className = '';
          element2.previousElementSibling.classList.add("spinner1");
          element2.previousElementSibling.classList.add("fa");
          element2.previousElementSibling.classList.add("fa-flag");
          console.log(element2);
       },
-      showSwal(res) {
+
+      checkedanswer(res) {
+
+
          var ele1 = document.getElementsByName(res.questiontext);
-         for (let i = 0; i < ele1.length; i++) {
-            // document.getElementById(res.questiontext).disabled = true;
-            ele1[i].setAttribute("disabled", "")
-            if (ele1[i].checked) {
-               if (ele1[i].value === res.answer1) {
-                  var ele12 = ele1[i].previousElementSibling;
+         // for (let index = 0; index < ele1.length; index++) {
+         //    if (ele1.checked) {
+         //       console.log("yessss");
+         //    }
+
+         //    break
+         // }
+
+         // var check;
+         // for (let index = 0; index < ele1.length; index++) {
+         //    switch (res.answer1) {
+         //       case ele1:
+         //          return check = "vvvvvvvvvvvvvvvvvv"
+
+         //       case !res.answer1 === ele1.value:
+         //          return check = "ddddddddddddddddddddddd"
+         //          break
+
+         //       // case !ele1.checked: return  "Note Checeded";
+
+
+         //       default: return "OK";
+         //    }
+
+         // }
+
+      },
+
+      checkedVal(res) {
+         var value;
+         var ele1 = document.getElementsByName(res.questiontext);
+         for (let index = 0; index < ele1.length; index++) {
+            if (ele1[index].checked) {
+               value = "checed"
+            } else {
+               value = "notcheced"
+            }
+         }
+         return value
+      },
+
+
+      checkIfCorecet(res, e) {
+         const h = res.answer1
+         const h2 = e.value
+         this.corectAnswer12 = h2
+         this.valueChecded = h2
+         console.log(this.corectAnswer12);
+      },
+
+
+      showSwal(res, e) {
+         // document.getElementById(res.questiontext)
+         var ele1 = document.getElementsByName(res.questiontext);
+         ele1.disabled = true
+         // Corect ///////////////////////////////////////////////////////////////
+         if (res.answer1 === this.corectAnswer12) {
+            this.correctAnswer++
+            ele1.forEach(element => {
+               element.setAttribute("disabled", "")
+               res.togeleexplanationCorect = true
+               element.disabled = true
+               if (this.corectAnswer12 === element.value) {
                   var element2 = document.getElementById(`${res.name}-tab`);
-                  element2.previousElementSibling.classList.add("corectAnswer");
-                  element2.previousElementSibling.classList.add("fa");
-                  element2.previousElementSibling.classList.remove("spinner1");
-                  element2.previousElementSibling.classList.remove("fa-flag");
+                  element2.previousElementSibling.classList.add("corectAnswer")
+                  element2.previousElementSibling.classList.add("fa")
                   element2.previousElementSibling.classList.add("fa-check");
+                  var ele12 = element.previousElementSibling;
                   ele12.classList.add("corectAnswer2");
                   ele12.classList.add("fa");
                   ele12.classList.add("fa-check");
-                  this.correctAnswer++;
-                  res.togeleexplanationCorect = true
-
-               } else if (!(ele1[i].value === res.answer1)) {
-                  ele1[i].setAttribute("disabled", "")
+               }
+            });
+            // Omttid //////////////////////////////////////////////////////////////////////
+         } else if (this.corectAnswer12 === '') {
+            res.omitted = true
+            this.omitedte++
+            this.corectAnswer12 = res.answer1
+            ele1.forEach(element => {
+               element.setAttribute("disabled", "")
+               element.disabled = true
+               if (this.corectAnswer12 === element.value) {
+                  element.checked = true
+                  var ele12 = element.previousElementSibling;
+                  var element2 = document.getElementById(`${res.name}-tab`);
+                  ele12.classList.add("corectAnswer2");
+                  ele12.classList.add("fa");
+                  ele12.classList.add("fa-check");
+                  console.log("corect");
+               }
+            });
+            var element3 = document.getElementById(`${res.name}-tab`);
+            element3.previousElementSibling.classList.add("omitted");
+            element3.previousElementSibling.classList.add("fa");
+            element3.previousElementSibling.classList.add("fa-minus-circle");
+            // Not Corect //////////////////////////////////////////////////////////////
+         } else {
+            this.incorrectAnswer++
+            this.corectAnswer12 = res.answer1
+            res.togeleexplanation = true
+            ele1.forEach(element => {
+               element.setAttribute("disabled", "")
+               element.disabled = true
+               if (this.corectAnswer12 === element.value) {
                   var element3 = document.getElementById(`${res.name}-tab`);
-                  var name = ele1[i].previousElementSibling;
-                  name.classList.add("notcorectAnswer2");
-                  name.classList.add("fa");
-                  name.classList.add("fa-times");
-                  element3.style.className = '';
-                  element3.previousElementSibling.classList.remove("spinner1");
-                  element3.previousElementSibling.classList.remove("fa-flag");
                   element3.previousElementSibling.classList.add("fa");
                   element3.previousElementSibling.classList.add("fa-times");
                   element3.previousElementSibling.classList.add("notcorectAnswer");
-                  this.incorrectAnswer++;
-                  this.omitedte -= 1
-                  res.togeleexplanation = true;
-               } else {
-               }
-            } else {
-               if (ele1[i].value === res.answer1) {
-                  res.omitted = true;
-                  this.omitedte += 1
-                  var element3 = document.getElementById(`${res.name}-tab`);
-                  element3.previousElementSibling.classList.add("omitted");
-                  element3.previousElementSibling.classList.add("fa");
-                  element3.previousElementSibling.classList.add("fa-minus-circle");
-                  var ele12 = ele1[i].previousElementSibling;
-                  console.log(ele12);
+                  var ele12 = element.previousElementSibling;
                   ele12.classList.add("corectAnswer2");
                   ele12.classList.add("fa");
                   ele12.classList.add("fa-check");
                }
-            }
+               if (this.valueChecded === element.value) {
+                  var ele12 = element.previousElementSibling;
+                  ele12.classList.add("notcorectAnswer2");
+                  ele12.classList.add("fa");
+                  ele12.classList.add("fa-times")
+               }
+            });
          }
-         // if (!ele1.checked) {
-         // }
-      },
+      }
    },
 
    mounted() {
@@ -857,15 +943,15 @@ export default {
       this.array = JSON.parse(localStorage.getItem("authToken"));
       this.id = JSON.parse(sessionStorage.getItem("info"));
       this.titleq = localStorage.getItem("title");
-
       JSON.stringify(this.array)
       for (let index = 0; index < this.array.length; index++) {
          this.input.push({
-            labelId: "Q" + Math.floor((Math.random() * 100000) + 1),
+            labelId: Math.floor((Math.random() * 100000) + 1),
             length1: this.array.length,
             togeleexplanation: false,
             togeleexplanationCorect: false,
             omitted: false,
+            ido: this.array[index].id,
             id: this.array[index].id2,
             name: "Q" + (index + 1),
             questiontext: this.array[index].question[0].questiontext,
@@ -909,7 +995,7 @@ html {
    color: rgb(34, 234, 3) !important;
    top: 6px;
    position: absolute;
-   left: 56px;
+
 }
 
 .image12 {
@@ -940,7 +1026,7 @@ html {
    color: rgb(234, 3, 3) !important;
    top: 6px;
    position: absolute;
-   left: 56px;
+
 }
 
 .mb-11 {
@@ -959,6 +1045,8 @@ html {
    margin: 0 3px;
    padding: 2px 20px;
    font-weight: 500;
+
+   font-weight: bold;
 }
 
 .navContiner {
@@ -985,6 +1073,10 @@ html {
 .active {
    background-color: rgb(85, 144, 204) !important;
 
+}
+
+.labValue {
+   background-color: #ffffff !important;
 }
 
 .borderIncorect {
@@ -1060,6 +1152,7 @@ html {
    overflow: hidden;
    background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
    border: #717582 solid 1px;
+   overflow: scroll;
 
 }
 
@@ -1077,7 +1170,7 @@ html {
    color: rgb(23, 201, 255);
    top: 6px;
    position: absolute;
-   left: 56px;
+
 
 }
 

@@ -182,7 +182,7 @@ export default {
                         qustin.push(insatrQuastion)
                      }
                      );
-                     $fetch('https://walrus-app-b8h5f.ondigitalocean.app/question/insertMany', {
+                     $fetch('http://localhost:8000/question/insertMany', {
                         method: 'POST',
                         body: qustin
                      }).then(res => {

@@ -192,7 +192,7 @@ export default {
       }
     },
     async reqstration() {
-      await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user', {
+      await $fetch('http://localhost:8000/api/user', {
         method: 'POST',
         body:this.userInfo
 

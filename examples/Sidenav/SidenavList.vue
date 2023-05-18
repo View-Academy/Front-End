@@ -85,7 +85,7 @@
             </sidenav-collapse>
 
          </li>
-         <!-- <li class="nav-item" v-if="haloo">
+         <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="pagesExamples" nav-text="Pages" :class="getRoute === 'pages' ? 'active' : ''">
                <template #icon>
                   <i class="ni ni-ungroup text-warning text-sm opacity-10"></i>
@@ -132,8 +132,8 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li> -->
-<!-- 
+         </li>
+
          <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="applicationsExamples" nav-text="Applications"
                :class="getRoute === 'applications' ? 'active' : ''">
@@ -149,7 +149,7 @@
                   </ul>
                </template>
             </sidenav-collapse>
-         </li> -->
+         </li>
          <!-- hear man -->
 
 
