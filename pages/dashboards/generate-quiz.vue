@@ -48,7 +48,7 @@
                                     <div class="row text-start">
                                        <div class="mt-3 col-lg-3 col-md-5  text-start" v-for="choice in getMyCourses"
                                           :key="choice">
-                                          <input type="radio" :id="choice" @change="onChange($event)" v-model="Courses"
+                                          <input type="radio" :id="choice" @change="(e) => onChange(e)" v-model="Courses"
                                              :name="getMyCourses" :value="choice">
                                           <label class="form-check-label" :for="choice">
                                              {{ choice }}
@@ -90,8 +90,8 @@
                            </div>
                            <div class="mt-4 row">
                               <div class="col-sm-3" v-for="subject in subjects" :key="subject.id">
-                                 <input :id="subject" type="checkbox" class="btn-check" :value="subject" v-model="Subjects"
-                                    :name="subject" />
+                                 <input :id="subject" type="checkbox" class="btn-check" @change="(e) => onCangeSubject(e)"
+                                    v-model="Subjects" :value="subject" :name="subject" />
                                  <label class="px-6 py-5 border-2 btn btn-lg btn-outline-secondary" :for="subject">
                                     <svg class="text-dark" width="20px" height="20px" viewBox="0 0 42 42" version="1.1"
                                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -146,8 +146,8 @@
                               <div class="row text-start">
                                  <div class="mt-3 col-lg-3 col-md-5  text-start my-auto form-check"
                                     v-for="system in systems" :key="system.id">
-                                    <input :id="system.id" class="form-check-input" type="checkbox" :name="system"
-                                       :value="system" v-model="Systems" />{{ system }}
+                                    <input :id="system.id" @change="(e) => onCangeSystems(e)" class="form-check-input"
+                                       type="checkbox" :name="system" :value="system" v-model="Systems" />{{ system }}
                                  </div>
                               </div>
                               <div class="row">
@@ -275,6 +275,7 @@ export default {
          filtring: {},
          data1: [],
          numberOfQuastions: 2,
+         quare1: ["Past Questions"]
 
 
 
@@ -301,11 +302,7 @@ export default {
          }
       },
 
-      manegeState() {
-         this.getUserInfo.forEach(element => {
-            console.log(element);
-         });
-      },
+
       getMultipleRandom(arr, num) {
          const shuffled = [...arr].sort(() => 0.5 - Math.random());
          return shuffled.slice(0, num);
@@ -315,7 +312,7 @@ export default {
       async change1() {
          if (!this.Subjects.length == 0) {
             //Return TRUE if the array is empty
-            this.filtring = {
+            this.filtring.subjects = {
                subject: { $in: this.Subjects }
             }
          }
@@ -328,8 +325,9 @@ export default {
          this.filtring.courses = { $in: this.Courses }
          await $fetch('http://localhost:8000/api/question/findone', {
             method: 'POST',
-            body: this.filtring
+            body: this.filtring.subject
          }).then(res => {
+            
             let res2 = this.getMultipleRandom(res, this.numberOfQuastions)
             localStorage.clear();
 
@@ -362,24 +360,22 @@ export default {
                console.log(error);
             });
       },
-
-
       async onChange(e) {
-         console.log(this.Courses);
+         console.log(e.target.value);
          this.subjects = [];
          this.systems = [];
          this.topics = [];
-         var data = e.target.value;
 
          let val = {
-            courses: { $in: [`${data}`] },
+            courses: { $in: [`${e.target.value}`] },
          };
-
          await $fetch('http://localhost:8000/api/question/findone/', {
             method: 'POST',
             body: val
          }).then(res => {
             this.questionsArray = res
+            this.numberOfQuastions =  this.questionsArray.length
+            console.log(res);
          })
             .catch((error) => {
                console.log(error);
@@ -396,6 +392,150 @@ export default {
             }
          });
       },
+
+      async onCangeSubject(e) {
+         if (!this.Systems.length == 0) {
+            this.filtring.systems = { $in: this.Systems }
+         }
+         if (!this.Topics.length == 0) {
+            this.filtring.topic = { $in: this.Topics }
+         }
+
+         if (!this.Subjects.length == 0) {
+            let val = {
+               courses: { $in: [`${this.Courses}`] },
+               subject: { $in: [`${this.Subjects}`] },
+            };
+
+            //Return TRUE if the array is empty
+            await $fetch('http://localhost:8000/api/question/findone/', {
+               method: 'POST',
+               body: val,
+            }).then(res => {
+
+               this.questionsArray = []
+               this.questionsArray = res
+               this.numberOfQuastions =  this.questionsArray.length
+
+               this.questionsArray.forEach(element => {
+                  if (!this.systems.includes(element.systems)) {
+                     this.systems.push(element.systems);
+                  }
+                  if (!this.topics.includes(element.topic)) {
+                     this.topics.push(element.topic);
+                  }
+               });
+            })
+               .catch((error) => {
+                  console.log(error);
+               });
+         } else {
+            if (!this.Subjects.length == 0) {
+               //Return TRUE if the array is empty
+               this.filtring.subjects = {
+                  subject: { $in: this.Subjects }
+               }
+            }
+            if (!this.Systems.length == 0) {
+               this.filtring.systems = { $in: this.Systems }
+            }
+            if (!this.Topics.length == 0) {
+               this.filtring.topic = { $in: this.Topics }
+            }
+            let val2 = {
+               courses: { $in: [`${this.Courses}`] },
+
+            };
+
+            await $fetch('http://localhost:8000/api/question/findone/', {
+               method: 'POST',
+               body: val2
+            }).then(res => {
+               this.questionsArray = []
+               this.questionsArray = res
+               this.numberOfQuastions =  this.questionsArray.length
+            })
+               .catch((error) => {
+                  console.log(error);
+               });
+         }
+         console.log(this.questionsArray);
+      },
+
+
+      async onCangeSystems(e) {
+         if (!this.Subjects.length == 0) {
+            this.filtring.subjects = {
+               subject: { $in: this.Subjects }
+            }
+         }
+         if (!this.Systems.length == 0) {
+            this.filtring.systems = { $in: this.Systems }
+         }
+         if (!this.Topics.length == 0) {
+            this.filtring.topic = { $in: this.Topics }
+         }
+
+         this.topics = [];
+         if (!this.Systems.length == 0) {
+            this.filtring.systems = {
+               systems: { $in: this.Systems }
+            }
+            let val12 = {
+               courses: { $in: [`${this.Courses}`] },
+               subject: { $in: [`${this.Subjects}`] },
+               systems: { $in: [`${this.Systems}`] },
+            };
+
+            //Return TRUE if the array is empty
+            await $fetch('http://localhost:8000/api/question/findone/', {
+               method: 'POST',
+               body: val12,
+            }).then(res => {
+               this.questionsArray = res
+               this.numberOfQuastions =  this.questionsArray.length
+             
+               console.log(res);
+            })
+               .catch((error) => {
+                  console.log(error);
+               });
+            this.questionsArray.forEach(element => {
+
+               if (!this.topics.includes(element.topic)) {
+                  this.topics.push(element.topic);
+               }
+            });
+         } else {
+            let val2 = {
+               subject: { $in: [`${this.Subjects}`] },
+
+            };
+            await $fetch('http://localhost:8000/api/question/findone/', {
+               method: 'POST',
+               body: val2,
+            }).then(res => {
+               this.questionsArray = res
+               this.numberOfQuastions =  this.questionsArray.length
+
+               console.log(res);
+            })
+               .catch((error) => {
+                  console.log(error);
+               });
+         }
+         console.log(this.Systems);
+         this.questionsArray.forEach(element => {
+
+            if (!this.topics.includes(element.topic)) {
+               this.topics.push(element.topic);
+            }
+         });
+
+      },
+
+
+
 
       nextStep() {
          if (this.activeStep < this.formSteps) {

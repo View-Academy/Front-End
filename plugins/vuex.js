@@ -99,7 +99,7 @@ const store = createStore({
          $fetch("http://localhost:8000/api/courses", {
             method: "GET",
          })
-            .then((res) => {
+            .then((res) => {  
                console.log(res);
                commit("SET_COURSES", res);
             })

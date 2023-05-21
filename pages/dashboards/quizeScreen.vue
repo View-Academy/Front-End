@@ -381,7 +381,7 @@
 
                   <div class="row rowSecations">
                      <div class="col-md-11 mx-7 my-4 ">
-                        <strong id="qustion" class="">{{ item.questiontext }}</strong>
+                        <strong id="qustion" class="" @mouseup="(e) =>selecation( e)">{{ item.questiontext }}</strong>
                      </div>
                      <div class=" col-md-4 ">
 
@@ -619,6 +619,7 @@ export default {
    props: ["data1"],
    data() {
       return {
+         good: [],
          activeClass: "js-active position-relative",
          data: [],
          valueChecded: '',
@@ -768,6 +769,11 @@ export default {
          secondsLabel.innerHTML = this.pad(this.totalSeconds % 60);
          minutesLabel.innerHTML = this.pad(parseInt(this.totalSeconds / 60));
       },
+
+
+      changeColor() {
+
+      },
       pad(val) {
          var valString = val + "";
          if (valString.length < 2) {
@@ -795,46 +801,37 @@ export default {
       },
       mark(res) {
 
-         ;
 
-         element2.previousElementSibling.style.className = '';
-         element2.previousElementSibling.classList.add("spinner1");
-         element2.previousElementSibling.classList.add("fa");
+         var range = window.getSelection().getRangeAt(0);
+         let span = document.createElement("span");
+
+         span.style.backgroundColor = "red";
+         span.appendChild(range.extractContents());
+         range.insertNode(span);
+
+
+         var element2 = document.getElementById(`${res.name}-tab`);
+         element2.previousElementSibling.classList.add("spinner1")
+         element2.previousElementSibling.classList.add("fa")
          element2.previousElementSibling.classList.add("fa-flag");
-         console.log(element2);
-      },
 
-      checkedanswer(res) {
+      
 
 
-         var ele1 = document.getElementsByName(res.questiontext);
-         // for (let index = 0; index < ele1.length; index++) {
-         //    if (ele1.checked) {
-         //       console.log("yessss");
-         //    }
-
-         //    break
-         // }
-
-         // var check;
-         // for (let index = 0; index < ele1.length; index++) {
-         //    switch (res.answer1) {
-         //       case ele1:
-         //          return check = "vvvvvvvvvvvvvvvvvv"
-
-         //       case !res.answer1 === ele1.value:
-         //          return check = "ddddddddddddddddddddddd"
-         //          break
-
-         //       // case !ele1.checked: return  "Note Checeded";
-
-
-         //       default: return "OK";
-         //    }
-
-         // }
 
       },
+
+      selecation() {
+      
+         var range = window.getSelection().getRangeAt(0);
+         let span = document.createElement("span");
+
+         span.style.backgroundColor = "yellow";
+         span.appendChild(range.extractContents());
+         range.insertNode(span);
+
+      },
+
 
       checkedVal(res) {
          var value;
@@ -860,12 +857,38 @@ export default {
 
 
       showSwal(res, e) {
+         // $fetch("http://localhost:8000/api/user/findIncorrect/" + res.id, {
+         //       method: 'GET',
+
+         //    }).then(res2 => {
+
+         //     this.getcoreCatQuastion =res2
+
+         //    }).catch(err => {
+         //       console.log(err);
+
+         //    })
+
+         console.log(res);
+         this.good = res
+         console.log(this.good);
          // document.getElementById(res.questiontext)
          var ele1 = document.getElementsByName(res.questiontext);
          ele1.disabled = true
          // Corect ///////////////////////////////////////////////////////////////
          if (res.answer1 === this.corectAnswer12) {
             this.correctAnswer++
+            $fetch("http://localhost:8000/api/user/matchcorrect/" + this.getId + "/" + res.id, {
+               method: 'PUT',
+
+            }).then(res => {
+               console.log("res");
+
+            }).catch(err => {
+               console.log(err);
+
+            })
+
             ele1.forEach(element => {
                element.setAttribute("disabled", "")
                res.togeleexplanationCorect = true
@@ -886,6 +909,16 @@ export default {
             res.omitted = true
             this.omitedte++
             this.corectAnswer12 = res.answer1
+            $fetch("http://localhost:8000/api/user/matchomitted/" + this.getId + "/" + res.id, {
+               method: 'PUT',
+
+            }).then(res => {
+               console.log(res);
+
+            }).catch(err => {
+               console.log(err);
+
+            })
             ele1.forEach(element => {
                element.setAttribute("disabled", "")
                element.disabled = true
@@ -908,6 +941,16 @@ export default {
             this.incorrectAnswer++
             this.corectAnswer12 = res.answer1
             res.togeleexplanation = true
+            $fetch("http://localhost:8000/api/user/match/" + this.getId + "/" + res.id, {
+               method: 'PUT',
+
+            }).then(res => {
+               console.log(res);
+
+            }).catch(err => {
+               console.log(err);
+
+            })
             ele1.forEach(element => {
                element.setAttribute("disabled", "")
                element.disabled = true
@@ -929,10 +972,13 @@ export default {
                }
             });
          }
+
       }
+
    },
 
    mounted() {
+
       var x = sessionStorage.getItem("info");
       this.$store.dispatch("yourAction", JSON.parse(x));
       console.log(this.getId);
@@ -1117,11 +1163,16 @@ html {
    cursor: pointer;
 }
 
+::selection {
+   color: red !important;
+   background: yellow !important;
+}
+
 .spinner1 {
    color: #d4e60b !important;
    top: 8px;
    position: absolute;
-   left: 50px;
+
 }
 
 .submit1 {

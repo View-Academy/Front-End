@@ -149,7 +149,7 @@ definePageMeta({
 </script>
 <style scoped>
 .bg-color {
-   background: linear-gradient(rgba(57, 2, 2, 0.4), rgb(8, 7, 73)) !important;
+   background:  rgb(8, 7, 73);
 }
 
 .back-arow {
