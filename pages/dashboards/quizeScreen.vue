@@ -381,7 +381,7 @@
 
                   <div class="row rowSecations">
                      <div class="col-md-11 mx-7 my-4 ">
-                        <strong id="qustion" class="" @mouseup="(e) =>selecation( e)">{{ item.questiontext }}</strong>
+                        <strong id="qustion" class="" @mouseup="(e) => selecation(e)">{{ item.questiontext }}</strong>
                      </div>
                      <div class=" col-md-4 ">
 
@@ -494,6 +494,21 @@
                         <hr class="dropdown-divider" />
                      </div>
                      <div class=" col-md-12 mb-11 p-5 font-weight-bold" v-if="item.togeleexplanation">
+                        <div class="row">
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-danger">{{ item.subject }}</h4>
+                              <div>Subject</div>
+                           </span>
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-danger">{{ item.systems }}</h4>
+                              <div>Systems</div>
+                           </span>
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-danger">{{ item.topic }}</h4>
+                              <div>Topic</div>
+                           </span>
+
+                        </div>
                         {{ item.explanation }}
                      </div>
                      <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanationCorect">
@@ -514,6 +529,22 @@
                      </div>
                      <div class="col-md-12 mb-11  p-5 font-weight-bold incorcerctSecations"
                         v-if="item.togeleexplanationCorect">
+                        <div class="row">
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-success">{{ item.subject }}</h4>
+                              <div>Subject</div>
+                           </span>
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-success">{{ item.systems }}</h4>
+                              <div>Systems</div>
+                           </span>
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-success">{{ item.topic }}</h4>
+                              <div>Topic</div>
+                           </span>
+
+                        </div>
+
                         {{ item.explanation }}
                      </div>
                      <div class=" col-md-8 mb-5   text-bg-danger mx-5" v-if="item.omitted">
@@ -532,7 +563,22 @@
                         <strong class="  mt-5 ">Explanation</strong>
                         <hr class="dropdown-divider" />
                      </div>
-                     <div class="col-md-12  mb-11  p-5 font-weight-bold" v-if="item.omitted">
+                     <div class="col-md-12 d-inline  mb-11  p-5 font-weight-bold" v-if="item.omitted">
+                        <div class="row">
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-info">{{ item.subject }}</h4>
+                              <div>Subject</div>
+                           </span>
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-info">{{ item.systems }}</h4>
+                              <div>Systems</div>
+                           </span>
+                           <span class="d-inline col-md-3">
+                              <h4 class="d-inline text-info">{{ item.topic }}</h4>
+                              <div>Topic</div>
+                           </span>
+
+                        </div>
                         {{ item.explanation }}
 
                      </div>
@@ -559,7 +605,7 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="note(item)">Send
+                  <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="note()">Send
                      message</button>
                </div>
             </div>
@@ -612,13 +658,30 @@ import { mapGetters } from "vuex";
 
 
 
+
+
+
+
+
 export default {
+   //    beforeRouteEnter(to, from, next) {
+   //       const IsItABackButton = window.popStateDetected
+
+   //   if (IsItABackButton ) {
+
+   //     next(false) 
+   //     return ''
+   //   }
+   //   },
+
+
    name: "quizeScreen",
    components: { SidenavList, Sidenav, OutlinedCounterCard, DoughnutChart, MiniStatisticsCard, AccordionItem, AppFooter, PricingCard, NavbarTransparent, headerImg, TodoList, InfoCard, Navbar, FooterCentered, DefaultInfoCard },
 
    props: ["data1"],
    data() {
       return {
+         all:[],
          good: [],
          activeClass: "js-active position-relative",
          data: [],
@@ -644,14 +707,15 @@ export default {
          id2: Number,
          array: Array,
          array2: [],
+         unused: 0,
          rusalut: 0,
          chartOptions: {
 
             chart: {
                type: "donut",
             },
-            colors: ["#2ecc71", "#3498db", "#f53939"],
-            labels: ["Correct Answer", "Omitted", "Incorrect Answer"],
+            colors: ["#2ecc71", "#3498db", "#f53939", "#2c3e50"],
+            labels: ["Correct Answer", "Omitted Answer", "Incorrect Answer", "Unused Answer"],
             dataLabels: {
                enabled: true,
             },
@@ -670,7 +734,7 @@ export default {
             ],
          },
          series: [],
-         width: 700
+         width: 500
       };
    },
 
@@ -679,6 +743,7 @@ export default {
    },
 
    methods: {
+
       openFullscreen() {
          var elem = document.documentElement;
          if (elem.requestFullscreen) {
@@ -692,14 +757,18 @@ export default {
 
       savequize() {
 
-
-         this.series.push(this.correctAnswer, this.omitedte, this.incorrectAnswer);
+         this.unused = this.array.length - (this.incorrectAnswer + this.omitedte + this.correctAnswer)
+         this.series.push(this.correctAnswer, this.omitedte, this.incorrectAnswer, this.unused);
          this.rusalut = (this.correctAnswer / this.array.length) * 100
       },
       endQuize() {
+         console.log(this.array);
          const data = [];
          var today = new Date();
+
          let insatrQuastion = {
+            arrayqustion: this.all,
+            unsed:this.array.length - (this.correctAnswer + this.omitedte + this.incorrectAnswer) ,
             correctAnswer: this.correctAnswer,
             incorrectAnswer: this.incorrectAnswer,
             omitedte: this.omitedte,
@@ -808,28 +877,23 @@ export default {
          span.style.backgroundColor = "red";
          span.appendChild(range.extractContents());
          range.insertNode(span);
-
-
          var element2 = document.getElementById(`${res.name}-tab`);
          element2.previousElementSibling.classList.add("spinner1")
          element2.previousElementSibling.classList.add("fa")
          element2.previousElementSibling.classList.add("fa-flag");
 
-      
+
 
 
 
       },
 
       selecation() {
-      
          var range = window.getSelection().getRangeAt(0);
          let span = document.createElement("span");
-
          span.style.backgroundColor = "yellow";
          span.appendChild(range.extractContents());
          range.insertNode(span);
-
       },
 
 
@@ -857,6 +921,8 @@ export default {
 
 
       showSwal(res, e) {
+         this.all.push(res)
+       
          // $fetch("http://localhost:8000/api/user/findIncorrect/" + res.id, {
          //       method: 'GET',
 
@@ -869,9 +935,7 @@ export default {
 
          //    })
 
-         console.log(res);
-         this.good = res
-         console.log(this.good);
+         console.log( this.all);
          // document.getElementById(res.questiontext)
          var ele1 = document.getElementsByName(res.questiontext);
          ele1.disabled = true
@@ -906,6 +970,7 @@ export default {
             });
             // Omttid //////////////////////////////////////////////////////////////////////
          } else if (this.corectAnswer12 === '') {
+
             res.omitted = true
             this.omitedte++
             this.corectAnswer12 = res.answer1
@@ -972,8 +1037,10 @@ export default {
                }
             });
          }
+         
 
       }
+      
 
    },
 
@@ -992,6 +1059,10 @@ export default {
       JSON.stringify(this.array)
       for (let index = 0; index < this.array.length; index++) {
          this.input.push({
+            courses: this.array[index].courses,
+            subject: this.array[index].subject,
+            systems: this.array[index].systems,
+            topic: this.array[index].topic,
             labelId: Math.floor((Math.random() * 100000) + 1),
             length1: this.array.length,
             togeleexplanation: false,
