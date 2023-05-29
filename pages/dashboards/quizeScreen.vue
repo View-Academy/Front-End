@@ -773,7 +773,7 @@ export default {
             }
             clearInterval(this.startIntariver1)
             data.push(insatrQuastion)
-            $fetch("http://localhost:8000/api/user/endquize/" + this.getId, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/endquize/" + this.getId, {
                 method: 'POST',
                 body: data
             }).then(res => {
@@ -808,7 +808,7 @@ export default {
                 labelId: this.labelId,
                 Date: today.toLocaleString('en-GB', { timeZone: 'UTC' })
             }
-            $fetch("http://localhost:8000/api/user/note/" + this.getId, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + this.getId, {
                 method: 'POST',
                 body: data
             }).then(res => {
@@ -867,7 +867,7 @@ export default {
         mark(res) {
 
 
-            $fetch("http://localhost:8000/api/user/matchmark/" + this.getId + "/" + res.id, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/matchmark/" + this.getId + "/" + res.id, {
                 method: 'PUT',
             }).then(res => {
                 console.log("res");
@@ -921,7 +921,7 @@ export default {
             // Corect ///////////////////////////////////////////////////////////////
             if (res.answer1 === this.corectAnswer12) {
                 this.correctAnswer++
-                $fetch("http://localhost:8000/api/user/matchcorrect/" + this.getId + "/" + res.id, {
+                $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/matchcorrect/" + this.getId + "/" + res.id, {
                     method: 'PUT',
                 }).then(res => {
                     console.log("res");
@@ -952,7 +952,7 @@ export default {
                 res.omitted = true
                 this.omitedte++
                 this.corectAnswer12 = res.answer1
-                $fetch("http://localhost:8000/api/user/matchomitted/" + this.getId + "/" + res.id, {
+                $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/matchomitted/" + this.getId + "/" + res.id, {
                     method: 'PUT',
 
                 }).then(res => {
@@ -984,7 +984,7 @@ export default {
                 this.incorrectAnswer++
                 this.corectAnswer12 = res.answer1
                 res.togeleexplanation = true
-                $fetch("http://localhost:8000/api/user/match/" + this.getId + "/" + res.id, {
+                $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/match/" + this.getId + "/" + res.id, {
                     method: 'PUT',
 
                 }).then(res => {

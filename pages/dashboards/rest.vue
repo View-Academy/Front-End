@@ -158,7 +158,7 @@ export default {
                 buttonsStyling: false,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $fetch('http://localhost:8000/api/user/pullmark/' + this.getId, {
+                    $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/pullmark/' + this.getId, {
                         method: 'PUT',
 
 
@@ -205,7 +205,7 @@ export default {
                 buttonsStyling: false,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $fetch('http://localhost:8000/api/user/pullcorrect/' + this.getId, {
+                    $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/pullcorrect/' + this.getId, {
                         method: 'PUT',
 
 
@@ -295,7 +295,7 @@ export default {
                 buttonsStyling: false,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $fetch('http://localhost:8000/api/user/pullincorrect/' + this.getId, {
+                    $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/pullincorrect/' + this.getId, {
                         method: 'PUT',
 
 
@@ -342,7 +342,7 @@ export default {
                 buttonsStyling: false,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $fetch('http://localhost:8000/api/user/pullomitted/' + this.getId, {
+                    $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/pullomitted/' + this.getId, {
                         method: 'PUT',
 
 

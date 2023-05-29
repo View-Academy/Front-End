@@ -181,7 +181,7 @@ export default {
             }).catch(e => {
                 console.log(e);
             });
-            $fetch("http://localhost:8000/api/order/" + data.id, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order/" + data.id, {
                 method: "DELETE",
 
             }).then(res => {
@@ -193,7 +193,7 @@ export default {
 
         },
         removeuser(data) {
-            $fetch("http://localhost:8000/api/order/" + data.id, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order/" + data.id, {
                 method: "DELETE",
 
             }).then(res => {

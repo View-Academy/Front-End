@@ -119,7 +119,7 @@ const store = createStore({
 
 
         SetCourses: ({ commit }) => {
-            $fetch("http://localhost:8000/api/courses", {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/courses", {
                 method: "GET",
             })
                 .then((res) => {
@@ -131,7 +131,7 @@ const store = createStore({
                 });
         },
         SetOrder: ({ commit }) => {
-            $fetch("http://localhost:8000/api/order", {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/order", {
                 method: "GET",
             })
                 .then((res) => {
@@ -144,7 +144,7 @@ const store = createStore({
         },
 
         SetNotes: ({ commit, state }) => {
-            $fetch("http://localhost:8000/api/user/note/" + state.id, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + state.id, {
                 method: "GET",
             })
                 .then((res) => {
@@ -156,7 +156,7 @@ const store = createStore({
                 });
         },
         SetUser: ({ commit }) => {
-            $fetch("http://localhost:8000/api/user", {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user", {
                 method: "GET",
             })
                 .then((res) => {
@@ -168,7 +168,7 @@ const store = createStore({
                 });
         },
         SetQuize: ({ commit }) => {
-            $fetch("http://localhost:8000/api/question", {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question", {
                 method: "GET",
             })
                 .then((res) => {
@@ -180,7 +180,7 @@ const store = createStore({
                 });
         },
         SetPreviousQuize: ({ commit, state }) => {
-            $fetch("http://localhost:8000/api/user/myquizes/" + state.id, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/myquizes/" + state.id, {
                 method: "GET",
             })
                 .then((res) => {

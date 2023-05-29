@@ -410,7 +410,7 @@ export default {
                 });
 
             } else {
-                await $fetch('http://localhost:8000/api/question/findone', {
+                await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone', {
                     method: 'POST',
                     body: this.filtring
                 }).then(res => {
@@ -458,7 +458,7 @@ export default {
                     if (element === 'Incorrect') {
                         console.log("Incorrect Here");
                         console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -488,7 +488,7 @@ export default {
                         })
                     } if (element === "Omitted") {
                         console.log("Omitted Here");
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -520,7 +520,7 @@ export default {
 
                     } if (element === "correct") {
                         console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -557,7 +557,7 @@ export default {
                     }
                     if (element === "Mark") {
                         console.log("Mark Here");
-                        $fetch('http://localhost:8000/api/user/findQustionmark/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionmark/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -589,7 +589,7 @@ export default {
 
                     }
                     if (element === "All") {
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -619,7 +619,7 @@ export default {
                         }).catch(err => {
                             console.log(err);
                         })
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -649,7 +649,7 @@ export default {
                             console.log(err);
                         })
                         console.log("Mark Here");
-                        $fetch('http://localhost:8000/api/user/findQustionmark/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionmark/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -677,7 +677,7 @@ export default {
                         }).catch(err => {
                             console.log(err);
                         })
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -715,7 +715,7 @@ export default {
                 this.systems = [];
                 this.topics = [];
 
-                await $fetch('http://localhost:8000/api/question/findone/', {
+                await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
                     method: 'POST',
                     body: this.filtring
                 }).then(res => {
@@ -752,7 +752,7 @@ export default {
                     if (element === 'Incorrect') {
                         console.log("Incorrect Here");
                         console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -781,7 +781,7 @@ export default {
                         })
                     } if (element === "Omitted") {
                         console.log("Omitted Here");
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -811,7 +811,7 @@ export default {
 
                     } if (element === "correct") {
                         console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -844,7 +844,7 @@ export default {
                     }
                     if (element === "Mark") {
                         console.log("Mark Here");
-                        $fetch('http://localhost:8000/api/user/findQustionmark/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionmark/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -874,7 +874,7 @@ export default {
 
                     }
                     if (element === "All") {
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -901,7 +901,7 @@ export default {
                         }).catch(err => {
                             console.log(err);
                         })
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -927,7 +927,7 @@ export default {
                         }).catch(err => {
                             console.log(err);
                         })
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -958,7 +958,7 @@ export default {
                 if (!this.Subjects.length == 0) {
                     this.filtring.subject = this.Subjects,
                         //Return TRUE if the array is empty
-                        await $fetch('http://localhost:8000/api/question/findone/', {
+                        await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
                             method: 'POST',
                             body: this.filtring,
                         }).then(res => {
@@ -986,7 +986,7 @@ export default {
                         //Return TRUE if the array is empty
                         delete this.filtring.subject
                     }
-                    await $fetch('http://localhost:8000/api/question/findone/', {
+                    await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
                         method: 'POST',
                         body: this.filtring
                     }).then(res => {
@@ -1021,7 +1021,7 @@ export default {
                     if (element === 'Incorrect') {
                         console.log("Incorrect Here");
                         console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -1044,7 +1044,7 @@ export default {
 
                     if (element === "Omitted") {
                         console.log("Omitted Here");
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -1069,7 +1069,7 @@ export default {
 
                     if (element === "correct") {
                         console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -1100,7 +1100,7 @@ export default {
                     }
                     if (element === "Mark") {
                         console.log("Mark Here");
-                        $fetch('http://localhost:8000/api/user/findQustionmark/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionmark/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -1130,235 +1130,7 @@ export default {
 
                     }
                     if (element === "All") {
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.TypeQustionNumber.forEach(element => {
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                                console.log("Incorect");
-                                console.log(this.TypeQustionNumber);
-                            }
-                            console.log("Omitted");
-                            console.log(this.TypeQustionNumber);
-                        }).catch(err => {
-                            console.log(err);
-                        })
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.TypeQustionNumber.forEach(element => {
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                                console.log("Incorect");
-                                console.log(this.TypeQustionNumber);
-                            }
-                            console.log("corect");
-                            console.log(this.TypeQustionNumber);
-                        }).catch(err => {
-                            console.log(err);
-                        })
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.TypeQustionNumber.forEach(element => {
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                                console.log("Incorect");
-                                console.log(this.TypeQustionNumber);
-                            }
-                        }).catch(err => {
-                            console.log(err);
-                        })
-                    }
-                });
-            } else {
-                if (!this.Systems.length == 0) {
-                    this.filtring.systems = this.Systems,
-                        //Return TRUE if the array is empty
-                        await $fetch('http://localhost:8000/api/question/findone/', {
-                            method: 'POST',
-                            body: this.filtring,
-                        }).then(res => {
-                            this.questionsArray = res
-                            this.numberOfQuastions = this.questionsArray.length
-                            console.log(res);
-                        })
-                            .catch((error) => {
-                                console.log(error);
-                            });
-                    this.questionsArray.forEach(element => {
-                        if (!this.topics.includes(element.topic)) {
-                            this.topics.push(element.topic);
-                        }
-                    });
-                } else {
-                    if (this.Systems.length == 0) {
-                        //Return TRUE if the array is empty
-                        delete this.filtring.systems
-                    }
-                    await $fetch('http://localhost:8000/api/question/findone/', {
-                        method: 'POST',
-                        body: this.filtring,
-                    }).then(res => {
-                        this.questionsArray = res
-                        this.numberOfQuastions = this.questionsArray.length
-                        console.log(res);
-                    })
-                        .catch((error) => {
-                            console.log(error);
-                        });
-                }
-                console.log(this.Systems);
-                this.questionsArray.forEach(element => {
-                    if (!this.topics.includes(element.topic)) {
-                        this.topics.push(element.topic);
-                    }
-                });
-            }
-        },
-
-        async onCangeTopics(e) {
-            if (this.TypeQustion.length != 0) {
-                this.TypeQustion.forEach(element => {
-                    if (element === 'Incorrect') {
-                        console.log("Incorrect Here");
-                        console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.TypeQustionNumber.forEach(element => {
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                            }
-                        }).catch(err => {
-                            console.log(err);
-                        })
-
-                    } if (element === "Omitted") {
-                        console.log("Omitted Here");
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.TypeQustionNumber.forEach(element => {
-
-
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                            }
-                            console.log("Omitted");
-                            console.log(this.TypeQustionNumber);
-                        }).catch(err => {
-                            console.log(err);
-                        })
-                    } if (element === "correct") {
-                        console.log("correct Here");
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.TypeQustionNumber.forEach(element => {
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                                console.log("correct");
-                                console.log(this.TypeQustionNumber);
-                            }
-                            console.log("corect");
-                            console.log(this.TypeQustionNumber);
-                        }).catch(err => {
-                            console.log(err);
-                        })
-                    }
-                    if (element === "unused") {
-                        console.log("unused Here");
-                        console.log(this.filtring);
-                    }
-                    if (element === "Mark") {
-                        console.log("Mark Here");
-                        $fetch('http://localhost:8000/api/user/findQustionmark/' + this.getId, {
-                            method: 'POST',
-                            body: this.filtring
-                        }).then(res => {
-                            if (res.length == 0) {
-                                console.log("isempty");
-                            } else {
-                                res.forEach(element => {
-                                    this.TypeQustionNumber.push(element)
-                                });
-                                this.numberOfQuastions = this.TypeQustionNumber.length
-                                this.TypeQustionNumber.forEach(element => {
-
-                                    if (!this.systems.includes(element.systems)) {
-                                        this.systems.push(element.systems);
-                                    }
-                                    if (!this.topics.includes(element.topic)) {
-                                        this.topics.push(element.topic);
-                                    }
-                                });
-                            }
-
-
-                        }).catch(err => {
-                            console.log(err);
-                        })
-
-
-                    }
-                    if (element === "All") {
-                        $fetch('http://localhost:8000/api/user/findQustionomitted/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -1404,7 +1176,235 @@ export default {
                         }).catch(err => {
                             console.log(err);
                         })
-                        $fetch('http://localhost:8000/api/user/findQustionincorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.TypeQustionNumber.forEach(element => {
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                                console.log("Incorect");
+                                console.log(this.TypeQustionNumber);
+                            }
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                    }
+                });
+            } else {
+                if (!this.Systems.length == 0) {
+                    this.filtring.systems = this.Systems,
+                        //Return TRUE if the array is empty
+                        await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
+                            method: 'POST',
+                            body: this.filtring,
+                        }).then(res => {
+                            this.questionsArray = res
+                            this.numberOfQuastions = this.questionsArray.length
+                            console.log(res);
+                        })
+                            .catch((error) => {
+                                console.log(error);
+                            });
+                    this.questionsArray.forEach(element => {
+                        if (!this.topics.includes(element.topic)) {
+                            this.topics.push(element.topic);
+                        }
+                    });
+                } else {
+                    if (this.Systems.length == 0) {
+                        //Return TRUE if the array is empty
+                        delete this.filtring.systems
+                    }
+                    await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
+                        method: 'POST',
+                        body: this.filtring,
+                    }).then(res => {
+                        this.questionsArray = res
+                        this.numberOfQuastions = this.questionsArray.length
+                        console.log(res);
+                    })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                }
+                console.log(this.Systems);
+                this.questionsArray.forEach(element => {
+                    if (!this.topics.includes(element.topic)) {
+                        this.topics.push(element.topic);
+                    }
+                });
+            }
+        },
+
+        async onCangeTopics(e) {
+            if (this.TypeQustion.length != 0) {
+                this.TypeQustion.forEach(element => {
+                    if (element === 'Incorrect') {
+                        console.log("Incorrect Here");
+                        console.log("correct Here");
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.TypeQustionNumber.forEach(element => {
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                            }
+                        }).catch(err => {
+                            console.log(err);
+                        })
+
+                    } if (element === "Omitted") {
+                        console.log("Omitted Here");
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.TypeQustionNumber.forEach(element => {
+
+
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                            }
+                            console.log("Omitted");
+                            console.log(this.TypeQustionNumber);
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                    } if (element === "correct") {
+                        console.log("correct Here");
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.TypeQustionNumber.forEach(element => {
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                                console.log("correct");
+                                console.log(this.TypeQustionNumber);
+                            }
+                            console.log("corect");
+                            console.log(this.TypeQustionNumber);
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                    }
+                    if (element === "unused") {
+                        console.log("unused Here");
+                        console.log(this.filtring);
+                    }
+                    if (element === "Mark") {
+                        console.log("Mark Here");
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionmark/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.numberOfQuastions = this.TypeQustionNumber.length
+                                this.TypeQustionNumber.forEach(element => {
+
+                                    if (!this.systems.includes(element.systems)) {
+                                        this.systems.push(element.systems);
+                                    }
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                            }
+
+
+                        }).catch(err => {
+                            console.log(err);
+                        })
+
+
+                    }
+                    if (element === "All") {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.TypeQustionNumber.forEach(element => {
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                                console.log("Incorect");
+                                console.log(this.TypeQustionNumber);
+                            }
+                            console.log("Omitted");
+                            console.log(this.TypeQustionNumber);
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
+                            method: 'POST',
+                            body: this.filtring
+                        }).then(res => {
+                            if (res.length == 0) {
+                                console.log("isempty");
+                            } else {
+                                res.forEach(element => {
+                                    this.TypeQustionNumber.push(element)
+                                });
+                                this.TypeQustionNumber.forEach(element => {
+                                    if (!this.topics.includes(element.topic)) {
+                                        this.topics.push(element.topic);
+                                    }
+                                });
+                                console.log("Incorect");
+                                console.log(this.TypeQustionNumber);
+                            }
+                            console.log("corect");
+                            console.log(this.TypeQustionNumber);
+                        }).catch(err => {
+                            console.log(err);
+                        })
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionincorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {
@@ -1431,7 +1431,7 @@ export default {
                 if (!this.Topics.length == 0) {
                     this.filtring.topic = this.Topics,
                         //Return TRUE if the array is empty
-                        await $fetch('http://localhost:8000/api/question/findone/', {
+                        await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
                             method: 'POST',
                             body: this.filtring,
                         }).then(res => {
@@ -1452,7 +1452,7 @@ export default {
                         //Return TRUE if the array is empty
                         delete this.filtring.topic
                     }
-                    await $fetch('http://localhost:8000/api/question/findone/', {
+                    await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/findone/', {
                         method: 'POST',
                         body: this.filtring,
                     }).then(res => {

@@ -218,7 +218,7 @@ export default {
          var phone = document.getElementById('phone').value
 
 
-         $fetch("http://localhost:8000/api/user/" + id, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/" + id, {
             method: "PUT",
             body: {
                name: name,
@@ -241,7 +241,7 @@ export default {
 
       },
       delete1(data) {
-         $fetch("http://localhost:8000/api/user/" + data, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/" + data, {
             method: "DELETE",
 
          }).then(res => {

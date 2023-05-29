@@ -267,7 +267,7 @@ export default {
 
                             }
                             );
-                            $fetch('http://localhost:8000/api/question/insertMany', {
+                            $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/question/insertMany', {
                                 method: 'POST',
                                 body: qustin
                             }).then(res => {
@@ -330,7 +330,7 @@ export default {
             var explanation = document.getElementById('explanation').value
             var img = document.getElementById('img').value
 
-            $fetch("http://localhost:8000/api/question/" + id, {
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + id, {
                 method: "PUT",
                 body: {
                     courses: courses,
@@ -380,7 +380,7 @@ export default {
                 buttonsStyling: false,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $fetch("http://localhost:8000/api/question/" + id, {
+                    $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question/" + id, {
                         method: "DELETE",
                     }).then(res => {
                         this.$store.dispatch("SetQuize");

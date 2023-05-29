@@ -155,7 +155,7 @@ export default {
                 buttonsStyling: false,
             }).then((result) => {
                 if (result.isConfirmed) {
-                    $fetch("http://localhost:8000/api/user/note/" + id, {
+                    $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + id, {
                         method: 'PUT',
 
                     }).then(res => {
