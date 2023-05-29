@@ -104,7 +104,7 @@ export default {
       async login(userInfo) {
          if (this.Validation()) {
          } else {
-            await $fetch('http://localhost:8000/api/authorization', {
+            await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/authorization', {
                method: 'POST',
                body: userInfo
             }).then(res => {

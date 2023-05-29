@@ -1381,7 +1381,7 @@ export default {
                         }).catch(err => {
                             console.log(err);
                         })
-                        $fetch('http://localhost:8000/api/user/findQustioncorrect/' + this.getId, {
+                        $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustioncorrect/' + this.getId, {
                             method: 'POST',
                             body: this.filtring
                         }).then(res => {

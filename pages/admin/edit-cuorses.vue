@@ -102,7 +102,7 @@ export default {
       editItem(id) {
          var name = document.getElementById('name').value
          var price = document.getElementById('price').value
-         $fetch("http://localhost:8000/api/courses/" + id, {
+         $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/courses/" + id, {
             method: "PUT",
             body: {
                name:name,
@@ -134,7 +134,7 @@ export default {
             buttonsStyling: false,
          }).then((result) => {
             if (result.isConfirmed) {
-               $fetch("http://localhost:8000/api/courses/" + id, {
+               $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/courses/" + id, {
                   method: "DELETE",
                }).then(res => {
                   this.$store.dispatch("SetCourses");

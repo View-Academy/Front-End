@@ -293,14 +293,13 @@ export default {
 
     mounted() {
         console.log(this.getSeries);
-     
-  
-        var x = sessionStorage.getItem("info");
-        this.$store.dispatch("yourAction", JSON.parse(x));
-        console.log(this.getOmittedArray);
         var x = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x));
         this.$store.dispatch("SetPreviousQuize");
+  
+        
+        console.log(this.getOmittedArray);
+    
         this.length = this.getPreviousQuizes.length
 
 

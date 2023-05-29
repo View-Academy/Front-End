@@ -305,303 +305,301 @@
 
         <!-- <NavbarTransparent /> -->
 
-        <div class="">
-            <div class="row">
-                <div class="tab-content " id="pills-tabContent2">
-                    <div v-for="(item, index) of input" :key="index" class="tab-pane fade containt5"
-                        :class="index === 0 ? 'show active ' : null" :id="item.name" role="tabpanel"
-                        aria-labelledby="pills-home-tab">
-                        <nav id="navbarBlur" class="bg-Navbar justify-content-between  navbar navbar-main">
-                            <div class="text-center" @click="mark(item)">
-                                <span>Item {{ index + 1 }} of {{ item.length1 }} </span>
-                                <span class="d-block"><strong>Question Id</strong>:{{ item.id }}</span>
+
+        <div class="row">
+            <div class="tab-content" id="pills-tabContent2">
+                <div v-for="(item, index) of input" :key="index" class="tab-pane fade containt5"
+                    :class="index === 0 ? 'show active ' : null" :id="item.name" role="tabpanel"
+                    aria-labelledby="pills-home-tab">
+                    <nav id="navbarBlur" class="bg-Navbar justify-content-between  navbar navbar-main">
+                        <div class="text-center" @click="mark(item)">
+                            <span>Item {{ index + 1 }} of {{ item.length1 }} </span>
+                            <span class="d-block"><strong>Question Id</strong>:{{ item.id }}</span>
+
+                        </div>
+                        <ul class=" d-flex hedar4">
+                            <li>
+                                <div class="marked1" @click="mark(item, id)">
+                                    <a class=" text-body">
+                                        <i class="fa fa-flag-o   margin9"></i>
+                                        <span class="text-blod m-2 margin9">Mark</span>
+                                    </a>
+                                </div>
+                            </li>
+                            <li class=" marked mx-3">
+                                <div @click="previous(index)">
+                                    <a class=" text-body d-flex ml-2  ">
+                                        <i class="fa fa-chevron-left margin9  "></i>
+                                    </a>
+                                    <span class="text-sm">Previous</span>
+                                </div>
+                            </li>
+                            <li class=" marked mx-3">
+                                <div class="" @click="next(index)">
+                                    <a class=" text-body d-flex ml-2  ">
+                                        <i class="fa fa-chevron-right margin9  "></i>
+                                    </a>
+                                    <span class="text-sm">Next</span>
+                                </div>
+                            </li>
+                            <li class=" marked mx-4">
+                                <div @click="openFullscreen()">
+                                    <a class=" text-body d-flex ml-2  ">
+                                        <i class="fa fa-external-link  margin9  "></i>
+                                    </a>
+                                    <span class="text-sm">Full Screen</span>
+                                </div>
+                            </li>
+                            <li class="flex-row marked mx-4">
+                                <div data-bs-toggle="modal" @click="changeData(item)" data-bs-target="#exampleModal12"
+                                    data-bs-whatever="@mdo">
+                                    <a class=" text-body d-flex mx-2  ">
+                                        <i class="fa fa-sticky-note-o  margin9  "></i>
+                                    </a>
+                                    <span class="text-sm mx-3 ">Note</span>
+                                </div>
+                            </li>
+                            <li class="flex-row marked mx-6">
+                                <div data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
+                                    <a class=" text-body d-flex ml-2">
+                                        <i class="fa fa-thermometer-quarter margin9"></i>
+                                    </a>
+                                    <span class="text-sm">Lab Value</span>
+                                </div>
+                            </li>
+                            <li class="flex-row marked mx-6">
+                                <div @click="zoomOut()">
+                                    <a class=" text-body d-flex ml-2  ">
+                                        <i class="fa fa-search-minus  margin9  "></i>
+                                    </a>
+                                    <span class="text-sm">Zoom out</span>
+                                </div>
+                            </li>
+                            <li class="flex-row marked mx-4">
+                                <div @click="zoomI()">
+                                    <a class=" text-body d-flex ml-2">
+                                        <i class="fa fa-search-plus  margin9  "></i>
+                                    </a>
+                                    <span class="text-sm">Zoom in</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="row rowSecations">
+                        <div class="col-md-9 mx-7 my-4 ">
+                            <strong id="qustion" class="" @mouseup="(e) => selecation(e)">{{ item.questiontext
+                            }}</strong>
+                        </div>
+                        <div class=" col-md-5 ">
+                            <div :id="item.questiontext" class="accordion" @click="(e) => checkIfCorecet(item, e.target)">
+                                <ol type="A" id="a" class="qustion3 m-5 ">
+                                    <li>
+                                        <div class="form-check">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q1" :value="item.q1">
+                                            <label class="form-check-label" :id="item.q1" :for="item.questiontext">
+                                                <strong>{{ item.q1 }} </strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q2" :value="item.q2">
+                                            <label class="form-check-label" :id="item.q2" :for="item.questiontext">
+                                                <strong>{{ item.q2 }}</strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q3" :value="item.q3">
+                                            <label class="form-check-label" :id="item.q3" :for="item.questiontext">
+                                                <strong>{{ item.q3 }} </strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q4" :value="item.q4">
+                                            <label class="form-check-label" :id="item.q4" :for="item.q4">
+                                                <strong> {{ item.q4 }}</strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-check ">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q5" :value="item.q5">
+                                            <label class="form-check-label" :id="item.q5" :for="item.q5">
+                                                <strong> {{ item.q5 }}</strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li v-if="!item.q6 == ''">
+                                        <div class="form-check ">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q6" :value="item.q6">
+                                            <label class="form-check-label" :id="item.q6" :for="item.q6">
+                                                <strong>{{ item.q6 }}</strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li v-if="!item.q7 == ''">
+                                        <div class="form-check ">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q7" :value="item.q7">
+                                            <label class="form-check-label" :id="item.q7" :for="item.q7">
+                                                <strong>{{ item.q7 }}</strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                    <li v-if="!item.q8 == ''">
+                                        <div class="form-check">
+                                            <i class=""></i>
+                                            <input class="form-check-input" type="radio" :name="item.questiontext"
+                                                :id="item.q8" :value="item.q8">
+                                            <label class="form-check-label" :id="item.q8" :for="item.q8">
+                                                <strong>{{ item.q8 }}</strong>
+                                            </label>
+                                        </div>
+                                    </li>
+                                </ol>
+                                <button class="mb-0  submit m-5 mb-5 " :id="item.questiontext" type="button"
+                                    @click=" showSwal(item)" title="Send">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+                        <div class=" d-inline mx-5  my-4 col-md-4 image12  " v-if="!item.img == ''">
+                            <img :src="item.img" width="800" alt="profile_image" class="shadow-sm  border-radius-lg" />
+                        </div>
+                        <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanation">
+                            <div class="card borderIncorect">
+                                <div class="card-header contintIncorct">
+                                    <h4 class="card-title text-danger">Incorrect Answer</h4>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Correct answer</p>
+                                    <p class="card-text">{{ item.answer1 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 mt-5 px-5" v-if="item.togeleexplanation">
+                            <strong class="  mt-5 ">Explanation</strong>
+                            <hr class="dropdown-divider" />
+                        </div>
+                        <div class=" col-md-12 mb-11 p-5 font-weight-bold" v-if="item.togeleexplanation">
+                            <div class="row">
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-danger">{{ item.courses }}</h4>
+                                    <div>Courses</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-danger">{{ item.subject }}</h4>
+                                    <div>Subject</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-danger">{{ item.systems }}</h4>
+                                    <div>Systems</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-danger">{{ item.topic }}</h4>
+                                    <div>Topic</div>
+                                </span>
 
                             </div>
-                            <ul class=" d-flex hedar4">
-                                <li>
-                                    <div class="marked1" @click="mark(item, id)">
-                                        <a class=" text-body">
-                                            <i class="fa fa-flag-o   margin9"></i>
-                                            <span class="text-blod m-2 margin9">Mark</span>
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class=" marked mx-3">
-                                    <div @click="previous(index)">
-                                        <a class=" text-body d-flex ml-2  ">
-                                            <i class="fa fa-chevron-left margin9  "></i>
-                                        </a>
-                                        <span class="text-sm">Previous</span>
-                                    </div>
-                                </li>
-                                <li class=" marked mx-3">
-                                    <div class="" @click="next(index)">
-                                        <a class=" text-body d-flex ml-2  ">
-                                            <i class="fa fa-chevron-right margin9  "></i>
-                                        </a>
-                                        <span class="text-sm">Next</span>
-                                    </div>
-                                </li>
-                                <li class=" marked mx-6">
-                                    <div @click="openFullscreen()">
-                                        <a class=" text-body d-flex ml-2  ">
-                                            <i class="fa fa-external-link  margin9  "></i>
-                                        </a>
-                                        <span class="text-sm">Full Screen</span>
-                                    </div>
-                                </li>
-                                <li class="flex-row marked mx-4">
-                                    <div data-bs-toggle="modal" @click="changeData(item)" data-bs-target="#exampleModal12"
-                                        data-bs-whatever="@mdo">
-                                        <a class=" text-body d-flex mx-2  ">
-                                            <i class="fa fa-sticky-note-o  margin9  "></i>
-                                        </a>
-                                        <span class="text-sm mx-3 ">Note</span>
-                                    </div>
-                                </li>
-                                <li class="flex-row marked mx-6">
-                                    <div data-bs-toggle="modal" data-bs-target="#staticBackdrop1">
-                                        <a class=" text-body d-flex ml-2">
-                                            <i class="fa fa-thermometer-quarter margin9"></i>
-                                        </a>
-                                        <span class="text-sm">Lab Value</span>
-                                    </div>
-                                </li>
-                                <li class="flex-row marked mx-6">
-                                    <div @click="zoomOut()">
-                                        <a class=" text-body d-flex ml-2  ">
-                                            <i class="fa fa-search-minus  margin9  "></i>
-                                        </a>
-                                        <span class="text-sm">Zoom out</span>
-                                    </div>
-                                </li>
-                                <li class="flex-row marked mx-6">
-                                    <div @click="zoomI()">
-                                        <a class=" text-body d-flex ml-2">
-                                            <i class="fa fa-search-plus  margin9  "></i>
-                                        </a>
-                                        <span class="text-sm">Zoom in</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </nav>
+                            {{ item.explanation }}
+                        </div>
+                        <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanationCorect">
+                            <div class="card contintcorct">
+                                <div class="card-header contintIncorct">
+                                    <h4 class="card-title text-success">Answered Correctly </h4>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Correct answer</p>
+                                    <p class="card-text">{{ item.answer1 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 mt-5 px-5" v-if="item.togeleexplanationCorect">
 
-                        <div class="row rowSecations">
-                            <div class="col-md-11 mx-7 my-4 ">
-                                <strong id="qustion" class="" @mouseup="(e) => selecation(e)">{{ item.questiontext
-                                }}</strong>
+                            <strong class="  mt-5 ">Explanation</strong>
+                            <hr class="dropdown-divider" />
+                        </div>
+                        <div class="col-md-12 mb-11  p-5 font-weight-bold incorcerctSecations"
+                            v-if="item.togeleexplanationCorect">
+                            <div class="row">
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-success">{{ item.courses }}</h4>
+                                    <div>Courses</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-success">{{ item.subject }}</h4>
+                                    <div>Subject</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-success">{{ item.systems }}</h4>
+                                    <div>Systems</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-success">{{ item.topic }}</h4>
+                                    <div>Topic</div>
+                                </span>
                             </div>
-                            <div class=" col-md-4 ">
+                            {{ item.explanation }}
+                        </div>
+                        <div class=" col-md-8 mb-5   text-bg-danger mx-5" v-if="item.omitted">
+                            <div class="card omitted2">
+                                <div class="card-header contintIncorct">
+                                    <h4 class="card-title text-info">Omitted Answer </h4>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Correct answer</p>
+                                    <p class="card-text">{{ item.answer1 }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class=" col-md-12 mt-5 px-5" v-if="item.omitted">
 
-                                <div :id="item.questiontext" class="accordion"
-                                    @click="(e) => checkIfCorecet(item, e.target)">
-                                    <ol type="A" id="a" class="qustion3 m-5 ">
-                                        <li>
-                                            <div class="form-check">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q1" :value="item.q1">
-                                                <label class="form-check-label" :id="item.q1" :for="item.questiontext">
-                                                    <strong>{{ item.q1 }} </strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q2" :value="item.q2">
-                                                <label class="form-check-label" :id="item.q2" :for="item.questiontext">
-                                                    <strong>{{ item.q2 }}</strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q3" :value="item.q3">
-                                                <label class="form-check-label" :id="item.q3" :for="item.questiontext">
-                                                    <strong>{{ item.q3 }} </strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q4" :value="item.q4">
-                                                <label class="form-check-label" :id="item.q4" :for="item.q4">
-                                                    <strong> {{ item.q4 }}</strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check ">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q5" :value="item.q5">
-                                                <label class="form-check-label" :id="item.q5" :for="item.q5">
-                                                    <strong> {{ item.q5 }}</strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li v-if="!item.q6 == ''">
-                                            <div class="form-check ">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q6" :value="item.q6">
-                                                <label class="form-check-label" :id="item.q6" :for="item.q6">
-                                                    <strong>{{ item.q6 }}</strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li v-if="!item.q7 == ''">
-                                            <div class="form-check ">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q7" :value="item.q7">
-                                                <label class="form-check-label" :id="item.q7" :for="item.q7">
-                                                    <strong>{{ item.q7 }}</strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li v-if="!item.q8 == ''">
-                                            <div class="form-check">
-                                                <i class=""></i>
-                                                <input class="form-check-input" type="radio" :name="item.questiontext"
-                                                    :id="item.q8" :value="item.q8">
-                                                <label class="form-check-label" :id="item.q8" :for="item.q8">
-                                                    <strong>{{ item.q8 }}</strong>
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                    <button class="mb-0  submit m-5 mb-5 " :id="item.questiontext" type="button"
-                                        @click=" showSwal(item)" title="Send">
-                                        Submit
-                                    </button>
-                                </div>
+                            <strong class="  mt-5 ">Explanation</strong>
+                            <hr class="dropdown-divider" />
+                        </div>
+                        <div class="col-md-12 d-inline  mb-11  p-5 font-weight-bold" v-if="item.omitted">
+                            <div class="row">
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-info">{{ item.courses }}</h4>
+                                    <div>Courses</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-info">{{ item.subject }}</h4>
+                                    <div>Subject</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-info">{{ item.systems }}</h4>
+                                    <div>Systems</div>
+                                </span>
+                                <span class="d-inline col-md-3">
+                                    <h4 class="d-inline text-info">{{ item.topic }}</h4>
+                                    <div>Topic</div>
+                                </span>
                             </div>
-                            <div class=" d-inline mx-5  my-4 col-md-4 image12  " v-if="!item.img == ''">
-                                <img :src="item.img" width="800" alt="profile_image" class="shadow-sm  border-radius-lg" />
-                            </div>
-                            <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanation">
-                                <div class="card borderIncorect">
-                                    <div class="card-header contintIncorct">
-                                        <h4 class="card-title text-danger">Incorrect Answer</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">Correct answer</p>
-                                        <p class="card-text">{{ item.answer1 }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-12 mt-5 px-5" v-if="item.togeleexplanation">
-                                <strong class="  mt-5 ">Explanation</strong>
-                                <hr class="dropdown-divider" />
-                            </div>
-                            <div class=" col-md-12 mb-11 p-5 font-weight-bold" v-if="item.togeleexplanation">
-                                <div class="row">
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-danger">{{ item.courses }}</h4>
-                                        <div>Courses</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-danger">{{ item.subject }}</h4>
-                                        <div>Subject</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-danger">{{ item.systems }}</h4>
-                                        <div>Systems</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-danger">{{ item.topic }}</h4>
-                                        <div>Topic</div>
-                                    </span>
-
-                                </div>
-                                {{ item.explanation }}
-                            </div>
-                            <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanationCorect">
-                                <div class="card contintcorct">
-                                    <div class="card-header contintIncorct">
-                                        <h4 class="card-title text-success">Answered Correctly </h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">Correct answer</p>
-                                        <p class="card-text">{{ item.answer1 }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-12 mt-5 px-5" v-if="item.togeleexplanationCorect">
-
-                                <strong class="  mt-5 ">Explanation</strong>
-                                <hr class="dropdown-divider" />
-                            </div>
-                            <div class="col-md-12 mb-11  p-5 font-weight-bold incorcerctSecations"
-                                v-if="item.togeleexplanationCorect">
-                                <div class="row">
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-success">{{ item.courses }}</h4>
-                                        <div>Courses</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-success">{{ item.subject }}</h4>
-                                        <div>Subject</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-success">{{ item.systems }}</h4>
-                                        <div>Systems</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-success">{{ item.topic }}</h4>
-                                        <div>Topic</div>
-                                    </span>
-                                </div>
-                                {{ item.explanation }}
-                            </div>
-                            <div class=" col-md-8 mb-5   text-bg-danger mx-5" v-if="item.omitted">
-                                <div class="card omitted2">
-                                    <div class="card-header contintIncorct">
-                                        <h4 class="card-title text-info">Omitted Answer </h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="card-text">Correct answer</p>
-                                        <p class="card-text">{{ item.answer1 }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class=" col-md-12 mt-5 px-5" v-if="item.omitted">
-
-                                <strong class="  mt-5 ">Explanation</strong>
-                                <hr class="dropdown-divider" />
-                            </div>
-                            <div class="col-md-12 d-inline  mb-11  p-5 font-weight-bold" v-if="item.omitted">
-                                <div class="row">
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-info">{{ item.courses }}</h4>
-                                        <div>Courses</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-info">{{ item.subject }}</h4>
-                                        <div>Subject</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-info">{{ item.systems }}</h4>
-                                        <div>Systems</div>
-                                    </span>
-                                    <span class="d-inline col-md-3">
-                                        <h4 class="d-inline text-info">{{ item.topic }}</h4>
-                                        <div>Topic</div>
-                                    </span>
-                                </div>
-                                {{ item.explanation }}
-                            </div>
+                            {{ item.explanation }}
                         </div>
                     </div>
                 </div>
             </div>
+
 
         </div>
         <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -870,14 +868,14 @@ export default {
 
 
             $fetch("http://localhost:8000/api/user/matchmark/" + this.getId + "/" + res.id, {
-                    method: 'PUT',
-                }).then(res => {
-                    console.log("res");
+                method: 'PUT',
+            }).then(res => {
+                console.log("res");
 
-                }).catch(err => {
-                    console.log(err);
+            }).catch(err => {
+                console.log(err);
 
-                })
+            })
             var element2 = document.getElementById(`${res.name}-tab`);
             element2.previousElementSibling.classList.add("spinner1")
             element2.previousElementSibling.classList.add("fa")
@@ -890,7 +888,7 @@ export default {
             span.appendChild(range.extractContents());
             range.insertNode(span);
         },
-        
+
         checkedVal(res) {
             var value;
             var ele1 = document.getElementsByName(res.questiontext);
@@ -1247,16 +1245,7 @@ html {
     justify-content: space-around !important
 }
 
-.navbarTop {
-    width: 168px;
-    position: fixed !important;
-    bottom: 0;
-    overflow: hidden;
-    background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
-    border: #717582 solid 1px;
-    overflow: scroll;
 
-}
 
 .zoom {
     zoom: 2;
@@ -1319,24 +1308,33 @@ html {
     background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
 
 }
+.navbarTop {
+    width: 140px;
+    position: fixed !important;
+    bottom: 0;
+    overflow: hidden;
+    background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
+    border: #717582 solid 1px;
+    overflow: scroll;
+
+}
 
 .footerA {
     overflow: hidden;
     background-color: #3852a4;
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 90%;
 }
 
 .continer12 {
-    margin-left: 168px !important;
+    margin-left: 140px !important;
     background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
     height: 100%;
 }
 
 
 .stiker {
-
     height: 200px;
 }
 
@@ -1359,6 +1357,7 @@ html {
 .marked :hover {
     background-color: #283294;
 
-}</style>
+}
+</style>
 
 

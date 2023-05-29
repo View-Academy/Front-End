@@ -112,7 +112,7 @@ export default {
                   price: this.price,
                 
                }
-               $fetch('http://localhost:8000/api/courses', {
+               $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/courses', {
                   method: 'POST',
                   body: data
                }).then(res => {
