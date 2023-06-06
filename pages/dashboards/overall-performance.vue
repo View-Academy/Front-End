@@ -105,7 +105,7 @@
                     </div>
                     <div class="p-5 card-body">
                         <div class="chart">
-                            <apexchart height="400" :options="chartOptions" :series="getSeries"></apexchart>
+                            <apexchart height="400" :options="chartOptions" :series="series2"></apexchart>
                         </div>
                     </div>
                 </div>
@@ -117,8 +117,30 @@
                         <h6>{{ title2 }}</h6>
                     </div>
                     <div class="p-5 card-body">
-                        <div class="chart">
-                            <apexchart height="400" :options="chartOptions2" :series="data2"></apexchart>
+                        <div class="chart d-flex justify-content-center">
+                            <PieChart :chart-options="{
+                                colors: ['#17c1e8', '#4BB543', '#3A416F',],
+                                labels: ['Total Questions', 'Used Questions', 'Unused Questions',],
+                                legend: {
+                                    show: false,
+                                },
+                                dataLabels: {
+                                    enabled: false,
+                                },
+                                responsive: [
+                                    {
+                                        breakpoint: 480,
+                                        options: {
+                                            chart: {
+                                                width: 200,
+                                            },
+                                            legend: {
+                                                position: 'bottom',
+                                            },
+                                        },
+                                    },
+                                ],
+                            }" :series="series3" width="250" />
                         </div>
                     </div>
                 </div>
@@ -135,6 +157,7 @@ import OutlinedCounterCard from "~~/pagesComponents/ecommerce/referral/OutlinedC
 import TransparentInfoCard from "~~/pagesComponents/ecommerce/referral/TransparentInfoCard.vue";
 import ComplexBackgroundCard from "~~/pagesComponents/ecommerce/referral/ComplexBackgroundCard.vue";
 import OrdersListCard from "@/examples/cards/OrdersListCard.vue";
+import PieChart from "~~/examples/charts/PieChart.vue";
 import { mapGetters } from "vuex";
 
 export default {
@@ -145,7 +168,8 @@ export default {
         ComplexBackgroundCard,
         OrdersListCard,
         MiniStatisticsCard,
-        ProgressDoughnutChart
+        ProgressDoughnutChart,
+        PieChart
     },
     data() {
         return {
@@ -153,63 +177,47 @@ export default {
             title2: "Total Correct & Total Used",
             length: 0,
             corect: 0,
-
+            series2: [],
+            series3: [1,2],
             Incorectcorect: 0,
             omttid: 0,
-            data2: [this.getMarkArray,6,17],
-            data3: [11, 16,20,30],
+            series: [
+                {
+                    name: "Your Perfomance",
+                    data: [],
+                },
+            ],
             chartOptions: {
+
                 chart: {
+                    height: 300,
                     type: "polarArea",
                 },
-                colors: ["#d63031", "#5e72e4", "#b2bec3"],
-                labels: ["Total Incorrect", "Total Omitted", "Total Mark"],
+                colors: ["#f1c40f", "#e74c3c","#2980b9","#00b894"],
+                labels: ["Mark", "Incorrect ", "Omitted","Correct"],
+
                 stroke: {
                     colors: ["#fff"],
-                    responsive: [
-                        {
-                            breakpoint: 480,
-                            options: {
-                                chart: {
-                                    width: 200,
-                                },
-                                legend: {
-                                    position: "bottom",
-                                },
-                            },
-                        },
-                    ],
                 },
                 fill: {
-                    opacity: 0.8,
+                    opacity: 0.9,
                 },
-            },
-            chartOptions2: {
-                chart: {
-                    type: "polarArea",
-                },
-                colors: ["#d63031", "#82d616",],
-                labels: ["Total Total Used", "Total Correct"],
-                stroke: {
-                    colors: ["#fff"],
-                    responsive: [
-                        {
-                            breakpoint: 480,
-                            options: {
-                                chart: {
-                                    width: 200,
-                                },
-                                legend: {
-                                    position: "bottom",
-                                },
+                responsive: [
+                    {
+                        breakpoint: 480,
+                        options: {
+                            chart: {
+                                width: 400,
+                            },
+                            legend: {
+                                position: "top",
                             },
                         },
-                    ],
-                },
-                fill: {
-                    opacity: 0.8,
-                },
+                    },
+                ],
+
             },
+
             users: [
                 {
                     title: "Alice Vinget",
@@ -277,7 +285,7 @@ export default {
 
     },
     computed: {
-        ...mapGetters(["getUserInfo","getSeries", "getMarkArray", "getPreviousQuizes", "getOmittedArray", "getIncorrectArray", "getCorrectArray"]),
+        ...mapGetters(["getUserInfo", "getSeries", "getMarkArray", "getPreviousQuizes", "getOmittedArray", "getIncorrectArray", "getCorrectArray"]),
         // a computed getter
 
     },
@@ -288,19 +296,26 @@ export default {
             this.Incorectcorect += element.incorrectAnswer
             this.omttid += element.omitedte
         });
-     
+
     },
 
     mounted() {
+      
+   
         console.log(this.getSeries);
         var x = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x));
         this.$store.dispatch("SetPreviousQuize");
-  
-        
+        this.$store.dispatch("SetQuize");
         console.log(this.getOmittedArray);
-    
         this.length = this.getPreviousQuizes.length
+        this.series2.push(this.getMarkArray)
+        this.series2.push(this.getIncorrectArray)
+        this.series2.push(this.getOmittedArray)
+        this.series2.push(this.getCorrectArray)
+        
+        
+       
 
 
 

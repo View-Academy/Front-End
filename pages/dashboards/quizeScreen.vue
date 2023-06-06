@@ -1,4 +1,4 @@
-<template class="templet1">
+<template class="templet1" ref="target">
     <aside id="sidenav-main" class="sidenav navbar navbar-vertical z-index-3 navbar-expand-xs border-3 navbarTop ">
         <ul class="nav flex-column nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <li v-for="(item, index) of input" :key="index" class="nav-item " role="presentation" :id="index + `haloo`">
@@ -303,6 +303,7 @@
             </div>
         </div>
 
+
         <!-- <NavbarTransparent /> -->
 
 
@@ -386,12 +387,51 @@
                         </ul>
                     </nav>
 
+
                     <div class="row rowSecations">
                         <div class="col-md-9 mx-7 my-4 ">
-                            <strong id="qustion" class="" @mouseup="(e) => selecation(e)">{{ item.questiontext
+                            <strong id="qustion" class="">{{ item.questiontext
                             }}</strong>
                         </div>
+
                         <div class=" col-md-5 ">
+                            <div v-if="showMenu" class="custom-menu"
+                                :style="{ top: menuTop + 'px', left: menuLeft + 'px' }">
+                                <div class="row ">
+                                    <ul class=" d-flex hedar4">
+                                        <li>
+
+                                            <button class=" m-0 buttonY">
+                                                <div class="" @click="selecation()">
+                                                    <i class="fa  fa-pencil text-warning  "></i>
+                                                    <span class="text-blod mx-2 ">selecation</span>
+                                                </div>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class="m-0 buttonY">
+                                                <div>
+
+                                                    <i class="fa fa-flag-o text-info "></i>
+                                                    <span class="text-blod mx-2 ">Mark</span>
+
+                                                </div>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <button class=" m-0 buttonY">
+                                                <div data-bs-target="#exampleModal13" data-bs-whatever="@mdo"
+                                                    data-bs-toggle="modal">
+                                                    <i class="fa fa-bolt   text-warning "></i>
+                                                    <span class="text-blod mx-2 ">Flash Card</span>
+                                                </div>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <!-- Additional menu items or actions -->
+                            </div>
                             <div :id="item.questiontext" class="accordion" @click="(e) => checkIfCorecet(item, e.target)">
                                 <ol type="A" id="a" class="qustion3 m-5 ">
                                     <li>
@@ -599,9 +639,8 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
+
         <div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -623,8 +662,43 @@
                             message</button>
                     </div>
                 </div>
+
             </div>
         </div>
+
+        <!-- FLASH CARD -->
+        <div class="modal fade" id="exampleModal13" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleInputPassword1" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Open second modal</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FLASH CARD -->
+
+        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
 
         <footer class="footerA">
             <div class="timer   d-inline ">Block Time:</div>
@@ -636,7 +710,7 @@
             </div>
             <div class="timer d-inline  mx-6 endQuiz " data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                 @click="savequize()">
-                <i class="fa fa-ban text-2xl mx-2" aria-hidden="true"> </i>
+                <i class="fa fa-ban text-2xl " aria-hidden="true"> </i>
                 <strong>End Quiz</strong>
 
             </div>
@@ -667,15 +741,17 @@ import { useNavStore } from "~~/stores/NavStore";
 import DoughnutChart from "~~/examples/charts/DoughnutChart.vue";
 import OutlinedCounterCard from "~~/pagesComponents/ecommerce/referral/OutlinedCounterCard.vue";
 import logo from "../../assets/img/viweAcadmy.png";
+import CustomMenu from './CustomMenu.vue'
 import { mapGetters } from "vuex";
 
 export default {
     name: "quizeScreen",
-    components: { SidenavList, Sidenav, OutlinedCounterCard, DoughnutChart, MiniStatisticsCard, AccordionItem, AppFooter, PricingCard, NavbarTransparent, headerImg, TodoList, InfoCard, Navbar, FooterCentered, DefaultInfoCard },
+    components: { CustomMenu, SidenavList, Sidenav, OutlinedCounterCard, DoughnutChart, MiniStatisticsCard, AccordionItem, AppFooter, PricingCard, NavbarTransparent, headerImg, TodoList, InfoCard, Navbar, FooterCentered, DefaultInfoCard },
 
     props: ["data1"],
     data() {
         return {
+            text: '',
             all: [],
             good: [],
             activeClass: "js-active position-relative",
@@ -686,6 +762,10 @@ export default {
             inputhalooo: [],
             array: [],
             input: [],
+            selectedText: '',
+            showMenu: false,
+            menuTop: 0,
+            menuLeft: 0,
             correctAnswer: 0,
             incorrectAnswer: 0,
             navStore: "",
@@ -738,6 +818,19 @@ export default {
     },
 
     methods: {
+        handleSelection() {
+            this.selectedText = window.getSelection().toString();
+            if (this.selectedText) {
+                const selection = window.getSelection().getRangeAt(0);
+                const { top, left } = selection.getBoundingClientRect();
+                this.menuTop = top - 50; // Adjust the position as needed
+                this.menuLeft = left;
+                this.showMenu = true;
+            } else {
+                this.showMenu = false;
+            }
+
+        },
         openFullscreen() {
             var elem = document.documentElement;
             if (elem.requestFullscreen) {
@@ -747,6 +840,12 @@ export default {
             } else if (elem.msRequestFullscreen) { /* IE11 */
                 elem.msRequestFullscreen();
             }
+        },
+        covvv() {
+            console.log("khaleed");
+        },
+        handleClick() {
+            console.log(this.selectedText);
         },
 
         savequize() {
@@ -779,6 +878,21 @@ export default {
             }).then(res => {
                 navigateTo('/dashboards/default')
             })
+        },
+        handleMouseUp(event) {
+            const selectedText = window.getSelection().toString();
+            if (selectedText.length > 0) {
+                this.showCustomMenu(event.pageX, event.pageY);
+            } else {
+                this.hideCustomMenu();
+            }
+        },
+        showCustomMenu(x, y) {
+            this.$refs.customMenu.showMenu = true;
+            this.$refs.customMenu.menuPosition = { top: y, left: x };
+        },
+        hideCustomMenu() {
+            this.$refs.customMenu.showMenu = false;
         },
 
         changeData(data, id) {
@@ -835,10 +949,6 @@ export default {
             minutesLabel.innerHTML = this.pad(parseInt(this.totalSeconds / 60));
         },
 
-
-        changeColor() {
-
-        },
         pad(val) {
             var valString = val + "";
             if (valString.length < 2) {
@@ -888,6 +998,13 @@ export default {
             span.appendChild(range.extractContents());
             range.insertNode(span);
         },
+        selecation2() {
+            var range = window.getSelection().getRangeAt(0);
+            let span = document.createElement("span");
+            span.style.backgroundColor = "#f5f5f5";
+            span.appendChild(range.extractContents());
+            range.insertNode(span);
+        },
 
         checkedVal(res) {
             var value;
@@ -903,12 +1020,16 @@ export default {
         },
 
 
+
         checkIfCorecet(res, e) {
             const h = res.answer1
             const h2 = e.value
             this.corectAnswer12 = h2
             this.valueChecded = h2
             console.log(this.corectAnswer12);
+        },
+        testFunction1() {
+            console.log(window.getSelection().toString());
         },
 
 
@@ -1016,13 +1137,31 @@ export default {
                 });
             }
 
+        },
+        getSelectedText() {
+            var selectedText = "";
 
+            if (window.getSelection) {
+                selectedText = window.getSelection().toString();
+            } else if (document.selection && document.selection.type != "Control") {
+                selectedText = document.selection.createRange().text;
+            }
+
+            return selectedText;
         }
 
 
     },
 
+
     mounted() {
+        document.addEventListener('mouseup', this.handleSelection)
+        // var myDiv = document.getElementById("myDiv");
+
+        // myDiv.addEventListener("mouseup", function () {
+        //     var selectedText = getSelectedText();
+        //     console.log(selectedText);
+        // });
 
         var x = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x));
@@ -1077,13 +1216,18 @@ html {
     background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%);
 }
 
-.templet1 {
-    background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
 
-}
 
 .hedar4 {
     list-style-type: none;
+}
+
+.buttonY {
+    border: none;
+}
+
+.buttonY:hover {
+    background-color: #a3afd5;
 }
 
 .corectAnswer {
@@ -1110,6 +1254,53 @@ html {
     cursor: pointer;
     padding: 10px;
 
+}
+
+.sele {
+    cursor: pointer;
+    font-size: 12px;
+
+}
+
+.custom-menu {
+    color: #ebedf5;
+    position: absolute;
+    background: #fbc531;
+    border: 1px solid rgb(176, 32, 32);
+    margin: 0;
+
+}
+
+#customMenu {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    padding: 8px;
+    z-index: 1000;
+}
+
+#customMenu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#customMenu li {
+    cursor: pointer;
+}
+
+#customMenu li:hover {
+    background-color: #ddd;
+}
+
+.menu-item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #ccc;
 }
 
 .endQuiz:hover {
@@ -1300,14 +1491,13 @@ html {
     color: #15234d;
     padding: 5px;
     border-radius: 20px;
-
-
 }
 
 .containt5 {
     background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%) !important;
 
 }
+
 .navbarTop {
     width: 140px;
     position: fixed !important;
@@ -1324,7 +1514,7 @@ html {
     background-color: #3852a4;
     position: fixed;
     bottom: 0;
-    width: 90%;
+    width: 100%;
 }
 
 .continer12 {
@@ -1337,6 +1527,19 @@ html {
 .stiker {
     height: 200px;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+
 
 .marked {
     font-size: 17px;

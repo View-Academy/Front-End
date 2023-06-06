@@ -90,7 +90,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr :class="colorChange(data)" v-for="data2 of data.arrayqustion" :key="data2">
+                                                                <tr  v-for="data2 of data.arrayqustion" :key="data2">
                                                                     <td class="text-xs font-weight-bold ">
                                                                         <div class="d-flex  align-items-center">
                                                                             <span>{{ data2.questiontext }}</span>
@@ -175,14 +175,18 @@ export default {
             
         }
     },
+
+
+
     mounted() {
         var x = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x));
         this.$store.dispatch("SetPreviousQuize");
-
-
     },
 };
+
+
+
 </script>
 <style  scoped>
 .green {

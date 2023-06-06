@@ -174,7 +174,7 @@ export default {
     components: { BarChartHorizontal, GradientLineChart, MiniStatisticsCard, TodoList, PieChart },
     data() {
         return {
-            series2: [],
+            series2: [0],
             Progress: [
                 {
                     name: 'Progress Graph ',

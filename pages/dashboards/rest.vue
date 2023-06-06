@@ -344,8 +344,6 @@ export default {
                 if (result.isConfirmed) {
                     $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/pullomitted/' + this.getId, {
                         method: 'PUT',
-
-
                     }).then(res => {
                         this.$store.dispatch("SetNotes");
                         this.$swal({

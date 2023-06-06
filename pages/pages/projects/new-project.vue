@@ -85,6 +85,7 @@ import Choices from "choices.js";
 definePageMeta({
     layout: "default",
 });
+
 export default {
     components: { QuillEditor, flatPickr },
     data() {
@@ -197,11 +198,6 @@ export default {
                 }
             });
         }
-
-
-
-
-
     },
     methods: {
         async inputqusizez(data) {
