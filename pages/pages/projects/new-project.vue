@@ -31,7 +31,7 @@
                         This is how others will learn about the project, so make it good!
                     </p>
                     <div id="editor">
-                        <quill-editor theme="snow" v-model:content="quillContent" contentType="html" />
+                        <quill-editor   theme="snow" v-model:content="quillContent" contentType="html" />
                     </div>
                     <label class="mt-4 form-label">Project Tags</label>
                     <select id="choices-multiple-remove-button" class="form-control" name="choices-multiple-remove-button"

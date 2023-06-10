@@ -1,20 +1,23 @@
 <template>
-    <div class="py-4 container-fluid">
-
-
-        <div class="mt-4 row">
-       
-
-        </div>
-        <div class="mt-4 row">
-            <div class="col-12">
-                <OrdersListCard title="Top Selling Products" :headers="['Product', 'Value', 'Ads Spent', 'Refunds']"
-                    :lists="products" />
+    <div class="mt-12">
+        <div class="row">
+            <div class="col-md-3 mt-4">
+                <div class="card btn">
+                    <div class="card-header p-3 pb-0">
+                        <h6 class="mb-1">Password requirements</h6>
+                        <p class="text-sm mb-0">
+                            Please follow this guide for a strong password:
+                        </p>
+                    </div>
+                    <div class="card-body p-3">
+                        <ul class="text-muted ps-4 mb-0">
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
-  
 <script>
 import ChannelsCard from "~~/pagesComponents/ecommerce/overview/ChannelsCard.vue";
 import RevenueCard from "~~/pagesComponents/ecommerce/overview/RevenueCard.vue";

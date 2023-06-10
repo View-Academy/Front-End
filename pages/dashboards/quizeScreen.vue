@@ -352,7 +352,7 @@
                                 </div>
                             </li>
                             <li class="flex-row marked mx-4">
-                                <div data-bs-toggle="modal" @click="changeData(item)" data-bs-target="#exampleModal12"
+                                <div @click="changeData(item)" data-bs-toggle="modal" data-bs-target="#exampleModal12"
                                     data-bs-whatever="@mdo">
                                     <a class=" text-body d-flex mx-2  ">
                                         <i class="fa fa-sticky-note-o  margin9  "></i>
@@ -387,7 +387,6 @@
                         </ul>
                     </nav>
 
-
                     <div class="row rowSecations">
                         <div class="col-md-9 mx-7 my-4 ">
                             <strong id="qustion" class="">{{ item.questiontext
@@ -403,26 +402,26 @@
 
                                             <button class=" m-0 buttonY">
                                                 <div class="" @click="selecation()">
-                                                    <i class="fa  fa-pencil text-warning  "></i>
-                                                    <span class="text-blod mx-2 ">selecation</span>
+                                                    <i class="fa  fa-circle  dotColor  "></i>
+                                                    <span class="text-blod mx-2 ">highlight</span>
                                                 </div>
                                             </button>
                                         </li>
                                         <li>
-                                            <button class="m-0 buttonY">
+                                            <button class="m-0 buttonY" data-bs-toggle="modal"
+                                                data-bs-target="#exampleModal12" data-bs-whatever="@mdo"
+                                                @click="selectedNote()">
                                                 <div>
-
                                                     <i class="fa fa-flag-o text-info "></i>
-                                                    <span class="text-blod mx-2 ">Mark</span>
-
+                                                    <span class="text-blod mx-2 ">Note</span>
                                                 </div>
                                             </button>
                                         </li>
                                         <li>
-                                            <button class=" m-0 buttonY">
+                                            <button class=" m-0 buttonY" @click="flashCard">
                                                 <div data-bs-target="#exampleModal13" data-bs-whatever="@mdo"
                                                     data-bs-toggle="modal">
-                                                    <i class="fa fa-bolt   text-warning "></i>
+                                                    <i class="fa fa-bolt text-warning "></i>
                                                     <span class="text-blod mx-2 ">Flash Card</span>
                                                 </div>
                                             </button>
@@ -651,8 +650,8 @@
                     <div class="modal-body">
                         <form>
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="Note" :value="Note"></textarea>
+                                <label for="message-text" class="col-form-label">Note:</label>
+                                <textarea class="form-control" id="Note" rows="20" :value="Note"></textarea>
                             </div>
                         </form>
                     </div>
@@ -672,33 +671,82 @@
             <div class="modal-dialog modal-xl modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+                        <h5 class="modal-title" id="exampleModalToggleLabel">Flash Card</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
+                        <div class="row">
+                            <!-- <div class="col-sm-4 col-6">
+                                <select id="choices-gender" class="form-control" name="choices-gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div> -->
+                            <!-- <div class="col-sm-4 col-6 ">
+                                <ArgonButton color="dark" variant="gradient" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal15">
+                                    <i class="fas fa-plus me-2"></i>
+                                    Add New Card
+                                </ArgonButton>
+                            </div> -->
+                        </div>
                         <form>
-                            <div class="mb-3">
-                                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp">
-                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleInputPassword1" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1">
+                            <div class="row">
+                                <div class="mb-3 col-6">
+                                    <label for="exampleInputEmail1" class="form-label">Fornt </label>
+                                    <div id="editor">
+                                        <textarea class="form-control" v-model="front" rows="15"
+                                            placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                    </div>
+                                    <div class="form-text"><strong> Keyboard Shortcuts: Copy </strong> -> CTRL + C and Paste
+                                        -> CTRL + V</div>
+                                </div>
+                                <div class="mb-3 col-6">
+                                    <label for="exampleInputPassword1" class="form-label">Back</label>
+                                    <div id="editor">
+                                        <textarea class="form-control" :value="back" rows="15"
+                                            placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
-                            data-bs-dismiss="modal">Open second modal</button>
+                        <button class="btn btn-primary" @click="addflashCard" data-bs-target="#exampleModalToggle2"
+                            data-bs-toggle="modal" data-bs-dismiss="modal">Save</button>
+                        <button class="btn btn-info" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                            data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
         </div>
         <!-- FLASH CARD -->
+        <div class="modal fade" id="exampleModal15" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Card Name</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
 
-        <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+
+                        <input type="email" class="form-control" id="exampleFormControlInput1"
+                            placeholder="name@example.com">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            data-bs-target="#exampleModal13" data-bs-whatever="@mdo" data-bs-toggle="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            data-bs-target="#exampleModal13" data-bs-whatever="@mdo" data-bs-toggle="modal">Save
+                            changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <footer class="footerA">
             <div class="timer   d-inline ">Block Time:</div>
@@ -743,14 +791,23 @@ import OutlinedCounterCard from "~~/pagesComponents/ecommerce/referral/OutlinedC
 import logo from "../../assets/img/viweAcadmy.png";
 import CustomMenu from './CustomMenu.vue'
 import { mapGetters } from "vuex";
+import { QuillEditor } from "@vueup/vue-quill";
 
 export default {
     name: "quizeScreen",
-    components: { CustomMenu, SidenavList, Sidenav, OutlinedCounterCard, DoughnutChart, MiniStatisticsCard, AccordionItem, AppFooter, PricingCard, NavbarTransparent, headerImg, TodoList, InfoCard, Navbar, FooterCentered, DefaultInfoCard },
+    components: { QuillEditor, CustomMenu, SidenavList, Sidenav, OutlinedCounterCard, DoughnutChart, MiniStatisticsCard, AccordionItem, AppFooter, PricingCard, NavbarTransparent, headerImg, TodoList, InfoCard, Navbar, FooterCentered, DefaultInfoCard },
 
     props: ["data1"],
     data() {
         return {
+            content: '',
+            editorOptions: {
+                // Quill editor options here
+            },
+            selectedValue: '',
+            quillInstance: null,
+            front: "",
+            back: "",
             text: '',
             all: [],
             good: [],
@@ -818,17 +875,21 @@ export default {
     },
 
     methods: {
+        onEditorReady(editorInstance) {
+            this.quillInstance = editorInstance;
+        },
+        handleSelectionChange() {
+
+            this.front = window.getSelection().toString();
+
+        },
         handleSelection() {
-            this.selectedText = window.getSelection().toString();
-            if (this.selectedText) {
-                const selection = window.getSelection().getRangeAt(0);
-                const { top, left } = selection.getBoundingClientRect();
-                this.menuTop = top - 50; // Adjust the position as needed
-                this.menuLeft = left;
-                this.showMenu = true;
-            } else {
-                this.showMenu = false;
-            }
+            const selection = window.getSelection().getRangeAt(0);
+            const { top, left } = selection.getBoundingClientRect();
+            this.menuTop = top - 50; // Adjust the position as needed
+            this.menuLeft = left;
+            this.showMenu = true;
+
 
         },
         openFullscreen() {
@@ -896,7 +957,7 @@ export default {
         },
 
         changeData(data, id) {
-            this.Note == ""
+            this.Note = ""
             this.questiontext = data.questiontext
             this.explanation = data.explanation
             this.correctAnswer3 = data.answer1
@@ -941,6 +1002,10 @@ export default {
             })
             document.getElementById('Note').value = ""
         },
+        Note11() {
+            this.Note = ""
+
+        },
         myTimer() {
             var minutesLabel = document.getElementById("minutes");
             var secondsLabel = document.getElementById("seconds");
@@ -981,7 +1046,6 @@ export default {
                 method: 'PUT',
             }).then(res => {
                 console.log("res");
-
             }).catch(err => {
                 console.log(err);
 
@@ -991,8 +1055,35 @@ export default {
             element2.previousElementSibling.classList.add("fa")
             element2.previousElementSibling.classList.add("fa-flag");
         },
+        selectedNote() {
+            this.Note = window.getSelection().toString();
+        },
+        flashCard() {
+            this.front = window.getSelection().toString();
+            this.back = window.getSelection().toString();
+        },
+        addflashCard() {
+            var data = {
+                khaleed: [{
+                    fornt: this.front,
+                    back: this.back
+                }]
+            }
+
+
+
+
+            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashCard/" + this.getId, {
+                method: 'POST',
+                body: data
+            }).then(res => {
+                console.log(res);
+            })
+
+        },
         selecation() {
             var range = window.getSelection().getRangeAt(0);
+
             let span = document.createElement("span");
             span.style.backgroundColor = "yellow";
             span.appendChild(range.extractContents());
@@ -1152,10 +1243,19 @@ export default {
 
 
     },
+    beforeDestroy() {
+        document.removeEventListener('mouseup', this.handleSelection);
+
+    },
+
 
 
     mounted() {
+        document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
+});
         document.addEventListener('mouseup', this.handleSelection)
+
         // var myDiv = document.getElementById("myDiv");
 
         // myDiv.addEventListener("mouseup", function () {
@@ -1216,6 +1316,14 @@ html {
     background-image: linear-gradient(#fcfcfc 0px, #d7dced 100%);
 }
 
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 
 
 .hedar4 {
@@ -1224,6 +1332,8 @@ html {
 
 .buttonY {
     border: none;
+    background-color: #040403;
+    color: #d7dced;
 }
 
 .buttonY:hover {
@@ -1256,6 +1366,10 @@ html {
 
 }
 
+.dotColor {
+    color: #fbc531;
+}
+
 .sele {
     cursor: pointer;
     font-size: 12px;
@@ -1265,7 +1379,7 @@ html {
 .custom-menu {
     color: #ebedf5;
     position: absolute;
-    background: #fbc531;
+    background: #040403;
     border: 1px solid rgb(176, 32, 32);
     margin: 0;
 

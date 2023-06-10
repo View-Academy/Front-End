@@ -173,7 +173,7 @@ onMounted(() => {
 });
 
 function logOut() {
-    sessionStorage.clear()
+    // sessionStorage.clear()
     navigateTo('/authentication/signin/basic')
 
 }

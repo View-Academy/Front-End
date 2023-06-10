@@ -23,7 +23,7 @@
                     <SidenavItem to="/dashboards/previous-test" mini-icon="P" text="Previous Test" />
                     <SidenavItem to="/dashboards/generate-quiz" mini-icon="G" text="Generate Quiz" />
                     <SidenavItem to="/dashboards/overall-performance" mini-icon="O" text="Overall Performance" />
-                    <SidenavItem to="/dashboards/default" mini-icon="F" text="Flash Card (Soon)" />
+                    <SidenavItem to="/dashboards/flash-card" mini-icon="F" text="Flash Card (pending)" />
                     <SidenavItem to="/dashboards/notes" mini-icon="N" text="Note" />
                     <SidenavItem to="/dashboards/rest" mini-icon="R" text="Reset" />
                     <!-- <SidenavItem
@@ -86,7 +86,7 @@
                 </sidenav-collapse>
 
             </li>
-            <li class="nav-item" v-if="haloo">
+            <!-- <li class="nav-item" v-if="haloo">
                 <sidenav-collapse collapse-ref="pagesExamples" nav-text="Pages"
                     :class="getRoute === 'pages' ? 'active' : ''">
                     <template #icon>
@@ -135,9 +135,9 @@
                         </ul>
                     </template>
                 </sidenav-collapse>
-            </li>
+            </li> -->
 
-            <li class="nav-item" v-if="haloo">
+            <!-- <li class="nav-item" v-if="haloo">
                 <sidenav-collapse collapse-ref="applicationsExamples" nav-text="Applications"
                     :class="getRoute === 'applications' ? 'active' : ''">
                     <template #icon>
@@ -152,11 +152,11 @@
                         </ul>
                     </template>
                 </sidenav-collapse>
-            </li>
+            </li> -->
             <!-- hear man -->
 
 
-            <li class="nav-item" v-if="haloo">
+            <!-- <li class="nav-item" v-if="haloo">
                 <sidenav-collapse collapse-ref="ecommerceExamples" nav-text="Ecommerce"
                     :class="getRoute === 'ecommerce' ? 'active' : ''">
                     <template #icon>
@@ -185,7 +185,7 @@
                         </ul>
                     </template>
                 </sidenav-collapse>
-            </li>
+            </li> -->
 
             <!-- <li class="nav-item" v-if="haloo">
             <sidenav-collapse collapse-ref="authExamples" nav-text="Authentication"
