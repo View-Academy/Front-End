@@ -558,9 +558,11 @@
                                 </span>
 
                             </div>
-                            {{ item.explanation }}
+                           <hr class="dropdown-divider" />
+                            <p v-html="replacedString(item.explanation)" class="mb-9">
+                            </p>
                         </div>
-                        <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5   " v-if="item.togeleexplanationCorect">
+                        <div class=" col-md-8 mb-5 mt-5 text-bg-danger mx-5 " v-if="item.togeleexplanationCorect">
                             <div class="card contintcorct">
                                 <div class="card-header contintIncorct">
                                     <h4 class="card-title text-success">Answered Correctly </h4>
@@ -596,7 +598,9 @@
                                     <div>Topic</div>
                                 </span>
                             </div>
-                            {{ item.explanation }}
+                            <hr class="dropdown-divider" />
+                            <p v-html="replacedString(item.explanation)" class="mb-9">
+                            </p>
                         </div>
                         <div class=" col-md-8 mb-5   text-bg-danger mx-5" v-if="item.omitted">
                             <div class="card omitted2">
@@ -614,7 +618,7 @@
                             <strong class="  mt-5 ">Explanation</strong>
                             <hr class="dropdown-divider" />
                         </div>
-                        <div class="col-md-12 d-inline  mb-11  p-5 font-weight-bold" v-if="item.omitted">
+                        <div class="col-md-12 d-inline mb-12  px-5 font-weight-bold" id="omttid22" v-if="item.omitted">
                             <div class="row">
                                 <span class="d-inline col-md-3">
                                     <h4 class="d-inline text-info">{{ item.courses }}</h4>
@@ -633,7 +637,9 @@
                                     <div>Topic</div>
                                 </span>
                             </div>
-                            {{ item.explanation }}
+                            <hr class="dropdown-divider" />
+                            <p v-html="replacedString(item.explanation)" class="mb-9">
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -676,19 +682,6 @@
                     </div>
                     <div class="modal-body">
                         <div class="row">
-                            <!-- <div class="col-sm-4 col-6">
-                                <select id="choices-gender" class="form-control" name="choices-gender">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div> -->
-                            <!-- <div class="col-sm-4 col-6 ">
-                                <ArgonButton color="dark" variant="gradient" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal15">
-                                    <i class="fas fa-plus me-2"></i>
-                                    Add New Card
-                                </ArgonButton>
-                            </div> -->
                         </div>
                         <form>
                             <div class="row">
@@ -706,7 +699,6 @@
                                     <div id="editor">
                                         <textarea class="form-control" :value="back" rows="15"
                                             placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-
                                     </div>
                                 </div>
                             </div>
@@ -730,11 +722,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-
-
                         <input type="email" class="form-control" id="exampleFormControlInput1"
                             placeholder="name@example.com">
-
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
@@ -746,7 +735,6 @@
                 </div>
             </div>
         </div>
-
 
         <footer class="footerA">
             <div class="timer   d-inline ">Block Time:</div>
@@ -760,17 +748,12 @@
                 @click="savequize()">
                 <i class="fa fa-ban text-2xl " aria-hidden="true"> </i>
                 <strong>End Quiz</strong>
-
             </div>
-
-
         </footer>
     </main>
 </template>
 <script>
-// function disableBack() { window.history.forward(); }
-// setTimeout(disableBack(), 0);
-// window.onunload = function () { null };
+
 import Sidenav from "~~/examples/Sidenav";
 import SidenavList from "../../examples/Sidenav/SidenavList.vue";
 import NavbarTransparent from "@/examples/Navbar/Transparent.vue";
@@ -871,17 +854,31 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["getUserInfo", "getId"])
+        ...mapGetters(["getUserInfo", "getId"]),
+
     },
 
     methods: {
+        replacedString(item) {
+            const originalString = `<pre  style="
+    font-family: 'Open Sans';
+    font-weight: bold;
+"> ${item}</pre>`;
+            const regex = /\[image src="(.*?)" width="(.*?)"\]/;
+            const match = regex.exec(originalString);
+            const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
+            const width = match ? match[2] : '';
+            const replacedString = originalString.replace(regex, `<div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
+    /* margin-left: 30px; */
+    margin: 0 632px;
+"></div>`);
+            return replacedString;
+        },
         onEditorReady(editorInstance) {
             this.quillInstance = editorInstance;
         },
         handleSelectionChange() {
-
             this.front = window.getSelection().toString();
-
         },
         handleSelection() {
             const selection = window.getSelection().getRangeAt(0);
@@ -1125,6 +1122,7 @@ export default {
 
 
         showSwal(res, e) {
+
             this.all.push(res)
             console.log(this.all);
             // document.getElementById(res.questiontext)
@@ -1251,9 +1249,10 @@ export default {
 
 
     mounted() {
-        document.addEventListener('contextmenu', function(e) {
-  e.preventDefault();
-});
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
         document.addEventListener('mouseup', this.handleSelection)
 
         // var myDiv = document.getElementById("myDiv");
@@ -1355,6 +1354,10 @@ body {
     transform: scale(1.1);
 }
 
+.imageHover:hover {
+    width: 500px;
+    cursor: pointer;
+}
 
 .corectAnswer2 {
     color: green !important;
@@ -1539,7 +1542,7 @@ body {
 }
 
 .rowSecations {
-    max-height: 1700px;
+
     overflow: hidden;
 }
 
