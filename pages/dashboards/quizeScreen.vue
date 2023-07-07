@@ -873,7 +873,7 @@ export default {
             const replacedString = originalString.replace(regex, `<div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
             /* margin-left: 30px; */
             margin-left:  527px;
-        "></div>`);
+        "> </div><br>`);
             return replacedString;
         },
         onEditorReady(editorInstance) {
