@@ -558,7 +558,7 @@
                                 </span>
 
                             </div>
-                           <hr class="dropdown-divider" />
+                            <hr class="dropdown-divider" />
                             <p v-html="replacedString(item.explanation)" class="mb-9">
                             </p>
                         </div>
@@ -861,17 +861,17 @@ export default {
     methods: {
         replacedString(item) {
             const originalString = `<pre  style="
-    font-family: 'Open Sans';
-    font-weight: bold;
-"> ${item}</pre>`;
+            font-family: 'Open Sans';
+            font-weight: bold;
+        "> ${item}</pre>`;
             const regex = /\[image src="(.*?)" width="(.*?)"\]/;
             const match = regex.exec(originalString);
             const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
             const width = match ? match[2] : '';
             const replacedString = originalString.replace(regex, `<div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
-    /* margin-left: 30px; */
-    margin: 0 632px;
-"></div>`);
+            /* margin-left: 30px; */
+            margin: 0 527px;
+        "></div>`);
             return replacedString;
         },
         onEditorReady(editorInstance) {
