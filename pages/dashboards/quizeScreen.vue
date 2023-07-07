@@ -870,10 +870,10 @@ export default {
             const match = regex.exec(originalString);
             const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
             const width = match ? match[2] : '';
-            const replacedString = originalString.replace(regex, `<div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
+            const replacedString = originalString.replace(regex, ` <hr class="dropdown-divider" /><div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
             /* margin-left: 30px; */
             margin-left:  527px;
-        "> </div><br>`);
+        "> </div>   <hr class="dropdown-divider" /><br>`);
             return replacedString;
         },
         onEditorReady(editorInstance) {
