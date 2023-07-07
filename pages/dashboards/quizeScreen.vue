@@ -865,14 +865,14 @@ export default {
             font-weight: bold;
             white-space: pre-wrap;
             
-        " class="  "> ${item}</pre>`;
+        " class="col-md-10  "> ${item}</pre>`;
             const regex = /\[image src="(.*?)" width="(.*?)"\]/;
             const match = regex.exec(originalString);
             const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
             const width = match ? match[2] : '';
             const replacedString = originalString.replace(regex, `<div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
             /* margin-left: 30px; */
-            margin: 0 527px;
+            margin-left:  527px;
         "></div>`);
             return replacedString;
         },
