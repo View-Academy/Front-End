@@ -863,7 +863,9 @@ export default {
             const originalString = `<pre  style="
             font-family: 'Open Sans';
             font-weight: bold;
-        "> ${item}</pre>`;
+            white-space: pre-wrap;
+            
+        " class="  "> ${item}</pre>`;
             const regex = /\[image src="(.*?)" width="(.*?)"\]/;
             const match = regex.exec(originalString);
             const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
