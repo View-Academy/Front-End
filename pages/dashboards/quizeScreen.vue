@@ -859,23 +859,46 @@ export default {
     },
 
     methods: {
-        replacedString(item) {
+        // replacedString(item) {
+        //     const originalString = `<pre  style="
+        //     font-family: 'Open Sans';
+        //     font-weight: bold;
+        //     white-space: pre-wrap;
+
+        // " class="col-md-10  "> ${item}</pre>`;
+        //     const regex = /\[image src="(.*?)" width="(.*?)"\]/;
+        //     const match = regex.exec(originalString);
+        //     const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
+        //     const width = match ? match[2] : '';
+        //     const replacedString = originalString.replace(regex, `<hr class="dropdown-divider" /><div><img src="${imageUrl}"  alt="Image" width="${width}" style="
+        //     /* margin-left: 30px; */
+        //     margin-left:  527px;
+        // "> </div>   <hr class="dropdown-divider" /><br>`);
+        //     return replacedString;
+        // },
+        replacedString(str) {
+            const regex = /\[image src="(.*?)" width="(.*?)"\]/g;
             const originalString = `<pre  style="
             font-family: 'Open Sans';
             font-weight: bold;
             white-space: pre-wrap;
-            
-        " class="col-md-10  "> ${item}</pre>`;
-            const regex = /\[image src="(.*?)" width="(.*?)"\]/;
-            const match = regex.exec(originalString);
-            const imageUrl = match ? match[1] : '';// Replace with your dynamic image URL
-            const width = match ? match[2] : '';
-            const replacedString = originalString.replace(regex, ` <hr class="dropdown-divider" /><div  ><img src="${imageUrl}"  alt="Image" width="${width}" style="
-            /* margin-left: 30px; */
-            margin-left:  527px;
-        "> </div>   <hr class="dropdown-divider" /><br>`);
+
+        " class="col-md-10  "> ${str}</pre>`;
+            const replacedString = originalString.replace(regex, (match, imageUrl) => {
+                // Call your function here passing the originalString and imageUrl
+                this.yourFunction(originalString, imageUrl);
+                return `<hr class="dropdown-divider" /><img src="${imageUrl}" alt="Image" style="
+             margin-left: 30px; 
+           margin-left:  527px;"> <hr class="dropdown-divider" /><br>`;
+            });
             return replacedString;
         },
+        yourFunction(originalString, imageUrl) {
+            // Implement your logic using the originalString and imageUrl
+            console.log('Original String:', originalString);
+            console.log('Image URL:', imageUrl);
+        },
+
         onEditorReady(editorInstance) {
             this.quillInstance = editorInstance;
         },
