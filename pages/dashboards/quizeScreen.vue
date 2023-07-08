@@ -884,12 +884,13 @@ export default {
             white-space: pre-wrap;
 
         " class="col-md-10  "> ${str}</pre>`;
-            const replacedString = originalString.replace(regex, (match, imageUrl) => {
+
+            const replacedString = originalString.replace(regex, (match, imageUrl,width) => {
                 // Call your function here passing the originalString and imageUrl
               
                 return `<hr class="dropdown-divider" /><img src="${imageUrl}" alt="Image" style="
              margin-left: 30px; 
-           margin-left:  527px;"> <hr class="dropdown-divider" /><br>`;
+           margin-left:  527px;" width="${width}"> <hr class="dropdown-divider" /><br>`;
             });
             return replacedString;
         },
