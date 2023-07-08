@@ -886,18 +886,14 @@ export default {
         " class="col-md-10  "> ${str}</pre>`;
             const replacedString = originalString.replace(regex, (match, imageUrl) => {
                 // Call your function here passing the originalString and imageUrl
-                this.yourFunction(originalString, imageUrl);
+              
                 return `<hr class="dropdown-divider" /><img src="${imageUrl}" alt="Image" style="
              margin-left: 30px; 
            margin-left:  527px;"> <hr class="dropdown-divider" /><br>`;
             });
             return replacedString;
         },
-        yourFunction(originalString, imageUrl) {
-            // Implement your logic using the originalString and imageUrl
-            console.log('Original String:', originalString);
-            console.log('Image URL:', imageUrl);
-        },
+        
 
         onEditorReady(editorInstance) {
             this.quillInstance = editorInstance;
