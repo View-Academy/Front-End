@@ -165,12 +165,17 @@ import { useNavStore } from "~~/stores/NavStore";
 import { useStore } from 'vuex'
 const navStore = useNavStore();
 const store = useStore();
-var name = store.getters.getEmail
+// var name = store.getters.getEmail
+
+
+const name = computed(() => store.getters.getEmail);
+
 
 onMounted(() => {
     // var x = sessionStorage.getItem("info");
     // this.$store.dispatch("yourAction", JSON.parse(x));
 });
+
 
 function logOut() {
     // sessionStorage.clear()

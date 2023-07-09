@@ -47,11 +47,11 @@
                                         <div class="m-3 row text-start">
                                             <div class="form-check">
                                                 <div class="row text-start">
-                                                    <div class="mt-3 col-lg-3 col-md-5  text-start"
+                                                    <div class="mt-3 col-lg-4 col-md-5  text-start "
                                                         v-for="choice in getMyCourses" :key="choice">
                                                         <input type="radio" :id="choice" @change="(e) => onChange(e)"
                                                             v-model="Courses" name="getMyCourses" :value="choice">
-                                                        <label class="form-check-label" :for="choice">
+                                                        <label class="form-check-label font-weight-bolder" :for="choice">
                                                             {{ choice }}
                                                         </label>
                                                     </div>
@@ -73,21 +73,21 @@
                                                 <div class="mt-3 col-lg-3 col-md-5  text-start">
                                                     <input type="checkbox" id="choice" @change="unck()" value="unused"
                                                         class="form-check-input">
-                                                    <label class="form-check-label" :for="choice">
+                                                    <label class="form-check-label font-weight-bold " :for="choice">
                                                         Unused Questions
                                                     </label>
                                                 </div>
                                                 <div class="mt-3 col-lg-3 col-md-5  text-start">
                                                     <input type="checkbox" id="choice" @change="unck()" value="correct"
                                                         class="form-check-input" v-model="TypeQustion">
-                                                    <label class="form-check-label" :for="choice">
+                                                    <label class="form-check-label font-weight-bold " :for="choice">
                                                         Correct Questions
                                                     </label>
                                                 </div>
                                                 <div class="mt-3 col-lg-3 col-md-5  text-start">
                                                     <input type="checkbox" id="choice" @change="unck()" value="Omitted"
                                                         class="form-check-input" v-model="TypeQustion">
-                                                    <label class="form-check-label" :for="choice">
+                                                    <label class="form-check-label font-weight-bold   " :for="choice">
                                                         Omitted Questions
                                                     </label>
                                                 </div>
@@ -95,21 +95,21 @@
                                                 <div class="mt-3 col-lg-3 col-md-5  text-start">
                                                     <input type="checkbox" id="choice" @change="unck()" value="Incorrect"
                                                         class="form-check-input" v-model="TypeQustion">
-                                                    <label class="form-check-label" :for="choice">
+                                                    <label class="form-check-label font-weight-bold " :for="choice">
                                                         Incorrect Questions
                                                     </label>
                                                 </div>
                                                 <div class="mt-3 col-lg-3 col-md-5  text-start">
                                                     <input type="checkbox" id="choice" @change="unck()" value="Mark"
                                                         class="form-check-input" v-model="TypeQustion">
-                                                    <label class="form-check-label" :for="choice">
+                                                    <label class="form-check-label font-weight-bold " :for="choice">
                                                         Mark Questions
                                                     </label>
                                                 </div>
                                                 <div class="mt-3 col-lg-3 col-md-5  text-start">
                                                     <input type="checkbox" id="choice" @change="unck()" value="All"
                                                         class="form-check-input" v-model="TypeQustion">
-                                                    <label class="form-check-label" :for="choice">
+                                                    <label class="form-check-label font-weight-bold " :for="choice">
                                                         All Questions
                                                     </label>
                                                 </div>
@@ -372,14 +372,10 @@ export default {
             this.subjects = [];
             this.systems = [];
             this.topics = [];
-
             var get = document.getElementsByName('getMyCourses');
-
             for (var i = 0; i < get.length; i++) {
-
                 get[i].checked = false;
             }
-
         },
 
         async GenerateQuize() {
@@ -580,13 +576,9 @@ export default {
                                     }
                                 });
                             }
-
-
                         }).catch(err => {
                             console.log(err);
                         })
-
-
                     }
                     if (element === "All") {
                         $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user/findQustionomitted/' + this.getId, {

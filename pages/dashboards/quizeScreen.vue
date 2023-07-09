@@ -83,7 +83,6 @@
                 </div>
             </div>
         </div>
-
         <div class="modal fade" id="staticBackdrop1" tabindex="-1" data-bs-backdrop="static"
             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl  d-flex justify-content-center">
@@ -388,9 +387,9 @@
                     </nav>
 
                     <div class="row rowSecations">
-                        <div class="col-md-9 mx-7 my-4 ">
-                            <strong id="qustion" class="">{{ item.questiontext
-                            }}</strong>
+                        <div class="col-md-9 mx-7 my-4 mb-6">
+                            <pre id="qustion" class="text-qustion">{{ item.questiontext
+                            }}</pre>
                         </div>
 
                         <div class=" col-md-5 ">
@@ -882,19 +881,18 @@ export default {
             font-family: 'Open Sans';
             font-weight: bold;
             white-space: pre-wrap;
+        " class="col-md-10"> ${str}</pre>`;
 
-        " class="col-md-10  "> ${str}</pre>`;
-
-            const replacedString = originalString.replace(regex, (match, imageUrl,width) => {
+            const replacedString = originalString.replace(regex, (match, imageUrl, width) => {
                 // Call your function here passing the originalString and imageUrl
-              
+
                 return `<hr class="dropdown-divider" /><img src="${imageUrl}" alt="Image" style="
              margin-left: 30px; 
            margin-left:  527px;" width="${width}"> <hr class="dropdown-divider" /><br>`;
             });
             return replacedString;
         },
-        
+
 
         onEditorReady(editorInstance) {
             this.quillInstance = editorInstance;
@@ -1016,14 +1014,11 @@ export default {
                     },
                     buttonsStyling: false,
                 });
-
-
             })
             document.getElementById('Note').value = ""
         },
         Note11() {
             this.Note = ""
-
         },
         myTimer() {
             var minutesLabel = document.getElementById("minutes");
@@ -1091,7 +1086,6 @@ export default {
 
 
 
-
             $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashCard/" + this.getId, {
                 method: 'POST',
                 body: data
@@ -1141,6 +1135,9 @@ export default {
         testFunction1() {
             console.log(window.getSelection().toString());
         },
+
+
+
 
 
         showSwal(res, e) {
@@ -1401,6 +1398,13 @@ body {
 
 }
 
+.text-qustion {
+    font-family: 'Open Sans';
+    font-weight: bold;
+    white-space: pre-wrap;
+    font-size: large;
+}
+
 .custom-menu {
     color: #ebedf5;
     position: absolute;
@@ -1564,7 +1568,7 @@ body {
 }
 
 .rowSecations {
-
+margin-bottom: 100px;
     overflow: hidden;
 }
 
@@ -1654,6 +1658,7 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+    margin-top: 12px;
 }
 
 .continer12 {

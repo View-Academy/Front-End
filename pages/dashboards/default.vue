@@ -270,7 +270,6 @@ export default {
     },
 
     mounted() {
-
         var x1 = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x1));
         this.$store.dispatch("SetPreviousQuize");
@@ -279,8 +278,6 @@ export default {
         console.log(typeof this.GetyourScore);
         const UsedQuastions = this.TotalIncorrectAnswer + this.TotalCorrectAnswer;
         const UnusedQuastions = this.getQuizes.length - (this.TotalIncorrectAnswer + this.TotalCorrectAnswer);
-
-
 
         this.series2.push(this.getQuizes.length)
         this.series2.push(UsedQuastions)
