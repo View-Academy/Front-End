@@ -119,8 +119,8 @@
                     <div class="p-5 card-body">
                         <div class="chart d-flex justify-content-center">
                             <PieChart :chart-options="{
-                                colors: ['#17c1e8', '#4BB543', '#3A416F',],
-                                labels: ['Total Questions', 'Used Questions', 'Unused Questions',],
+                                colors: ['#17c1e8', '#34495e',],
+                                labels: [ 'Used Questions', 'Unused Questions',],
                                 legend: {
                                     show: false,
                                 },
@@ -174,7 +174,7 @@ export default {
     data() {
         return {
             title: "QBank Usage",
-            title2: "Total Correct & Total Used",
+            title2: "Used Questions & Unused Questionsd",
             length: 0,
             corect: 0,
             series2: [],
