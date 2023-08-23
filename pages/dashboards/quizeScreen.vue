@@ -678,6 +678,18 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalToggleLabel">Flash Card</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-title px-2 " id="exampleModalToggleLabel">
+                            <button type="button" class="btn btn-primary btn-sm mt-5" data-bs-target="#exampleModal135"
+                                data-bs-whatever="@mdo" data-bs-toggle="modal">Add Secation</button>
+                        </div>
+                        <div class="modal-title" id="exampleModalToggleLabel">
+                            <h5 for="dropdown">Select an Secation</h5>
+                            <select id="dropdown" v-model="selectedItem">
+                                <option v-for="(input, index) of getUserTypes" :key="index" :value="input">{{ input }}
+                                </option>
+
+                            </select>
+                        </div>
                     </div>
                     <div class="modal-body">
                         <div class="row">
@@ -708,6 +720,29 @@
                             data-bs-toggle="modal" data-bs-dismiss="modal">Save</button>
                         <button class="btn btn-info" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
                             data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="exampleModal135" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+            tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Secation Name</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name"
+                            v-model="typevlue">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            data-bs-target="#exampleModal13" data-bs-whatever="@mdo" data-bs-toggle="modal">Close</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
+                            data-bs-target="#exampleModal13" @click="addType()" data-bs-whatever="@mdo"
+                            data-bs-toggle="modal">Save
+                            changes</button>
                     </div>
                 </div>
             </div>
@@ -786,6 +821,8 @@ export default {
             editorOptions: {
                 // Quill editor options here
             },
+            typevlue: "",
+            selectedItem: 'action',
             selectedValue: '',
             quillInstance: null,
             front: "",
@@ -824,7 +861,6 @@ export default {
             unused: 0,
             rusalut: 0,
             chartOptions: {
-
                 chart: {
                     type: "donut",
                 },
@@ -853,8 +889,14 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["getUserInfo", "getId"]),
+        ...mapGetters(["getUserInfo", "getId", "getUserTypes"]),
 
+    },
+    created() {
+        // Check if getUserTypes array is not empty before setting the default selection
+        if (this.getUserTypes.length > 0) {
+            this.selectedItem = this.getUserTypes[0]; // Set the default selected item to the first item in the list
+        }
     },
 
     methods: {
@@ -891,6 +933,45 @@ export default {
            margin-left:  527px;" width="${width}"> <hr class="dropdown-divider" /><br>`;
             });
             return replacedString;
+        },
+
+        addType() {
+            if (this.typevlue === "") {
+
+                this.$swal({
+                    icon: "info",
+                    title: "<strong>You cannot leave the field empty</strong>",
+                 
+            
+                    focusConfirm: false,
+              
+                    cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
+                    cancelButtonAriaLabel: "Thumbs down",
+                    customClass: {
+                        confirmButton: "btn bg-gradient-success",
+                        cancelButton: "btn bg-gradient-danger",
+                    },
+                    buttonsStyling: false,
+                });
+
+            } else {
+
+                $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/types/" + this.getId + "/" + this.typevlue, {
+                    method: "POST",
+                }).then(res => {
+                    this.$swal({
+                        icon: "success",
+                        title: "Updated successfully!",
+                        text: "You clicked the button!",
+                    });
+                    this.$store.dispatch('SetOrder')
+                }).catch(e => {
+                    console.log(e);
+                });
+                this.$store.dispatch("SetTypes");
+
+            }
+
         },
 
 
@@ -1076,39 +1157,60 @@ export default {
             this.front = window.getSelection().toString();
             this.back = window.getSelection().toString();
         },
+
+
         addflashCard() {
-            var data = {
-                khaleed: [{
-                    fornt: this.front,
-                    back: this.back
-                }]
+
+
+            if (this.typevlue === "") {
+
+                this.$swal({
+                    icon: "info",
+                    title: "<strong>You Must To Select Or Add -   <u> Type</u></strong>",
+                    focusConfirm: false,
+                    confirmButtonAriaLabel: "Thumbs up, great!",
+                    cancelButtonAriaLabel: "Thumbs down",
+                    customClass: {
+                        confirmButton: "btn bg-gradient-success",
+                        cancelButton: "btn bg-gradient-danger",
+                    },
+                    buttonsStyling: false,
+                });
+
+            } else {
+
+                const data = {
+                    front: this.front, // قم بتعيين this.front بالقيمة المناسبة
+                    back: this.back,
+                    type: this.selectedItem // قم بتعيين this.back بالقيمة المناسبة
+                };
+
+
+                $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashCard/" + this.getId, {
+                    method: 'POST',
+                    body: data
+                }).then(res => {
+                    console.log(res);
+                })
+
             }
 
 
 
-            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashCard/" + this.getId, {
-                method: 'POST',
-                body: data
-            }).then(res => {
-                console.log(res);
-            })
+
+
+            // Send the object (you can send it to an API endpoint using fetch or any other method)
+
 
         },
         selecation() {
             var range = window.getSelection().getRangeAt(0);
-
             let span = document.createElement("span");
             span.style.backgroundColor = "yellow";
             span.appendChild(range.extractContents());
             range.insertNode(span);
         },
-        selecation2() {
-            var range = window.getSelection().getRangeAt(0);
-            let span = document.createElement("span");
-            span.style.backgroundColor = "#f5f5f5";
-            span.appendChild(range.extractContents());
-            range.insertNode(span);
-        },
+
 
         checkedVal(res) {
             var value;
@@ -1283,6 +1385,7 @@ export default {
 
         var x = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x));
+        this.$store.dispatch("SetTypes");
         console.log(this.getId);
         this.startIntariver1 = 0
         this.startIntariver1 = clearTimeout(this.myTimer)
@@ -1568,7 +1671,7 @@ body {
 }
 
 .rowSecations {
-margin-bottom: 100px;
+    margin-bottom: 100px;
     overflow: hidden;
 }
 

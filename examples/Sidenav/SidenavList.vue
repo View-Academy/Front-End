@@ -23,7 +23,7 @@
                     <SidenavItem to="/dashboards/previous-test" mini-icon="P" text="Previous Test" />
                     <SidenavItem to="/dashboards/generate-quiz" mini-icon="G" text="Generate Quiz" />
                     <SidenavItem to="/dashboards/overall-performance" mini-icon="O" text="Overall Performance" />
-                    <SidenavItem to="/dashboards/flash-card" mini-icon="F" text="Flash Card (pending)" />
+                    <SidenavItem to="/dashboards/flash-card" mini-icon="F" text="Flash Card " />
                     <SidenavItem to="/dashboards/notes" mini-icon="N" text="Note" />
                     <SidenavItem to="/dashboards/rest" mini-icon="R" text="Reset" />
                     <!-- <SidenavItem

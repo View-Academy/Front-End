@@ -1,17 +1,58 @@
 <template>
     <div class="mt-12">
-        <div class="row">
-            <div class="col-md-3 mt-4">
-                <div class="card btn">
-                    <div class="card-header p-3 pb-0">
-                        <h6 class="mb-1">Password requirements</h6>
-                        <p class="text-sm mb-0">
-                            Please follow this guide for a strong password:
-                        </p>
+        <!-- Loop through each unique type -->
+        <div v-for="(type, index) in uniqueTypes" :key="index">
+            <h3 class=" mx-5">{{ type }}</h3>
+            <hr class="dropdown-divider" />
+            <div class="row mx-5">
+                <!-- Loop through cards with the current type -->
+                <div class="col-md-3 mt-4" v-for="(input, cardIndex) in cardsByType(type)" :key="cardIndex">
+                    <div class="card btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                        @click="openDialog(input, cardIndex)">
+                        <div class="card-header p-3 pb-0">
+                            <h6 class="mb-1">{{ input.type }}</h6>
+                            <p class="text-sm mb-0">{{ input.front }}</p>
+                        </div>
+                        <div class="card-body p-3">
+                            <ul class="text-muted ps-4 mb-0"></ul>
+                        </div>
                     </div>
-                    <div class="card-body p-3">
-                        <ul class="text-muted ps-4 mb-0">
-                        </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true" v-if="selectedCard">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="exampleModalLabel">{{ selectedCard ? selectedCard.type : '' }}</h5>
+                        <button type="button" class="btn btn-primary" @click="toggleCardSide">{{ cardSide === 'front' ? 'Go Back' : 'Go Front' }}</button>
+                    </div>
+                    <div class="modal-body">
+                        <p v-if="cardSide === 'front'">{{ selectedCard.front }}</p>
+                        <p v-if="cardSide === 'back'">{{ selectedCard.back }}</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        <button type="button" class="btn btn-primary" @click="previousCard">Previous Card</button>
+                        <button type="button" class="btn btn-primary" @click="nextCard">Next Card</button>
+
                     </div>
                 </div>
             </div>
@@ -31,6 +72,7 @@ import DE from "@/assets/img/icons/flags/DE.png";
 import GB from "@/assets/img/icons/flags/GB.png";
 import BR from "@/assets/img/icons/flags/BR.png";
 import AU from "@/assets/img/icons/flags/AU.png";
+import { mapGetters } from "vuex";
 
 export default {
     name: "flash-card",
@@ -43,147 +85,90 @@ export default {
     },
     data() {
         return {
-            products: [
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Nike v22 Running",
-                    order: "12.821",
-                    values: ["$130.992", "$9.500", "13"],
-                    info: "Refund rate is lower with 97% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/blue-shoe.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Business Kit (Mug + Notebook)",
-                    order: "8.232",
-                    values: ["$80.250", "$4.200", "40"],
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/black-mug.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Black Chair",
-                    order: "2.421",
-                    values: ["$40.600", "$9.430", "54"],
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/black-chair.jpg",
-                    icon: "bold-up text-danger",
-                },
-                {
-                    title: "Wireless Charger",
-                    order: "5.921",
-                    values: ["$91.300", "$7.364", "5"],
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/bang-sound.jpg",
-                    icon: "bold-down text-success",
-                },
-                {
-                    title: "Mountain Trip Kit (Camera + Backpack)",
-                    order: "921",
-                    values: ["$140.925", "$20.531", "121"],
-                    info: "Refund rate is higher with 70% than other products",
-                    image:
-                        "https://raw.githubusercontent.com/creativetimofficial/public-assets/master/soft-ui-design-system/assets/img/ecommerce/photo-tools.jpg",
-                    icon: "bold-up text-danger",
-                },
-            ],
-            sales: {
-                us: {
-                    country: "United States",
-                    sale: 2500,
-                    bounce: "29.9%",
-                    flag: US,
-                },
-                germany: {
-                    country: "Germany",
-                    sale: "3.900",
-                    bounce: "40.22%",
-                    flag: DE,
-                },
-                britain: {
-                    country: "Great Britain",
-                    sale: "1.400",
-                    bounce: "23.44%",
-                    flag: GB,
-                },
-                brasil: {
-                    country: "Brasil",
-                    sale: "562",
-                    bounce: "32.14%",
-                    flag: BR,
-                },
-                australia: {
-                    country: "Australia",
-                    sale: "400",
-                    bounce: "56.83%",
-                    flag: AU,
-                },
-            },
+
+            frontText: 'Front Text',
+            backText: 'Back Text',
+            cardIndex: 0,
+            cardSide: 'front',
+
+            selectedCard: null
         };
+    },
+    computed: {
+        ...mapGetters(["getUserFlshCrad"]),
+        uniqueTypes() {
+            // Get an array of unique types
+            return [...new Set(this.getUserFlshCrad.map(item => item.type))];
+        },
+
+    },
+
+
+    mounted() {
+        this.$store.dispatch("SetFlashcard");
+    },
+
+    created() {
+        this.$store.dispatch("SetFlashcard");
+    },
+
+
+
+    methods: {
+        cardsByType(type) {
+            // Filter cards by type
+            return this.getUserFlshCrad.filter(item => item.type === type);
+        },
+
+        openDialog(data, openDialog) {
+
+
+            this.cardSide = "front"
+            this.selectedCard = data;
+            this.cardIndex = openDialog;
+
+            console.log(this.selectedCard)
+        },
+
+
+        toggleCardSide() {
+            // Toggle between 'front' and 'back' sides
+            this.cardSide = this.cardSide === 'front' ? 'back' : 'front';
+        },
+
+        nextCard() {
+            // Move to the next card in the list
+
+
+            if (this.cardIndex < this.cardsByType(this.selectedCard.type).length - 1) {
+                this.cardIndex++;
+                this.selectedCard = this.cardsByType(this.selectedCard.type)[this.cardIndex];
+                this.cardSide = 'front'; // Reset cardSide to 'front'
+            }
+        },
+
+        previousCard() {
+            if (this.cardIndex > 0) {
+                this.cardIndex--;
+                this.selectedCard = this.cardsByType(this.selectedCard.type)[this.cardIndex];
+                this.cardSide = 'front'; // Reset cardSide to 'front'
+            }
+        }
+
+
+
+
+
+
     },
 };
 </script>
+
+<style>
+/* CSS for the divider */
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 16px 0;
+}
+</style>
   

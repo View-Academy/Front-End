@@ -1,25 +1,25 @@
 <template>
-  <NuxtLayout name="authentication">
-    <template #navbar>
-      <!-- <NavbarTransparent
+    <NuxtLayout name="authentication">
+        <template #navbar>
+            <!-- <NavbarTransparent
         is-blur="blur border-radius-lg my-3 py-2 start-0 end-0 mx-4 shadow"
         btn-background="bg-gradient-success"
         :dark-mode="true"
       /> -->
-    </template>
-    <div class="page-header min-vh-100" style="
+        </template>
+        <div class="page-header min-vh-100" style="
                 background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-basic.jpg');
               ">
-      <span class="mask bg-gradient-dark opacity-6"></span>
-      <div class="container mt-4">
-        <div class="row justify-content-center">
-          <div class="col-lg-4 col-md-7">
-            <div class="card z-index-0">
-              <div class="card-header text-center pt-4">
-                <h5>Register with</h5>
-              </div>
-              <div class="row px-xl-5 px-sm-4 px-3">
-                <!-- <div class="col-3 ms-auto px-1">
+            <span class="mask bg-gradient-dark opacity-6"></span>
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-7">
+                        <div class="card z-index-0">
+                            <div class="card-header text-center pt-4">
+                                <h5>Register with</h5>
+                            </div>
+                            <div class="row px-xl-5 px-sm-4 px-3">
+                                <!-- <div class="col-3 ms-auto px-1">
                   <a class="btn btn-outline-light w-100" href="javascript:;">
                     <svg
                       width="24px"
@@ -52,7 +52,7 @@
                     </svg>
                   </a>
                 </div> -->
-                <!-- <div class="col-3 px-1">
+                                <!-- <div class="col-3 px-1">
                   <a class="btn btn-outline-light w-100" href="javascript:;">
                     <svg
                       width="24px"
@@ -79,7 +79,7 @@
                     </svg>
                   </a>
                 </div> -->
-                <!-- <div class="col-3 me-auto px-1">
+                                <!-- <div class="col-3 me-auto px-1">
                   <a class="btn btn-outline-light w-100" href="javascript:;">
                     <svg
                       width="24px"
@@ -118,98 +118,115 @@
                     </svg>
                   </a>
                 </div> -->
-                <!-- <div class="mt-2 position-relative text-center">
+                                <!-- <div class="mt-2 position-relative text-center">
                   <p
                     class="text-sm font-weight-bold mb-2 text-secondary text-border d-inline z-index-2 bg-white px-3"
                   >
                     or
                   </p>
                 </div> -->
-              </div>
-              <div class="card-body">
-                <form role="form">
-                  <ArgonInput id="name" type="text" placeholder="Name" aria-label="Name" v-model="userInfo.name" />
-                  <ArgonInput id="email" type="email" placeholder="Email" aria-label="Email" v-model="userInfo.email" />
-                  <ArgonInput id="phone" type="tel" placeholder="phone" aria-label="tel" v-model="userInfo.phone" />
-                  <ArgonInput id="password" type="password" placeholder="Password" aria-label="Password"
-                    v-model="userInfo.password" />
-                  <ArgonInput id="email" type="password" placeholder="confirm password" aria-label="confirm password"
-                     />
-                  <ArgonCheckbox id="flexCheckDefault" name="flexCheckDefault" checked>
-                    <label class="form-check-label" for="flexCheckDefault">
-                      I agree the
-                      <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
-                    </label>
-                  </ArgonCheckbox>
-                  <div class="text-center">
-                    <ArgonButton type="button" full-width color="dark" variant="gradient" class="my-4 mb-2"
-                      @click="reqstration()">Sign up
-                    </ArgonButton>
-                  </div>
-                  <p class="text-sm mt-3 mb-0">
-                    Already have an account?
-                    <NuxtLink to="/" class="text-dark font-weight-bolder">
-                      Sign in
-                    </NuxtLink>
-                  </p>
-                </form>
-              </div>
+                            </div>
+                            <div class="card-body">
+                                <form role="form">
+                                    <ArgonInput id="name" type="text" placeholder="Name" aria-label="Name"
+                                        v-model="userInfo.name" />
+                                    <ArgonInput id="email" type="email" placeholder="Email" aria-label="Email"
+                                        v-model="userInfo.email" />
+                                    <ArgonInput id="phone" type="tel" placeholder="phone" aria-label="tel"
+                                        v-model="userInfo.phone" />
+                                    <ArgonInput id="password" type="password" placeholder="Password" aria-label="Password"
+                                        v-model="userInfo.password" />
+                                    <ArgonInput id="email" type="password" placeholder="confirm password"
+                                        aria-label="confirm password" />
+                                    <ArgonCheckbox id="flexCheckDefault" name="flexCheckDefault" checked>
+                                        <label class="form-check-label" for="flexCheckDefault">
+                                            I agree the
+                                            <a href="javascript:;" class="text-dark font-weight-bolder">Terms and
+                                                Conditions</a>
+                                        </label>
+                                    </ArgonCheckbox>
+                                    <div class="text-center">
+                                        <ArgonButton type="button" full-width color="dark" variant="gradient"
+                                            class="my-4 mb-2" @click="checkIfUserExists()">Sign up
+                                        </ArgonButton>
+                                    </div>
+                                    <p class="text-sm mt-3 mb-0">
+                                        Already have an account?
+                                        <NuxtLink to="/" class="text-dark font-weight-bolder">
+                                            Sign in
+                                        </NuxtLink>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-    <template #footer>
-      <FooterCentered />
-    </template>
-  </NuxtLayout>
+        <template #footer>
+            <FooterCentered />
+        </template>
+    </NuxtLayout>
 </template>
 
 <script>
 
 export default {
-  data() {
-    return {
-      userInfo: {
-        name: '',
-        email: '',
-        phone: '',
-        password: '',
-        confirmPassword: '',
-        validPassword: "",
-      }
+    data() {
+        return {
+            userInfo: {
+                name: '',
+                email: '',
+                phone: '',
+                password: '',
+                confirmPassword: '',
+                validPassword: "",
+            }
 
-    };
+        };
 
-  },
-  methods: {
-    checkPassword(invalid) {
-      // correct: false
-      if (true == invalid) {
-        this.validPassword = false;
-      } else {
-        this.validPassword = true;
-      }
     },
-    async reqstration() {
-      await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user', {
-        method: 'POST',
-        body:this.userInfo
+    methods: {
+        checkPassword(invalid) {
+            // correct: false
+            if (true == invalid) {
+                this.validPassword = false;
+            } else {
+                this.validPassword = true;
+            }
+        },
 
-      }).then(res => {
-          navigateTo('/authentication/signin/basic')
-        })
-        .catch((error) => {
-          console.error("error");
-        });
+        async checkIfUserExists() {
+            try {
+                const response = await fetch(`http://localhost:8000/api/user/findByName/${this.userInfo.email}`);
+                const data = await response.json();
+                console.log(data);
+                if (data) {
+                    console.log('User exists:', data);
+                    // Perform actions when the user exists
+                } else {
+                    console.log("not exixt");
+                    // $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user', {
+                    //     method: 'POST',
+                    //     body: this.userInfo
+                    // }).then(res => {
+                    //     navigateTo('/authentication/signin/basic')
+                    // })
+                    //     .catch((error) => {
+                    //         console.error("error");
+                    //     });
+                    // console.log('User does not exist');
+                    // Perform actions when the user does not exist
+                }
+            } catch (error) {
+                console.error('Error checking user:', error);
+            }
+        },
     },
-
-
-  },
 
 
 };
 definePageMeta({
-  layout: false,
+    layout: false,
 });
 </script>

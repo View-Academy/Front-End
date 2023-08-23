@@ -3,17 +3,19 @@ import { state } from "~~/stores/quizeData";
 const store = createStore({
     state() {
         return {
+            flashcard: [],
+            types: Array,
             id: String,
             count: 1000,
             email: String,
             mycours: Array,
             noteQuiz: Array,
             name: String,
-            Omitted:[],
-            series:[],
-            Mark:[],
-            Incorrect:[],
-            correct:[],
+            Omitted: [],
+            series: [],
+            Mark: [],
+            Incorrect: [],
+            correct: [],
             printersList: [],
             courses: [],
             Notes: Array,
@@ -32,8 +34,14 @@ const store = createStore({
         };
     },
     getters: {
+        getUserFlshCrad: (state) => {
+            return state.flashcard;
+        },
         getUserInfo: (state) => {
             return state.printersList;
+        },
+        getUserTypes: (state) => {
+            return state.types;
         },
         getUsers: (state) => {
             return state.users;
@@ -51,15 +59,15 @@ const store = createStore({
             return state.Omitted.length;
         },
         getMarkArray: (state) => {
-            return state.Mark.length
+            return state.Mark.length;
         },
         getIncorrectArray: (state) => {
-            return state.Incorrect.length
+            return state.Incorrect.length;
         },
         getCorrectArray: (state) => {
-            return state.correct.length
+            return state.correct.length;
         },
-    
+
         getSeries: (state) => {
             return state.series;
         },
@@ -115,9 +123,6 @@ const store = createStore({
         yourAction: ({ commit }, payload) => {
             commit("SET_MENU", payload);
         },
-
-
-
         SetCourses: ({ commit }) => {
             $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/courses", {
                 method: "GET",
@@ -125,6 +130,39 @@ const store = createStore({
                 .then((res) => {
                     console.log(res);
                     commit("SET_COURSES", res);
+                })
+                .catch((eroor) => {
+                    console.log(eroor);
+                });
+        },
+
+        SetFlashcard: ({ commit, state }) => {
+            $fetch(
+                "https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashcard/" +
+                    state.id,
+                {
+                    method: "GET",
+                }
+            )
+                .then((res) => {
+                    console.log(res);
+                    commit("SET_FLASHCARD", res);
+                })
+                .catch((eroor) => {
+                    console.log(eroor);
+                });
+        },
+        SetTypes: ({ commit, state }) => {
+            $fetch(
+                "https://walrus-app-b8h5f.ondigitalocean.app/api/user/typesget/" +
+                    state.id,
+                {
+                    method: "GET",
+                }
+            )
+                .then((res) => {
+                    console.log(res);
+                    commit("SET_TYPES", res);
                 })
                 .catch((eroor) => {
                     console.log(eroor);
@@ -144,9 +182,13 @@ const store = createStore({
         },
 
         SetNotes: ({ commit, state }) => {
-            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" + state.id, {
-                method: "GET",
-            })
+            $fetch(
+                "https://walrus-app-b8h5f.ondigitalocean.app/api/user/note/" +
+                    state.id,
+                {
+                    method: "GET",
+                }
+            )
                 .then((res) => {
                     console.log(res);
                     commit("SET_NOTES", res);
@@ -155,6 +197,7 @@ const store = createStore({
                     console.log(eroor);
                 });
         },
+
         SetUser: ({ commit }) => {
             $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user", {
                 method: "GET",
@@ -179,10 +222,15 @@ const store = createStore({
                     console.log(eroor);
                 });
         },
+
         SetPreviousQuize: ({ commit, state }) => {
-            $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/myquizes/" + state.id, {
-                method: "GET",
-            })
+            $fetch(
+                "https://walrus-app-b8h5f.ondigitalocean.app/api/user/myquizes/" +
+                    state.id,
+                {
+                    method: "GET",
+                }
+            )
                 .then((res) => {
                     console.log(res);
                     commit("SET_PREVIOUS_QUIZE", res);
@@ -205,14 +253,24 @@ const store = createStore({
             state.name = user.name;
             state.isSuperAdmain = user.isSuperAdmain;
             state.mycours = user.myCourses;
-            state.series =[state.Incorrect.length , state.correct.length, state.Mark.length];
+            state.series = [
+                state.Incorrect.length,
+                state.correct.length,
+                state.Mark.length,
+            ];
         },
 
+        SET_FLASHCARD(state, flashcard) {
+            state.flashcard = flashcard;
+        },
         SET_USERS(state, users) {
             state.users = users;
         },
         SET_COURSES(state, courses) {
             state.courses = courses;
+        },
+        SET_TYPES(state, types) {
+            state.types = types;
         },
         SET_NOTES(state, Notes) {
             state.Notes = Notes;
