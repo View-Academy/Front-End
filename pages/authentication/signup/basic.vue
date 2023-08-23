@@ -147,7 +147,7 @@
                                     </ArgonCheckbox>
                                     <div class="text-center">
                                         <ArgonButton type="button" full-width color="dark" variant="gradient"
-                                            class="my-4 mb-2" @click="checkIfUserExists()">Sign up
+                                            class="my-4 mb-2" @click="checkedifUserexist()">Sign up
                                         </ArgonButton>
                                     </div>
                                     <p class="text-sm mt-3 mb-0">
@@ -196,32 +196,49 @@ export default {
             }
         },
 
-        async checkIfUserExists() {
-            try {
-                const response = await fetch(`http://localhost:8000/api/user/findByName/${this.userInfo.email}`);
-                const data = await response.json();
-                console.log(data);
-                if (data) {
-                    console.log('User exists:', data);
-                    // Perform actions when the user exists
-                } else {
-                    console.log("not exixt");
-                    // $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user', {
-                    //     method: 'POST',
-                    //     body: this.userInfo
-                    // }).then(res => {
-                    //     navigateTo('/authentication/signin/basic')
-                    // })
-                    //     .catch((error) => {
-                    //         console.error("error");
-                    //     });
-                    // console.log('User does not exist');
-                    // Perform actions when the user does not exist
-                }
-            } catch (error) {
-                console.error('Error checking user:', error);
+        async checkedifUserexist() {
+            if (!this.userInfo.email == "") {
+                await $fetch(`https://walrus-app-b8h5f.ondigitalocean.app/api/user/checkifexist/${this.userInfo.email}`, {
+                    method: 'GET',
+                }).then(res => {
+                    if (res == "not founded") {
+                        this.reqstration(res)
+                    } else {
+                        this.$swal({
+                            title: "The user exists ",
+                        });
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            } else {
+                this.$swal({
+                    title: `EMPTY`,
+                });
             }
         },
+
+
+        async reqstration(res) {
+            await $fetch('https://walrus-app-b8h5f.ondigitalocean.app/api/user', {
+                method: 'POST',
+                body: this.userInfo
+            }).then(res => {
+                this.$swal({
+                    title: ` EMAIL:  ${res.email}  
+             PASSWORD: ${res.password}`,
+                });
+                navigateTo('/authentication/signin/basic')
+            })
+                .catch((error) => {
+                    console.error("error");
+                });
+        },
+
+
+
+
+
     },
 
 

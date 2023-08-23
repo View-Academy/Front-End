@@ -822,7 +822,7 @@ export default {
                 // Quill editor options here
             },
             typevlue: "",
-            selectedItem: 'action',
+            selectedItem: '',
             selectedValue: '',
             quillInstance: null,
             front: "",
@@ -894,9 +894,9 @@ export default {
     },
     created() {
         // Check if getUserTypes array is not empty before setting the default selection
-        if (this.getUserTypes.length > 0) {
-            this.selectedItem = this.getUserTypes[0]; // Set the default selected item to the first item in the list
-        }
+        // if (this.getUserTypes.length > 0) {
+        //     this.selectedItem = this.getUserTypes[0]; // Set the default selected item to the first item in the list
+        // }
     },
 
     methods: {
@@ -936,7 +936,7 @@ export default {
         },
 
         addType() {
-            if (this.typevlue === "") {
+            if (this.selectedItem == "") {
 
                 this.$swal({
                     icon: "info",
@@ -1160,10 +1160,14 @@ export default {
 
 
         addflashCard() {
+            const data = {
+                    front: this.front, // قم بتعيين this.front بالقيمة المناسبة
+                    back: this.back,
+                    type: this.selectedItem // قم بتعيين this.back بالقيمة المناسبة
+                };
 
 
-            if (this.typevlue === "") {
-
+            if (data.type === "") {
                 this.$swal({
                     icon: "info",
                     title: "<strong>You Must To Select Or Add -   <u> Type</u></strong>",
@@ -1179,11 +1183,7 @@ export default {
 
             } else {
 
-                const data = {
-                    front: this.front, // قم بتعيين this.front بالقيمة المناسبة
-                    back: this.back,
-                    type: this.selectedItem // قم بتعيين this.back بالقيمة المناسبة
-                };
+                
 
 
                 $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashCard/" + this.getId, {
