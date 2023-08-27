@@ -9,6 +9,7 @@ const store = createStore({
             count: 1000,
             email: String,
             mycours: Array,
+            mycours2: Array,
             noteQuiz: Array,
             name: String,
             Omitted: [],
@@ -79,6 +80,9 @@ const store = createStore({
         },
         getMyCourses: (state) => {
             return state.mycours;
+        },
+        getMyCourses2: (state) => {
+            return state.mycours2;
         },
         getEmail: (state) => {
             return state.email;
@@ -210,6 +214,23 @@ const store = createStore({
                     console.log(eroor);
                 });
         },
+        SetUserCourses: ({ commit, state }) => {
+            $fetch(
+                "https://walrus-app-b8h5f.ondigitalocean.app/api/user/getcourses/" +
+                    state.id,
+                {
+                    method: "GET",
+                }
+            )
+                .then((res) => {
+                    console.log(res);
+                    commit("SET_USERS_COURSES", res);
+                })
+                .catch((eroor) => {
+                    console.log(eroor);
+                });
+        },
+
         SetQuize: ({ commit }) => {
             $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/question", {
                 method: "GET",
@@ -280,6 +301,9 @@ const store = createStore({
         },
         SET_QUIZE(state, quizes) {
             state.quizes = quizes;
+        },
+        SET_USERS_COURSES(state, courses2) {
+            state.mycours2 = courses2;
         },
 
         SET_PREVIOUS_QUIZE(state, previous) {

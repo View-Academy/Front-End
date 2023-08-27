@@ -687,7 +687,6 @@
                             <select id="dropdown" v-model="selectedItem">
                                 <option v-for="(input, index) of getUserTypes" :key="index" :value="input">{{ input }}
                                 </option>
-
                             </select>
                         </div>
                     </div>
@@ -889,7 +888,7 @@ export default {
     },
 
     computed: {
-        ...mapGetters(["getUserInfo", "getId", "getUserTypes"]),
+        ...mapGetters(["getUserInfo", "getId", "getMyCourses2","getUserTypes"]),
 
     },
     created() {
@@ -936,15 +935,15 @@ export default {
         },
 
         addType() {
-            if (this.selectedItem == "") {
+            if (this.typevlue == "") {
 
                 this.$swal({
                     icon: "info",
                     title: "<strong>You cannot leave the field empty</strong>",
-                 
-            
+
+
                     focusConfirm: false,
-              
+
                     cancelButtonText: '<i class="fa fa-thumbs-down"></i>',
                     cancelButtonAriaLabel: "Thumbs down",
                     customClass: {
@@ -964,14 +963,25 @@ export default {
                         title: "Updated successfully!",
                         text: "You clicked the button!",
                     });
-                    this.$store.dispatch('SetOrder')
+                    this.$store.dispatch("SetTypes");
+
                 }).catch(e => {
                     console.log(e);
                 });
-                this.$store.dispatch("SetTypes");
 
             }
 
+        },
+
+
+        generateUniqueId() {
+            const timestamp = new Date().getTime(); // Get current timestamp
+            const random = Math.random().toString(36).substr(2, 9); // Generate a random string
+
+            // Combine timestamp and random string to create a unique ID
+            const uniqueId = `${timestamp}${random}`;
+
+            return uniqueId;
         },
 
 
@@ -1161,10 +1171,11 @@ export default {
 
         addflashCard() {
             const data = {
-                    front: this.front, // قم بتعيين this.front بالقيمة المناسبة
-                    back: this.back,
-                    type: this.selectedItem // قم بتعيين this.back بالقيمة المناسبة
-                };
+                front: this.front, // قم بتعيين this.front بالقيمة المناسبة
+                back: this.back,
+                unqie: this.generateUniqueId(),
+                type: this.selectedItem // قم بتعيين this.back بالقيمة المناسبة
+            };
 
 
             if (data.type === "") {
@@ -1183,7 +1194,7 @@ export default {
 
             } else {
 
-                
+
 
 
                 $fetch("https://walrus-app-b8h5f.ondigitalocean.app/api/user/flashCard/" + this.getId, {

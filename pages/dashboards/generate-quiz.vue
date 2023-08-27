@@ -48,7 +48,7 @@
                                             <div class="form-check">
                                                 <div class="row text-start">
                                                     <div class="mt-3 col-lg-4 col-md-5  text-start "
-                                                        v-for="choice in getMyCourses" :key="choice">
+                                                        v-for="choice in getMyCourses2" :key="choice">
                                                         <input type="radio" :id="choice" @change="(e) => onChange(e)"
                                                             v-model="Courses" name="getMyCourses" :value="choice">
                                                         <label class="form-check-label font-weight-bolder" :for="choice">
@@ -346,13 +346,21 @@ export default {
         };
     },
     computed: {
-        ...mapGetters(["getUserInfo", "getMyCourses", "isAuthenticated", "getEmail", "getId"]),
+        ...mapGetters(["getUserInfo", "getMyCourses", "isAuthenticated", "getEmail", "getId", "getMyCourses2"]),
     },
+
+    created() {
+
+        this.$store.dispatch("SetUserCourses");
+
+    },
+
     mounted() {
 
         var x = sessionStorage.getItem("info");
         this.$store.dispatch("yourAction", JSON.parse(x));
-        console.log(this.getMyCourses);
+        this.$store.dispatch("SetUserCourses");
+        console.log(this.getMyCourses2);
         console.log(this.isAuthenticated);
         console.log(this.getEmail);
         console.log(this.getId);
